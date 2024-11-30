@@ -1,6 +1,8 @@
-from django.conf.urls import url, include
+from django.urls import path
+
 from . import views
 
+app_name = "help"
 urlpatterns = [
-	url(r'studio/tips/(?P<tip>.+)$', views.tips, name="tips"),
+	path("studio/tips/<path:tip>", views.tips, name="tips"),
 ]

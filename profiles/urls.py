@@ -1,6 +1,8 @@
-from django.conf.urls import url, include
+from django.urls import path
+
 from . import views
 
+app_name = "profiles"
 urlpatterns = [
-	url(r'^(?P<username>.+)/$', views.detail, name="profile"),
+	path("test", views.detail, name="test"),
 ]

@@ -1,7 +1,9 @@
-from django.conf.urls import url, include
+from django.urls import path
+
 from . import views
 
+app_name = "projects"
 urlpatterns = [
-	url(r'^(?P<id>\d+)/editor/$', views.editor),
-	url(r'editor/$', views.editor, name="editor"),
+	path("<int:id>/editor/", views.editor, name="editor"),
+	path("editor/", views.editor, name="editor"),
 ]

@@ -1,7 +1,9 @@
-from django.conf.urls import url, include
+from django.urls import path
+
 from . import views
 
+app_name = "accounts"
 urlpatterns = [
-	url(r'^modal-registration/$', views.modal_registration, name="modal-registration"),
-	url(r'^check_username/(?P<username>.+)/$', views.check_username, name="check_username"),
+	path("modal-registration", views.modal_registration, name="modal-registration"),
+	path("check_username/<str:username>/", views.check_username, name="check_username"),
 ]

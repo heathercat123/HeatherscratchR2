@@ -1,4 +1,5 @@
 <!-- templates/modal-registration.html block -->
+{% load static %}
  <form method="post" class="progress1" id="registration-form" action="/scratchr2/login/">
 {% csrf_token %}
 
@@ -43,7 +44,7 @@
         </div>
         </div>
         <div class="registration-images">
-        <img class="sprite-orange" src="{{ STATIC_URL }}/images/sprite-orange.png">
+        <img class="sprite-orange" src="{% static 'images/sprite-orange.png' %}">
         </div>
     </div>
     <div class="modal-body" id="reg-body-2">
@@ -618,7 +619,7 @@
         </div>
         </div>
         <div class="registration-images">
-        <img class="sprite-orange" src="{{ STATIC_URL }}/images/sprite-orange.png">
+        <img class="sprite-orange" src="{% static 'images/sprite-orange.png' %}">
         </div>
     </div>
     <div class="modal-body" id="reg-body-3">

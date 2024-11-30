@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 {% load i18n %}
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as LANGUAGE_CODE %}
 <html>
   <head>
-	<link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}/images/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -15,20 +16,19 @@
 	
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","queueTime":0,"licenseKey":"1c6ed9743c","agent":"js-agent.newrelic.com/nr-476.min.js","transactionName":"M1IHN0NYXEZWAEFRCgoYIxZfWkZcWA0aUAoJUhUCVlwcQ14GQktfLFgIBkFYVVBhClBP","applicationID":"2845391","errorBeacon":"bam.nr-data.net","applicationTime":118}</script>
     <meta name="google-site-verification" content="m_3TAXDreGTFyoYnEmU9mcKB4Xtw5mw6yRkuJtXRKxM"/>
-	{% block extra_meta %}{% endblock %}
-    <title>{% block page-title %}{% block page-name %}{% trans "Scratch" %}{% endblock %} - {% block page-category %}{% trans "Imagine, Program, Share" %}{% endblock %}{% endblock %}</title>
+    <title>{% block page-name %}{% trans "Scratch" %} - {% trans "Imagine, Program, Share" %}{% endblock %}</title>
     
 
 <meta name="description" content="Scratch is a free programming language and online community where you can create your own interactive stories, games, and animations."/>
 
-	<link rel="stylesheet" href="{{ STATIC_URL }}/vendor/redmond/jquery.ui.all.css"/>
-	<link href="{{ STATIC_URL }}/css/main.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" href="{{ STATIC_URL }}/css/handheld.css" media="handheld, only screen and (max-device-width:480px)"/>
-	{% block css %}{% endblock css %} 
+{% block css %}
+	<link rel="stylesheet" href="{% static 'vendor/redmond/jquery.ui.all.css' %}"/>
+	<link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="{% static '/css/handheld.css' %}" media="handheld, only screen and (max-device-width:480px)"/>
 
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/underscore-min.js"></script>
-
+    <script type="text/javascript" src="{% static '/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/lib/underscore-min.js' %}"></script>
+{% endblock css %} 
 
     <script>
       window.console||(window.console={log:$.noop,error:$.noop,debug:$.noop}); // ensure console fails gracefully when missing
@@ -145,9 +145,9 @@ Scratch.ALERT_MSGS = {
       
       <div id="topnav">
         <div class="container">
-          <a href="{% url home %}" class="logo"><span class="scratch"></span></a>
+          <a href="/scratchr2/" class="logo"><span class="scratch"></span></a>
           <ul class="site-nav">
-            <li><a id="project-create" href="/scratchr2/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="/scratchr2/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="{% url djangobb:index %}">{% trans "Discuss" %}</a></li><li class="last"><a href="/scratchr2/help/">{% trans "Help" %}</a></li>
+            <li><a id="project-create" href="/scratchr2/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="/scratchr2/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="/scratchr2/discuss/">{% trans "Discuss" %}</a></li><li class="last"><a href="/scratchr2/help/">{% trans "Help" %}</a></li>
           </ul>
             
             <form class="search" action="/scratchr2/search/google_results/" method="get" class="search">
@@ -155,11 +155,9 @@ Scratch.ALERT_MSGS = {
         
 	<input id="search-input" type="text" placeholder="{% trans 'Search' %}" name="q">
             
-          
-			{% block search_form_hidden_inputs %}
+               
               <input type="hidden" name="date" value="anytime">
           <input type="hidden" name="sort_by" value="datetime_shared">
-			{% endblock %}
             
           </form>
           
@@ -172,7 +170,7 @@ Scratch.ALERT_MSGS = {
           <script type="text/template" id="template-account-nav-logged-in">
           <ul class="account-nav logged-in"><li class="messages"><a title="{% trans "messages - updates and notices" %}" href="/scratchr2/messages/" class="messages-icon"><span class="notificationsCount none">0</span></a></li><li class="my-stuff"><a title="{% trans 'my stuff - manage projects and studios' %}" href="/mystuff/" class="mystuff-icon"></a></li><li class="logged-in-user dropdown"><span class="user-name dropdown-toggle" data-toggle="dropdown"><img class="user-icon" src="<%= thumbnail_url %>" width="24" height="24"><%= username_truncated %><span class="caret"></span></span><div class="dropdown-menu blue" ><ul class="user-nav"><li><a href="<%= profile_url %>">Profile</a></li><li><a href="/mystuff/">My Stuff</a></li><li><a href="/accounts/settings/">Account settings</a></li><li class="logout divider"><a href="/scratchr2//accounts/logout/?next=/">Sign out</a></li></ul></div></li></ul>
           </script>
-          <script type="text/javascript" src="{{ STATIC_URL }}/js/account-nav.js"></script>
+          <script type="text/javascript" src="{% static 'js/account-nav.js' %}"></script>
         </div>
         <iframe class="iframeshim" frameborder="0" scrolling="no"><html><head></head><body></body></html></iframe>
       </div>
@@ -196,7 +194,7 @@ Scratch.ALERT_MSGS = {
           <li><a href="/jobs">{% trans "Jobs" %}</a></li>
           <li><a href="http://codetolearn.org/">{% trans "Donate" %}</a></li> 
           <li>
-            <form id="lang-dropdown" method="post" action="/i18n/setlang/">
+            <form id="lang-dropdown" method="post" action="{% url 'set_language' %}">
               <select id="language-selection" name="language">
 				{% for lang in LANGUAGES %}
 					<option value="{{ lang.0 }}"{% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>{{ lang.1 }}</option>
@@ -231,9 +229,9 @@ Scratch.ALERT_MSGS = {
 
 
 
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{% static '/js/jquery-ui.min.js' %}"></script>
 
-    <script type="application/javascript" src="{{ STATIC_URL }}/js/main.js" charset="utf-8"></script>
+    <script type="application/javascript" src="{% static 'js/main.js' %}" charset="utf-8"></script>
 
   
   <script type="text/javascript">
@@ -255,9 +253,12 @@ Scratch.ALERT_MSGS = {
     
 
 
-    <script type="application/javascript" src="{{ STATIC_URL }}/js/base.js" charset="utf-8"></script>
-    <script type="application/javascript" src="{{ STATIC_URL }}/js/lazyload.js" charset="utf-8"></script>
-    {% block js %}{% endblock js %}
+    <script type="application/javascript" src="{% static 'js/base.js' %}" charset="utf-8"></script>
+    <script type="application/javascript" src="{% static 'js/lazyload.js' %}" charset="utf-8"></script>
+   
+{% block js %}
+{% endblock %}
+    
     
     
     
@@ -265,13 +266,13 @@ Scratch.ALERT_MSGS = {
 
     <!-- load javascript translation catalog, and javascript fuzzy date library -->
     <script type="text/javascript" src="/scratchr2/jsi18n/"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/jquery.timeago.settings.js"></script>
+    <script type="text/javascript" src="{% static '/js/lib/jquery.timeago.settings.js' %}"></script>
     
        
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/apps/registration/main.js"></script> 
+    <script type="text/javascript" src="{% static 'apps/registration/main.js' %}"></script> 
     
 
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/apps/global.js"></script>
+    <script type="text/javascript" src="{% static 'js/apps/global.js' %}"></script>
     <script>
       Scratch.NotificationPollTime = 300000;
     </script>

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block css %}
     {{ block.super }}
-	<link href="{{ STATIC_URL }}/css/pages/http-errors.css" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'css/pages/http-errors.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %} 
 {% block main-content %}
 		<!-- templates/404.html block main-content -->
@@ -20,7 +21,7 @@
             </form>
             </p>
             <br/> 
-            <img src="{{ STATIC_URL }}/images/sad404_cat.png" style="opacity:0.5;filter:alpha(opacity=50);margin:20px;padding: 10px;-webkit-border-radius: 200px; -moz-border-radius: 200px; border-radius: 200px;border: 12px solid #CCC;">
+            <img src="{% static 'images/sad404_cat.png' %}" style="opacity:0.5;filter:alpha(opacity=50);margin:20px;padding: 10px;-webkit-border-radius: 200px; -moz-border-radius: 200px; border-radius: 200px;border: 12px solid #CCC;">
           </div>
         </div>
 		<!-- end block main-content -->

@@ -1,6 +1,8 @@
-from django.conf.urls import url, include
+from django.urls import path
+
 from . import views
 
+app_name = "notifications"
 urlpatterns = [
-	url(r'^ajax/user-activity/$', views.user_feed, name="user_feed"),
+	path("ajax/user-activity/", views.user_feed, name="user_feed"),
 ]

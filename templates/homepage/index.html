@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block css %}
     {{ block.super }}
-	<link href="{{ STATIC_URL }}/css/pages/homepage.css" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'css/pages/homepage.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock css %} 
 
 {% block main-content %}
@@ -16,20 +17,20 @@
     <div class="intro col-10">
 	    <h1 class="title">{% trans "Create stories, games, and animations" %}<br/>{% trans "Share with others around the world" %}</h1>
       <a id="orange-char" class="char" href="projects/editor/?tip_bar=getStarted">
-        <img class="img-a" src="{{ STATIC_URL }}/images/cat-a.png">
-        <img class="img-b" src="{{ STATIC_URL }}/images/cat-b.png">
+        <img class="img-a" src={% static 'images/cat-a.png' %}>
+        <img class="img-b" src={% static 'images/cat-b.png' %}>
         <div class="circle"></div>
         <div class="text">{% trans "TRY IT OUT" %}</div>
       </a>
       <a id="blue-char" class="char" href="starter_projects">
-        <img class="img-a" src="{{ STATIC_URL }}/images/tera-a.png">
-        <img class="img-b" src="{{ STATIC_URL }}/images/tera-b.png">
+        <img class="img-a" src="{% static 'images/tera-a.png' %}">
+        <img class="img-b" src="{% static 'images/tera-b.png' %}">
         <div class="circle"></div>
         <div class="text">{% trans "SEE EXAMPLES" %}</div>
       </a>
       <a id="yellow-char" data-control="registration" class="char" href="#">
-        <img class="img-a" src="{{ STATIC_URL }}/images/gobo-a.png">
-        <img class="img-b" src="{{ STATIC_URL }}/images/gobo-b.png">
+        <img class="img-a" src={% static 'images/gobo-a.png' %}>
+        <img class="img-b" src={% static 'images/gobo-b.png' %}>
         <div class="circle"></div>
         <div class="text">{% trans "JOIN SCRATCH" %}</div>
         <div class="text subtext">( {% trans "it's free" %} )</div>
@@ -44,7 +45,7 @@
     <div class="col-6">
       <div class="video">
         <div class="play-button"></div>
-        <img src="{{ STATIC_URL }}/images/hp-video-screenshot.png"/>
+        <img src="{% static '/images/hp-video-screenshot.png' %}"/>
       </div>
     </div>
   </div>
@@ -181,5 +182,5 @@
 sessionStorage.removeItem("gallery_id")
 sessionStorage.removeItem("explore_by")
 </script>
-<script type="text/javascript" src="{{ STATIC_URL }}/js/homepage.js"></script>
+<script type="text/javascript" src={% static 'js/homepage.js' %}></script>
 {% endblock %}

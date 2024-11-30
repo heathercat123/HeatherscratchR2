@@ -1,16 +1,16 @@
 """
-WSGI config for ScratchR2_PY27 project.
+WSGI config for scratchr2 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
+https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 """
 
 import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ScratchR2_PY27.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scratchr2.settings')
 
 application = get_wsgi_application()

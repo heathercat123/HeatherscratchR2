@@ -1,6 +1,8 @@
-from django.conf.urls import url, include
+from django.urls import path
+
 from . import views
 
+app_name = "site-api"
 urlpatterns = [
-	url(r'^comments/user/(?P<username>.+)/$', views.usercomments, name="usercomments"),
+	path("comments/user/<str:username>/", views.usercomments, name="usercomments"),
 ]
