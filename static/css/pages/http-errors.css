@@ -1,0 +1,21 @@
+
+#page-404 .box-content, 
+#page-500 .box-content {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#page-404 .search input  {
+  box-shadow: none;
+  width: 400px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+
+#page-404 .box-content form {
+  display: inline-block;
+}
+
+#page-404 form {
+  float: none;
+}

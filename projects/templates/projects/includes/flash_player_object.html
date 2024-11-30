@@ -1,0 +1,82 @@
+<!-- Start template project/includes/flash_player_object.html -->
+<div id="scratch-loader"></div>
+<div id="scratch" style="text-align:center;margin-top:30px;visibility:hidden;position:relative;">
+    
+    <div class="scratch_unsupported">
+        <p style="color:#aaa;font-size:22px;margin-top:14px;line-height:28px;">Oh Noes! Scratch project cannot display.<br/>Flash player is disabled, missing, or less than version 10.2.</p>
+        <a href="http://www.adobe.com/go/getflashplayer">
+            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" target="_blank"/>
+        </a>
+    </div>
+    <div class="scratch_loading"></div>
+</div>
+
+<script type="text/javascript">
+window.SWFready=$.Deferred(); // Deferred makes sure we don't call ASSetEditMode before SWF is ready.
+function JSeditorReady() {
+    console.log('swfReady');
+    SWFready.resolve();
+    return true;
+}
+
+function handleEmbedStatus(e) {
+    $('#scratch-loader').hide();
+    if(!e.success) {
+        $('#scratch').css('marginTop', '10');
+        $('#scratch IMG.proj_thumb').css('width', '179px');
+        $('#scratch DIV.scratch_unsupported').show();
+        $('#scratch DIV.scratch_loading').hide();
+    }else{
+        $('#scratch').css('visibility', 'visible');
+    }
+}
+
+// The flashvars tell flash about the project data (and autostart=true)
+var flashvars = {
+    autostart: 'false',
+    server: encodeURIComponent(location.host),
+    cloudToken: '',
+    cdnToken: 'c40e58fc65d8157675c60fb376668677',
+    urlOverrides: {
+        sitePrefix: "/",
+        siteCdnPrefix: "/",
+        assetPrefix: "/",
+        assetCdnPrefix: "/",
+        projectPrefix: "/",
+        projectCdnPrefix: "/",
+        internalAPI: "internalapi/",
+        siteAPI: "site-api/",
+        staticFiles: "scratchr2/static/"
+    },
+    inIE: (navigator.userAgent.indexOf('MSIE') > -1)
+};
+
+$.each(flashvars, function(prop, val) {
+    if($.isPlainObject(val))
+        flashvars[prop] = encodeURIComponent(JSON.stringify(val));
+});
+
+$.each(Scratch.INIT_DATA.PROJECT.model, function(i, val) {
+    if(val != null)
+        flashvars['project_'+i] = encodeURIComponent(val);
+});
+
+if(Scratch.INIT_DATA.PROJECT.is_new)
+    flashvars.project_isNew = true;
+
+var params = {
+    allowscriptaccess: 'always',
+    allowfullscreen: 'true',
+    wmode: 'direct',
+    menu: 'false'};
+
+swfobject.embedSWF("{{ STATIC_URL }}/Scratch.swf", "scratch", "100%", "100%", "10.2.0",
+    "{{ STATIC_URL }}/expressInstall.swf", flashvars, params, null, handleEmbedStatus);
+
+// enables the SWF to log errors
+function JSthrowError(e) {
+    if (window.onerror) window.onerror(e, 'swf', 0);
+    else console.error(e);
+}
+</script>
+<!-- End template project/includes/flash_player_object.html -->

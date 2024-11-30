@@ -1,0 +1,46 @@
+{% load forum_extras %}
+{% load i18n %}
+{% load tz %}
+
+<div id="djangobbwrap">
+<div id="djangobbindex" class="djangobb">
+<div id="brdheader" class="box">
+	<div class="box-head">
+		<h2><!--<span><a href="{% url djangobb:index %}">-->{{ forum_settings.HEADER|safe }}<!--</a></span>--></h2>
+		<p><span>{{ forum_settings.TAGLINE|safe }}</span></p>
+	</div>
+	<div id="brdmenu" class="box-content">
+		{% if user.is_authenticated %}
+			<ul class="conr">
+				<li><a href="{% url djangobb:search %}?action=show_new">{% trans "Show new posts since last visit" %}</a></li>
+			</ul>
+		{% endif %}
+		<ul>
+		{% block menu %}
+			<li id="navindex"><a href="{% url djangobb:index %}">{% trans "Discussion Home" %}</a></li>
+			{% if user|forum_can_view_reports %}
+				<li class="moderator-only"><a href="{% url djangobb:forum_reports %}">
+					{% with user|forum_reports as report_count %}
+						{% if report_count %}
+							<strong>{% blocktrans %}Reports ({{ report_count }}){% endblocktrans %}</strong>
+						{% else %}
+							{% trans "Reports" %}
+						{% endif %}
+					{% endwith %}
+				</a></li>
+			{% endif %}
+		{% endblock %}
+		</ul>
+	</div>
+</div>
+
+{% if forum_settings.NOTICE %}
+	<div id="announce" class="block">
+		<h2><span>{% trans "Notice" %}</span></h2>
+		<div class="box">
+			<div class="inbox box-content">
+				<div>{{ forum_settings.NOTICE }}</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    {{ block.super }}
+	<link href="{{ STATIC_URL }}/css/pages/http-errors.css" rel="stylesheet" type="text/css"/>
+{% endblock %} 
+{% block main-content %}
+		<!-- templates/404.html block main-content -->
+	<div class="box" id="page-404">
+          <div class="box-head"> 
+            <h2>404. Oh noes! Our server is Scratch'ing its head</h2>
+          </div>
+          <div class="box-content">
+		  <p>We couldn't find the page you're looking for. Check to make sure you've typed the url correctly. 
+		  <br/>You can try searching for what you're looking for here: 
+            <form action="/scratchr2/search/google_results/" method="get" class="search"><span class="glass"><i></i></span> 
+		    
+		    <input type="text" placeholder="Search" name="q"> 
+              <input type="hidden" name="date" value="anytime">
+            </form>
+            </p>
+            <br/> 
+            <img src="{{ STATIC_URL }}/images/sad404_cat.png" style="opacity:0.5;filter:alpha(opacity=50);margin:20px;padding: 10px;-webkit-border-radius: 200px; -moz-border-radius: 200px; border-radius: 200px;border: 12px solid #CCC;">
+          </div>
+        </div>
+		<!-- end block main-content -->
+{% endblock %}

@@ -1,0 +1,150 @@
+#scratcher-promotion-wrapper .modal-body {
+    min-height: 263px;
+}
+#scratcher-promotion-wrapper .step {
+    display: none;
+    margin-top: 40px;
+}
+#scratcher-promotion-wrapper .bubble {
+    border-radius: 8px;
+    border: 3px solid rgb(167,167,167);
+    padding: 15px;
+    line-height: 1.25;
+    width: 260px;
+    position: relative;
+}
+#scratcher-promotion-wrapper .bubble:after {
+    display: block;
+    position: absolute;
+}
+#scratcher-promotion-wrapper .step h4 {
+    font-size: 1.1em;
+}
+#scratcher-promotion-wrapper ol {
+    list-style: none;
+}
+#scratcher-promotion-wrapper .button {
+    display: inline-block;
+    float: left;
+}
+#scratcher-promotion-wrapper #promotion-next,
+#scratcher-promotion-wrapper #promotion-ok,
+#scratcher-promotion-wrapper #promotion-agree {
+    float: right;
+}
+#scratcher-promotion-wrapper .progress {
+    position: absolute;
+    left: 143px;
+    bottom: 26px;
+    margin: 0;
+    padding: 0;
+}
+#scratcher-promotion-wrapper .progress li {
+    width: 35px;
+    display: inline-block;
+    padding: 3px 5px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #666;
+    border-width: 1px 1px 1px 0;
+}
+#scratcher-promotion-wrapper .progress li.first {
+    border-left: 1px solid #666;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+#scratcher-promotion-wrapper .progress li.last {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+#scratcher-promotion-wrapper .progress li.current {
+    background-color: rgb(244,168,65);
+}
+
+#scratcher-promotion-wrapper .step.cata {
+    background: url(/scratchr2/static/images/cat-a.png) no-repeat bottom left;
+    padding-left: 122px;
+    padding-bottom: 90px;
+}
+#scratcher-promotion-wrapper .step.cata .bubble:after {
+    width: 45px;
+    height: 25px;
+    content: " ";
+    background: url(/scratchr2/static/images/bubble-bottom-southwest.png) no-repeat;
+    bottom: -25px;
+}
+#scratcher-promotion-wrapper .step.tera {
+    background: url(/scratchr2/static/images/tera-happy-left.png) no-repeat bottom right;
+    padding-top: 75px;
+    padding-left: 65px;
+}
+#scratcher-promotion-wrapper .step.tera .bubble:after {
+    width: 25px;
+    height: 45px;
+    content: " ";
+    background: url(/scratchr2/static/images/bubble-right-northeast.png) no-repeat;
+    right: -25px;
+    top: 31px;
+}
+#scratcher-promotion-wrapper .step.nano {
+    background: url(/scratchr2/static/images/nano-happy.png) no-repeat bottom left;
+    padding-left: 150px;
+    padding-bottom: 67px;
+}
+#scratcher-promotion-wrapper .step.nano .bubble:after {
+    width: 25px;
+    height: 45px;
+    content: " ";
+    background: url(/scratchr2/static/images/bubble-left-southwest.png) no-repeat;
+    left: -25px;
+    top: 44px;
+}
+#scratcher-promotion-wrapper .step.gobo {
+    background: url(/scratchr2/static/images/gobo-a.png) no-repeat bottom left;
+    padding-left: 123px;
+    padding-bottom: 52px;
+}
+#scratcher-promotion-wrapper .step.gobo .bubble:after {
+    width: 25px;
+    height: 45px;
+    content: " ";
+    background: url(/scratchr2/static/images/bubble-left-southwest.png) no-repeat;
+    left: -25px;
+    top: 36px;
+}
+#scratcher-promotion-wrapper .step.pico {
+    background: url(/scratchr2/static/images/pico-very-happy-right.png) no-repeat top left;
+    padding-left: 137px;
+    padding-top: 80px;
+}
+#scratcher-promotion-wrapper .step.pico .bubble:after {
+    width: 25px;
+    height: 45px;
+    content: " ";
+    background: url(/scratchr2/static/images/bubble-left-northwest.png) no-repeat;
+    left: -25px;
+    top: 36px;
+}
+#scratcher-promotion-wrapper .step.catb {
+    background: url(/scratchr2/static/images/cat-b-left.png) no-repeat 390px center;
+    margin-top: 0;
+    padding-left: 65px;
+}
+#scratcher-promotion-wrapper .step.catb .bubble:after {
+    width: 25px;
+    height: 45px;
+    content: " ";
+    background: url(/scratchr2/static/images/bubble-right-northeast.png) no-repeat;
+    right: -25px;
+    top: 147px;
+}
+#scratcher-promotion-wrapper .step.end {
+    margin-top: 0;
+    padding-bottom: 264px;
+    background: url(/scratchr2/static/images/Congrats-a.png) no-repeat bottom center;
+}
+#scratcher-promotion-wrapper .step.end h2 {
+    color: rgb(238,130,38);
+    font-weight: normal;
+    margin-bottom: 10px;
+}

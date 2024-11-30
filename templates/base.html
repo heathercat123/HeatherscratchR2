@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+<html>
+  <head>
+	<link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}/images/favicon.ico">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NBMRDKQ');</script>
+    <!-- End Google Tag Manager -->
+	
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","queueTime":0,"licenseKey":"1c6ed9743c","agent":"js-agent.newrelic.com/nr-476.min.js","transactionName":"M1IHN0NYXEZWAEFRCgoYIxZfWkZcWA0aUAoJUhUCVlwcQ14GQktfLFgIBkFYVVBhClBP","applicationID":"2845391","errorBeacon":"bam.nr-data.net","applicationTime":118}</script>
+    <meta name="google-site-verification" content="m_3TAXDreGTFyoYnEmU9mcKB4Xtw5mw6yRkuJtXRKxM"/>
+	{% block extra_meta %}{% endblock %}
+    <title>{% block page-title %}{% block page-name %}{% trans "Scratch" %}{% endblock %} - {% block page-category %}{% trans "Imagine, Program, Share" %}{% endblock %}{% endblock %}</title>
+    
+
+<meta name="description" content="Scratch is a free programming language and online community where you can create your own interactive stories, games, and animations."/>
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}/vendor/redmond/jquery.ui.all.css"/>
+	<link href="{{ STATIC_URL }}/css/main.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}/css/handheld.css" media="handheld, only screen and (max-device-width:480px)"/>
+	{% block css %}{% endblock css %} 
+
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/underscore-min.js"></script>
+
+
+    <script>
+      window.console||(window.console={log:$.noop,error:$.noop,debug:$.noop}); // ensure console fails gracefully when missing
+      // define _gaq here to log errors with GA. ga.js script gets loaded furthe down
+      var sessionCookieName = 'scratchsessionsid';
+      var _gaq = window._gaq || [];
+      _gaq.push(['_setAccount', 'UA-30688952-1']);
+      _gaq.push(['_trackPageview']);
+      
+      
+      
+      
+      
+      
+    </script>
+    <script type="text/javascript">
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function setCookie(name, value, days) {
+            var expires;
+
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            } else {
+                expires = "";
+            }
+            document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+        }
+    </script>
+    <script>
+      
+var Scratch = Scratch || {};
+Scratch.INIT_DATA = Scratch.INIT_DATA || {};
+
+
+
+Scratch.INIT_DATA.ADMIN = false;
+Scratch.INIT_DATA.LOGGED_IN_USER = {
+  
+  options: {
+    
+    
+  }
+};
+
+{% block init_data %}
+{% endblock %}
+
+
+
+Scratch.INIT_DATA.IS_IP_BANNED = false;
+
+Scratch.ALERT_MSGS = {
+  'error': 'Oops! Something went wrong',
+  'inappropriate-generic': 'Hmm...the bad word detector thinks there is a problem with your text. Please change it and remember to <a target="_blank" href="/community_guidelines/">be respectful</a>.',
+
+  'inappropriate-comment': 'Hmm...the bad word detector thinks there is a problem with your comment. Please change it and remember to <a target="_blank" href="/community_guidelines/">be respectful</a>.',
+  'comment-has-chat-site': 'Uh oh! This comment contains a link to a website with unmoderated chat. For safety reasons, please do not link to these sites!',
+
+  'empty-comment': "You can't post an empty comment!",
+  'delete_comment': '<div title="Delete Comment?"><p>Are you sure you want to delete this comment? If the comment is mean or disrespectful, please click report instead, to let the Scratch Team know about it.</p></div>',
+  'report_comment': '<div title="Report Comment?"></p>Are you sure you want to report this comment?</p></div>',
+  'followed': 'You are now following ',
+  'unfollowed': 'You are no longer following ',
+  'comment-spam': "Hmm, seems like you've posted the same comment a bunch of times. Please don't spam.",
+  'comment-flood': "Woah, seems like you're commenting really quickly. Please wait 30 seconds between posts.",
+  'comment-muted': "Hmm, the filterbot is pretty sure your recent comments weren't ok for Scratch, so your account has been muted for the rest of the day. :/",
+  'comment-unconstructive': "Hmm, the filterbot thinks your comment may be mean or disrespectful. Remember, most projects on Scratch are made by people who are just learning how to program. Read the <a href='/community_guidelines'>community guidelines</a>, and be nice.",
+  'comment-disallowed': "Hmm, it looks like comments have been turned off for this page. :/",
+  'project-complaint-length': "That's too short. Please describe in detail what's inappropriate or disrespectful about the project.",
+  'project-complaint-buglength': "That's too short! Please describe in detail what you expected the project to do, and how exactly it is broken. Thanks!",
+  'editable-text-too-long': "That's too long! Please find a way to shorten your text."
+
+}
+
+
+    </script>
+	
+    <meta property="og:type" content="website"/>
+    
+    <meta property="og:description" content="Make games, stories and interactive art with Scratch. (scratch.mit.edu)"/>
+    
+    
+    
+    <meta property="og:title" content="Scratch - Imagine, Program, Share"/> 
+    <meta property="og:url" content="/"/>
+    
+
+  </head>
+  <body class="">
+ 
+    <!--[if lt IE 8]>
+      <p class="upgrade-browser">Scratch 2.0 only supports IE8 and above. To use the site, <a href="http://browsehappy.com/">upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>.</p>
+    <![endif]-->
+
+    <div id="pagewrapper">
+       
+      
+      <div id="topnav">
+        <div class="container">
+          <a href="{% url home %}" class="logo"><span class="scratch"></span></a>
+          <ul class="site-nav">
+            <li><a id="project-create" href="/scratchr2/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="/scratchr2/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="{% url djangobb:index %}">{% trans "Discuss" %}</a></li><li class="last"><a href="/scratchr2/help/">{% trans "Help" %}</a></li>
+          </ul>
+            
+            <form class="search" action="/scratchr2/search/google_results/" method="get" class="search">
+            <input type="submit" class="glass" value="">
+        
+	<input id="search-input" type="text" placeholder="{% trans 'Search' %}" name="q">
+            
+          
+			{% block search_form_hidden_inputs %}
+              <input type="hidden" name="date" value="anytime">
+          <input type="hidden" name="sort_by" value="datetime_shared">
+			{% endblock %}
+            
+          </form>
+          
+          <ul class="account-nav"></ul>
+          <script type="text/template" id="template-account-nav-logged-out">
+          <ul class="account-nav" >
+              <li class="join-scratch" data-control="registration"><span class=""><span>{% trans "Join Scratch" %}</span></span></li><li id="login-dropdown" class="sign-in dropdown"><span data-toggle="dropdown" class="dropdown-toggle"><span>{% trans "Sign in" %}</span></span><div class="popover bottom dropdown-menu"><div class="arrow"></div><div class="popover-content" ><form method="post" id="login" action="#"><label for="username">Username</label><input type="text" id="login_dropdown_username" name="username" maxlength="30" class="wide username" /><label for="password" class="password">Password</label><input type="password" name="password" class="wide password" /><div class="ajax-loader" style="display:none; float: left;"></div><button type="submit">Sign in</button><span class="forgot-password"><a href="/scratchr2/accounts/password_reset/">Forgot password?</a></span><div class="error"></div></form></div></div></li><li data-control="modal-login" class="sign-in mobile"><span>Sign in</span></li>
+          </ul>
+          </script>
+          <script type="text/template" id="template-account-nav-logged-in">
+          <ul class="account-nav logged-in"><li class="messages"><a title="{% trans "messages - updates and notices" %}" href="/scratchr2/messages/" class="messages-icon"><span class="notificationsCount none">0</span></a></li><li class="my-stuff"><a title="{% trans 'my stuff - manage projects and studios' %}" href="/mystuff/" class="mystuff-icon"></a></li><li class="logged-in-user dropdown"><span class="user-name dropdown-toggle" data-toggle="dropdown"><img class="user-icon" src="<%= thumbnail_url %>" width="24" height="24"><%= username_truncated %><span class="caret"></span></span><div class="dropdown-menu blue" ><ul class="user-nav"><li><a href="<%= profile_url %>">Profile</a></li><li><a href="/mystuff/">My Stuff</a></li><li><a href="/accounts/settings/">Account settings</a></li><li class="logout divider"><a href="/scratchr2//accounts/logout/?next=/">Sign out</a></li></ul></div></li></ul>
+          </script>
+          <script type="text/javascript" src="{{ STATIC_URL }}/js/account-nav.js"></script>
+        </div>
+        <iframe class="iframeshim" frameborder="0" scrolling="no"><html><head></head><body></body></html></iframe>
+      </div>
+	  
+<div class="container" id="content">
+        <div id="alert-view"></div>
+			{% block main-content %}
+			{% endblock main-content %}
+		</div>
+</div>
+
+    <div id="footer">
+      <div class="container">
+	      <ul class="clearfix" id="footer-menu">
+          <li><a href="/about">{% trans "About" %}</a></li>
+          <li><a href="/educators">{% trans "Educators" %}</a></li>
+          <li><a href="/parents">{% trans "Parents" %}</a></li>
+          <li><a href="/community_guidelines">{% trans "Community Guidelines" %}</a></li>
+          <li><a href="/DMCA">{% trans "DMCA" %}</a></li>
+          <li><a href="/contact-us/">{% trans "Contact Us" %}</a></li> 
+          <li><a href="/jobs">{% trans "Jobs" %}</a></li>
+          <li><a href="http://codetolearn.org/">{% trans "Donate" %}</a></li> 
+          <li>
+            <form id="lang-dropdown" method="post" action="/i18n/setlang/">
+              <select id="language-selection" name="language">
+				{% for lang in LANGUAGES %}
+					<option value="{{ lang.0 }}"{% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>{{ lang.1 }}</option>
+				{% endfor %}
+            
+          </select>
+        </form>
+        </li>
+        </ul>
+	<p>Scratch is a project of the Lifelong Kindergarten Group at the MIT Media Lab</p>
+      </div>
+    </div>
+
+<!-- templates/modal-login.html block -->
+{% include 'modal-login.html' %} 
+<!-- end templates/modal-login.html -->
+
+    
+        <div class="modal hide fade" data-backdrop="static" id="registration">
+        </div>
+    
+
+    
+    
+
+    
+
+<div class="modal hide fade in" id="modal-video">
+  <a href="#" data-dismiss="" class="close">x</a>
+  <iframe id="vimeo-vid" src="http://player.vimeo.com/video/65583694?title=0&amp;byline=0&amp;portrait=0" width="570" height="357" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+
+
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery-ui.min.js"></script>
+
+    <script type="application/javascript" src="{{ STATIC_URL }}/js/main.js" charset="utf-8"></script>
+
+  
+  <script type="text/javascript">
+    // load gaq script
+	/* or not
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+	*/
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('.slider-carousel').sliderCarousel();
+    });
+  </script>
+
+    
+
+
+    <script type="application/javascript" src="{{ STATIC_URL }}/js/base.js" charset="utf-8"></script>
+    <script type="application/javascript" src="{{ STATIC_URL }}/js/lazyload.js" charset="utf-8"></script>
+    {% block js %}{% endblock js %}
+    
+    
+    
+     
+
+    <!-- load javascript translation catalog, and javascript fuzzy date library -->
+    <script type="text/javascript" src="/scratchr2/jsi18n/"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/jquery.timeago.settings.js"></script>
+    
+       
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/apps/registration/main.js"></script> 
+    
+
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/apps/global.js"></script>
+    <script>
+      Scratch.NotificationPollTime = 300000;
+    </script>
+
+    <script type="text/javascript">
+      var contentLanguage = "en";
+      var cookieLanguage = getCookie("scratchlanguage");
+
+      if (contentLanguage != cookieLanguage) {
+          setCookie("scratchlanguage", contentLanguage);
+      }
+    </script>
+    
+{% block js2 %}
+{% endblock %}
+    
+    <script>
+    $(document).on("accountnavready", function(e){
+        $('#topnav .messages').notificationsAlert();
+    });
+    </script>
+    
+  </body>
+  <!-- Site Version would go here -->
+</html>

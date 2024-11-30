@@ -1,0 +1,70 @@
+
+/*-------- TYPOGRAPHY -------- */
+
+.lg-msg {font-size:16px; width:65%; line-height: 1.6em;}
+
+
+/*-------- POSITIONING -------- */
+
+.three-column-band {
+	width:100%; 
+	background:#f7f7f7; 
+	height:325px; 
+	padding: 30px 50px; 
+	left:-50px; 
+	position: relative; 
+	top: 10px;
+	margin-bottom: 10px;
+}
+
+.three-column {
+	width:270px;
+	float:left; 
+	margin-right:10px; 
+	border-right: 1px solid #d0d0d0;
+	text-align: center;
+	padding: 20px 0px;
+}
+
+.third {
+	border-right: none;
+	margin-right: 0px; 
+}
+
+.three-column .lg-num {
+	padding: 15px 0px;
+}
+
+.three-column p {
+	width: 85%;
+	margin: 0 auto;
+	padding-bottom: 15px;
+}
+
+.three-column img {
+	padding: 0px 3px;
+}
+
+.two-column-band {
+	width:100%; 
+	height:250px; 
+	padding: 30px 50px; 
+	left:-50px; 
+	position: relative; 
+	top: 10px;
+	margin-bottom: 40px;
+}
+
+.two-column {
+	width: 380px;
+	margin-right: 60px;
+	float: left;
+}
+
+.second {
+	margin-right: 0px;
+}
+
+.two-column h4 {
+	padding: 10px 0px;
+}

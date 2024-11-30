@@ -1,0 +1,53 @@
+{% extends 'djangobb_forum/base.html' %}
+{% load forum_extras %}
+{% load i18n %}
+
+{% block page-name %}{% blocktrans with name=topic.name %}Edit Post - {{name}}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+<div class="linkst">
+	<div class="inbox">
+		<ul>
+			<li><a href="{% url djangobb:index %}">{% trans "Discussion Forums" %}</a></li>
+			<li>&raquo; {% link post.topic.forum %} </li>
+			<li>&raquo; {% link post.topic %}</li>
+			<li>&raquo; {% trans "Edit Post" %}</li>
+		</ul>
+		<div class="clearer"></div>
+	</div>
+</div>
+
+<div class="box">
+	<div class="box-head">
+		<h4>{% trans "Edit post" %}</h4>
+	</div>
+	<div class="box-content">
+		<form method="post">
+			{% csrf_token %}
+			<div style="display: none" id="simple-user-agent">My browser / operating system: {{ simple_user_agent|default:'NOT PROVIDED' }}</div>
+
+			{% if post.id == post.topic.head.id %}
+				<label>
+					<strong>{% trans "Subject" %}</strong>
+					{{ form.name }}
+				</label>
+			{% endif %}
+			<label>
+				<strong>{% trans "Message" %}</strong>
+                {{ form.body.errors }}
+				{{ form.body }}
+			</label>
+			{% if moderator %}
+				<label>
+					{{ form.silent_edit }}
+					<strong>{% trans "Silent edit (don't display 'Edited by ...' in topic view)" %}</strong>
+				</label>
+			{% endif %}
+			<p class="form-submit">
+				<button type="submit" class="grey button"><span>{% trans "Save" %}</span></button>
+				<a href="javascript:history.go(-1)">{% trans "Go back" %}</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

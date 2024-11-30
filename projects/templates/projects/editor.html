@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+        <link href="{{ STATIC_URL }}/css/main.css" rel="stylesheet" type="text/css"/>
+    
+    
+    
+        <link href="{{ STATIC_URL }}/css/project_base.css" rel="stylesheet" type="text/css"/>
+    
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript" src="{{ STATIC_URL }}//js/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/raven-0.6.min.js"></script> <!-- depends on jquery -->
+	<script src="{{ STATIC_URL }}/js/swfobject.js"></script>
+	<script>var static_url = "{{ STATIC_URL }}/", static_path = "{{ STATIC_URL }}/";</script> 
+{% endblock css %}
+
+{% block init_data %}
+Scratch.INIT_DATA.PROJECT = {
+
+  
+  model: {
+    id: null,
+    creator: null,
+    title: 'Untitled',
+    isPrivate: true
+  },
+  
+}
+{% endblock init_data %}
+
+{% block main-content %}
+	
+        
+         
+	
+	
+        <div id="alert-view"></div>
+        
+
+
+
+
+
+<div class="showcase" id="project" data-project-id="">
+  <div class="box">
+    <div class="box-head">
+      
+    </div>
+    <div class="box-content">
+      <div class="stage">
+        <div id="player" class="player">
+        
+<!-- Start template projects/editor.html project-swf -->
+  
+
+{% include 'projects/includes/flash_player_object.html' %}
+
+
+<!-- End template projects/editor.html project-swf -->
+
+        </div>
+      </div>
+      <div id="info" class="info">
+        
+      </div>
+
+      <div class="actions clearfix">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal hide" id="media-library">
+  <div class="modal-header" id="top-row">
+    	<span type="button" class="close" data-dismiss="modal">×</span>
+    	<div id="library-name" class="titlecase"></div>
+    
+  </div>
+  <div class="modal-body">
+    <div id="main">
+		<div id="left-column" class="inner">
+			<div id="filters">
+				<div id="category">
+					<h4>Category</h4>
+					<ul></ul>
+				</div>
+				<div id="theme">
+					<h4>Theme</h4>
+					<ul></ul>
+				</div>
+				<div id="type">
+					<h4>Type</h4>
+					<ul></ul>
+				</div>
+				<div id="features">
+					<h4>Features</h4>
+					<ul></ul>
+				</div>
+			</div>
+			<div id="sound"></div>
+		</div>
+		<div id="results-container" class="inner">
+			<ul id="results"></ul>
+			<div id="info-box">
+				<div id="selected-object">
+					<h4 id="object-name" class="titlecase">&nbsp;</h4>
+					<div id="object-info">
+						<div id="sprite-counts">
+							<div id="scripts" class="count">&nbsp;</div>
+							<div id="costumes" class="count">&nbsp;</div>
+							<div id="sounds" class="count">&nbsp;</div>
+						</div>
+						<div id="sprite-description">Description of the sprite</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bottom-row">
+			<div id="cancel" class="inner"><span class="button small grey"><span>Cancel</span></span></div>
+			<div id="ok" class="inner"><span class="button small"><span>OK</span></span></div>
+		</div>
+	</div>
+  </div>
+</div>
+
+
+
+<div id="tip-bar"></div>
+{% endblock main-content %}
+
+{% block js %}
+    
+<script type="text/template" id="template-alert-project-changed">
+    <p>Project was updated  successfully.</p>
+</script>
+
+<script type="text/template" id="template-tip-bar">
+  <div id="tip-bar-inner" class="<%= isOpen ? 'tipsopen' : 'tipsclosed' %>">
+    <div class="tip-header">
+      <span class="tip-icon toggle-control">?</span>
+      <h5>
+        <span class="close-circle-dark">x</span>
+        <span class="tip-ctrl tip-home active">Tips</span>
+      </h5>
+    </div>
+    <div class="tip-content">
+    <div class="tip-arrow-container">
+      <span class="tip-arrow opentip toggle-control">&#9664;</span>
+    </div>
+      <div id="tip-content-container"></div>
+    </div>
+  </div>
+</script>
+
+{% endblock js %}
+
+{% block js2 %}
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/mediagallery_new.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/project_base.js" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}/js/apps/project/standalone-editor.js"></script>
+{% endblock js2 %}

@@ -1,0 +1,360 @@
+
+.media-grid ul {
+  margin-left: 20px;
+}
+
+.header-text .profile-details {
+  color: #999;
+  margin-bottom: 0px;
+  line-height: 16px;
+}
+
+.header-text .profile-details .group {
+  border-right: 1px solid #ccc;
+  margin-right: 5px;
+  padding-right: 5px;
+}
+
+.header-text .profile-details .location {
+  display: block;
+}
+/* Info block */
+
+
+#profile-box .about {
+  width: 310px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+#profile-box #bio textarea,
+#profile-box #status textarea,
+#profile-box #bio p,
+#profile-box #status p {
+  color: #888;
+}
+
+#profile-box .user-content {
+  width: 642px;
+  position: relative;
+  height: 290px;
+}
+
+#profile-box .doing {
+  margin:0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f9f9f9;
+  height: 280px;
+  padding: 10px;
+  border-left: 1px solid #ddd;
+  width: 265px;
+}
+
+#profile-box .inner {
+  padding: 10px 0px 0px 0px!important;
+}
+
+#profile-data .footer {
+  height: 20px;
+  border-top: 1px solid #ddd;
+  padding: 0px 20px;
+  position: relative;
+}
+
+#profile-data .footer #report-this {
+  color: #777;
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  cursor: pointer;
+}
+
+#profile-box .player {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 15px;
+  overlflow: auto;
+  border: 1px solid #eee;
+  box-shadow:0 2px 3px rgba(34, 25, 25, 0.5);
+  padding: 5px 10px;
+  width: 280px;
+}
+
+
+.portrait {
+  position: relative;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.portrait.loading img{
+  display: none;
+}
+
+.portrait.loading .loading-img {
+  top: 0;
+}
+
+.portrait [data-control="edit"] {
+  display: none;
+  opacity: .8;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px 5px;
+  text-shadow: none;
+  color: #fff;
+  font-size: 11px;
+  background-color: #333;
+  cursor: pointer;
+  border-bottom-right-radius: 5px;
+}
+
+.portrait [data-control="edit"] input.hidden {
+  top: 0;
+  left: 0;
+  font-size: 100px; /* this lets you single click the input in IE */
+}
+
+#profile-box .player [data-control="edit"] {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 37px;
+  left: 10px;
+  background-color: black;
+  opacity: .7;
+  filter: alpha(opacity=70);
+  padding: 5px;
+  color: white;
+  text-shadow: none;
+  text-align: center;
+  border-bottom-right-radius: 8px;
+}
+
+.edit [data-control="edit"]{
+  display: block !important;
+}
+
+#profile-box .stage object {
+ display: block;
+}
+/* Activity stream customization */
+.activity-stream div {
+  width: 240px;
+}
+
+#bio .editable form,
+#status .editable form,
+#bio .editable .display,
+#status .editable .display {
+  max-height: 150px;
+}
+
+#bio .editable .display,
+#status .editable .display {
+  overflow: hidden;
+}
+
+#bio, #status {
+  width: 300px;
+  height: 104px;
+  padding: 0px;
+  padding-right: 5px;
+  margin-left: -3px;
+}
+
+#bio [data-content="prompt"],
+#status [data-content="prompt"] {
+  left: 35%;
+  top: 40%;
+}
+
+#bio form,
+#status form {
+  margin-bottom: 0px;
+  height:104px;
+}
+
+#bio textarea,
+#status textarea {
+  height: 100px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  resize: none;
+}
+
+#status .small-text,
+#bio .small-text{
+  float:right;
+  clear:none;
+  display:none;
+  margin-top:-28px;
+}
+
+
+
+
+
+/*for tinyscrollbar when logged out */
+/* note, this means that tinyscrollbar does not work when logged in.
+   the same behavior that the project editable fields currently have
+*/
+#bio-readonly,
+#status-readonly {
+  height: 108px;
+  margin: 0;
+  overflow: hidden;
+  color: #888;
+}
+
+#profile-box {
+  position: relative;
+}
+
+#profile-box .action-bar {
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+}
+
+.player .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.player h3 {
+    margin-top: -6px;
+    margin-bottom: 6px
+}
+
+.player .title h4 {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 0px;
+}
+
+.player .title .project-name {
+  font-size: 14px;
+}
+
+.profile-box-footer-module {
+  padding: 15px;
+  background-color: #fff;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  -o-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  overflow: auto;
+  display: none;
+  height: 0;
+}
+
+.profile-box-footer-module textarea {
+  width: 88%;
+  height: 50px;
+  background-color: #f6f6f6;
+  display: block;
+  margin-bottom: 5px;
+}
+.profile-box-footer-module label {
+    display: inline;
+}
+
+.profile-box-footer-module h4 {
+  margin-bottom: 10px;
+}
+
+.profile-box-footer-module .control-group {
+  margin-top: 10px;
+}
+
+
+.profile-box-footer-module div.section {
+  float: left;
+  border-left: 1px solid #ccc;
+  padding-left: 10px;
+  height: 210px;
+}
+
+.profile-box-footer-module div.section.first {
+  border: none;
+}
+
+.profile-box-footer-module div.section.report {
+  height: 100%;
+  width: 95%;
+}
+
+.profile-box-footer-module div.section.report form {
+  width: 100%;
+}
+
+.profile-box-footer-module div.section.report textarea {
+  width: 95%;
+}
+
+.profile-box-footer-module div.section.report div.message {
+  display: none;
+}
+
+.alert-message {
+  width: 918px !important;
+}
+
+#featured-project-modal .modal-body {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+#featured-project-modal .feature-label{
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+#featured-project-modal label {
+  float: left;
+  line-height: 30px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+#featured-project-modal [data-control="load-more"] {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+#featured-project-modal .project.thumb {
+  padding: 8px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  margin-left: 7px;
+}
+
+#featured-project-modal .project.thumb img:hover {
+  cursor: pointer;
+}
+
+
+#user-details .viewport {
+  width:285px;
+}
+
+.button.join-class {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}

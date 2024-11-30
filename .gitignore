@@ -1,0 +1,35 @@
+# If you don't see the part of ScratchR2 that isn't included here
+# that you're looking for, check in the gitignore for HeatherscratchR
+
+# Databases
+*.sqlite3
+
+# This is source code, we shouldn't include compiled files
+*.pyc
+
+# From s2forums
+*.py[co]
+*.egg-info
+/s2forums/.pydevproject
+/s2forums/.project
+/s2forums/.settings
+*.db
+*.json
+*.log
+*~
+/s2forums/local_settings.py
+/s2forums/.env
+/s2forums/build/
+/s2forums/dist/
+
+/.pydevproject
+.project
+.settings
+local_settings.py
+.env
+build/
+dist/
+
+# Contains database info
+# To set it up, rename database.default.py
+/scratchr2/database.py

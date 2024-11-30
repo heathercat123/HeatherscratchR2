@@ -1,0 +1,365 @@
+.homepage-banner {
+  height: 330px;
+}
+
+.homepage-banner .video {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  -moz-box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  -webkit-box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  -o-box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+}
+
+.homepage-banner .video img {
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+/*.homepage-banner .video img,
+.homepage-banner .video div{
+  cursor: pointer;
+}*/
+
+.homepage-banner .video .play-button,
+.homepage-banner .video .play-button:after{
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  opacity:0.8;
+  position: absolute;
+  cursor: pointer;
+}
+
+.homepage-banner .video .play-button{ /* play button circle */
+  border-radius: 20px;
+  display: block;
+  width: 70px;
+  height: 50px;
+  top: 109px;
+  right: 130px;
+  background-color: #666;
+  border: 5px solid #ccc;
+}
+.homepage-banner .video .play-button:hover{ /* play button circle */
+  opacity: 1;
+  background-color: #333;
+}
+
+
+.homepage-banner .video .play-button:after { /* play button arrow */
+  left: 28px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 18px;
+  top: 37px;
+  margin-top: -30px;
+}
+
+
+#modal-video{
+  height: 360px;
+  width: 600px;
+  padding: 15px;
+  text-align: center;
+}
+
+#modal-video .close{
+  margin-top: -24px;
+  color: white;
+  border: 2px solid hsl(0, 0%, 60%);
+  border-radius: 13px;
+  padding: 0px;
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+  text-align: center;
+  line-height: 17px;
+  margin-right: -20px;
+  opacity: 1;
+  text-shadow: none;
+  background-color: #666;
+}
+
+/* Event list */
+.event-list {
+  height: 250px;
+  margin-left: 0px;
+  margin-top: 5px;
+  list-style-type: none;
+}
+
+.event-list li {
+  border-bottom: 1px solid #ccc;
+  padding: 6px 0px;
+}
+
+.event-list li.last {
+  border-bottom: none;
+}
+
+.event-list li img {
+  margin-right: 10px;
+  width: 53px;
+}
+
+.event-list li div.event-content {
+  display: inline-block;
+  vertical-align: top;
+  width: 280px;
+}
+
+.event-list li div.event-content .title {
+  display: block;
+  font-weight: bold;
+}
+
+.event-list li div.event-content a.learnMore {
+  display: block;
+}
+
+
+
+/* logged out - intro section*/
+.intro .title{
+  color: #F9A739;
+  position: relative;
+  font-weight: 400;
+  top: 12px;
+}
+
+/*character sprite defaults*/
+.intro .char {
+  position:absolute;
+  display:block;
+  width:1px;
+  height:1px;
+}
+.intro .char .circle {
+  position:absolute;
+  border-radius:50%;
+  display:block;
+  width:112px;
+  height:112px;
+  -webkit-box-shadow: 0px 0px 5px #fff;
+}
+.intro .char img{
+  position:absolute;
+  z-index: 2;
+  left:0;
+}
+.intro .char .img-a,
+.intro .char:hover .img-b{
+  display:block;
+}
+.intro .char .img-b,
+.intro .char:hover .img-a{
+  display:none;
+}
+
+.intro .char .text{
+  font-size: 12px;
+  font-weight: 700;
+  padding-right: 10px;
+  position: absolute;
+  left: 35px;
+  z-index: 1;
+  padding-left: 40px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+/* character sprites */
+.intro #orange-char {
+  left: 8px;
+  width: 183px;
+  top: 103px;
+}
+.intro #orange-char .circle {
+  top:8px;
+  left:42px;
+  background-color: #9C0;
+}
+.intro #orange-char:hover .circle {
+  box-shadow: 0px 0px 10px 2px #9C0;
+}
+.intro #orange-char .text{
+  background-color: #F3F4F1;
+  color: #93C400;
+  top: 60px;
+  border: 2px solid #F1F3F4;
+  border-radius: 5px;
+  left: 50px;
+}
+
+.intro #blue-char {
+  top: 97px;
+  left:192px;
+}
+.intro #blue-char .circle {
+  top: 15px;
+  left: 43px;
+  background-color: #C2479D;
+}
+.intro #blue-char:hover .circle {
+  box-shadow: 0px 0px 10px 2px #C2479D;
+}
+.intro #blue-char .text{
+  background-color: #F4F1F3;
+  color: #C2479D;
+  top: 77px;
+  left: 40px;
+  border: 2px solid #F1F3F4;
+  border-radius: 5px;
+}
+
+.intro #blue-char img {
+  left: -10px;
+}
+
+.intro #yellow-char {
+  left: 405px;
+  top: 97px;
+}
+.intro #yellow-char .circle {
+  top:16px;
+  left:33px;
+  background-color: #199ED7;
+}
+.intro #yellow-char:hover .circle {
+  box-shadow: 0px 0px 10px 2px #199ED7;
+}
+.intro #yellow-char .text{
+  background-color: #F1F3F4;
+  color: #199ED7;
+  top: 37px;
+  left: 35px;
+  border: 2px solid #F1F3F4;
+  border-radius: 5px;
+}
+
+.intro #yellow-char .subtext{
+  background-color: transparent;
+  color: white;
+  top: 55px;
+  font-weight: 400;
+  font-size: 12px;
+  margin-top:8px;
+  text-shadow: none;
+  border: none;
+  left: 50px;
+}
+
+.intro #yellow-char img {
+  left: -10px;
+}
+
+/*intro subtext and links*/
+.intro > .subtext {
+  position: relative;
+  z-index: 3;
+  top: 156px;
+  font-size: 17px;
+}
+.intro > .subtext .projcount{
+  color: hsl(318, 50%, 52%);
+  font-weight: 700;
+  font-size: 18px;
+}
+.intro > .links {
+  position: relative;
+  z-index: 3;
+  top:170px;
+  font-size: 12px;
+}
+.intro > .links a {
+  border-right:1px solid #000;
+  padding: 0 5px 0 2px;
+}
+.intro > .links a.last{
+  border:0;
+}
+
+#welcome-to-scratch .welcome-col {
+  width: 150px;
+  display: inline-block;
+  margin: 10px;
+  height: 253px;
+}
+
+#welcome-to-scratch .header {
+  min-height: 40px;
+}
+
+#welcome-to-scratch .close {
+  padding: 2px 5px 3px 5px;
+  border: 3px solid #444;
+  background-color: #444;
+  font-size: 16px;
+  border-radius: 30px;
+  text-shadow: none;
+  color: #fff;
+  font-weight: normal;
+}
+
+#welcome-to-scratch .color-bar {
+  display: block;
+  border-radius: 5px;
+  height: 10px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+#welcome-to-scratch .blue .color-bar {
+  background-color: #199ED7;
+}
+
+#welcome-to-scratch .green .color-bar {
+  background-color: #9C0;
+}
+
+#welcome-to-scratch .pink .color-bar {
+  background-color: #C2479D;
+}
+
+#welcome-to-scratch .welcome-col h4 {
+  font-weight: 200;
+  margin-top: 12px;
+  padding: 0px;
+}
+
+#welcome-to-scratch .blue h4 a {
+  color: #199ED7;
+}
+
+#welcome-to-scratch .green h4 a { 
+  color: #9C0;
+}
+
+#welcome-to-scratch .pink h4 a {
+  color: #C2479D;
+}
+
+#welcome-to-scratch .image {
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+#whats-happenin .inner {
+  min-height: 268px;
+}
+
+#whats-happenin .empty-field {
+  margin-top: 20px;
+}
+

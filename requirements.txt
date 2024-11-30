@@ -1,0 +1,12 @@
+httpagentparser
+akismet
+celery
+Django==1.4
+django_replicated
+django-fsm==1.5.1
+django-haystack>=1.2.5
+south
+pygments
+postmarkup
+django-pagination
+pysolr

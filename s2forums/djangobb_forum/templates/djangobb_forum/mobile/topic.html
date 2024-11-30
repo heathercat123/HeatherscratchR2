@@ -1,0 +1,31 @@
+{% extends 'djangobb_forum/mobile/base.html' %}
+{% load pagination_tags %}
+{% load forum_extras %}
+{% load i18n %}
+{% load tz %}
+
+{% block full-link %}{{ topic.get_absolute_url }}{% endblock %}
+
+{% block title %}
+    <span><a href="{% url djangobb:mobile_index %}">{% trans "Discuss" %}</a></span>
+    <span>{{ topic.forum|mobile_link }}</span>
+    {% block page-name %}{{ topic.name }}{% endblock %}
+{% endblock %}
+
+{% block root %}{% autopaginate posts forum_settings.TOPIC_PAGE_SIZE %}
+    {{ block.super }}{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+<article id=post-{{ post.id }}>
+    <header>
+        <time datetime={{ post.created|date:"c" }}>{{ post.created|localtime|forum_time }}</time>
+        {% if reply_form %}
+            <a class=reply href="{% url djangobb:mobile_reply post.id %}">Reply</a>
+        {% endif %}
+        <h1>{{ post.user.username }}</h1>
+    </header>
+    <div class=post-content>{{ post.body_html|safe }}</div>
+</article>{% endfor %}
+{% if reply_form %}{% include 'djangobb_forum/mobile/includes/post_form.html' with form=reply_form %}{% endif %}
+{% endblock %}
