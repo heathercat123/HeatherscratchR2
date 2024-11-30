@@ -190,7 +190,7 @@ MIDDLEWARE_CLASSES = (
     'djangobb_forum.middleware.UsersOnline',
 )
 
-ROOT_URLCONF = 'ScratchR2.urls'
+ROOT_URLCONF = 'scratchr2.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'ScratchR2.wsgi.application'
