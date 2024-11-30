@@ -1,1 +1,0 @@
-@\python27\python manage.py runserver 8008
