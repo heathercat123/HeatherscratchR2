@@ -13,7 +13,7 @@ setup(name='djangobb_forum',
     include_package_data=True,
     install_requires=[
             'django>=1.3.1',
-            'pil>=1.1.7',
+            'pillow',
             'django-haystack',
             'django-pagination',
             'south',
