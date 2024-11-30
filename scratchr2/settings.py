@@ -150,6 +150,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 	"C:/xampp/htdocs/ScratchR2_PY27/static",
+	"C:/Python27/Lib/site-packages/django/contrib/admin/static/admin",
 )
 
 # List of finder classes that know how to find static files in
@@ -294,3 +295,5 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_FORM_CLASS = 'bugaga.forms.SignupForm'
+
+AUTH_USER_MODEL = 'accounts.ScratchUser'

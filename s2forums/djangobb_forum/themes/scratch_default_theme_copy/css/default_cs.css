@@ -1,0 +1,106 @@
+/*
+ * Basic Colors
+ */
+
+.djangobb blockquote,
+.code {
+    background-color: #f7f7f7;
+}
+.djangobb th {
+    background-color: #eee;
+}
+.tc2,
+.tc3,
+.tcmod,
+#postpreview,
+.forminfo,
+.blockmenu .box,
+#adstats dd {
+    background-color: #f5f5f5;
+}
+
+.djangobb .blockmenu .isactive a,
+#posterror li strong {
+    color: #46586a;
+}
+
+.djangobb td,
+.djangobb th {
+    border-color: #e0e0e0;
+}
+
+/*
+ * Posts
+ */
+
+.blockpost .box-content,
+.postright,
+.postfootright {
+    background-color: #fff;
+}
+.postright, 
+.postfootright {
+    border-left-color: #f7f7f7;
+    box-shadow: inset 1px 0 #e0e0e0;
+}
+.postleft, 
+.postfootleft, 
+.blockpost label {
+    background-color: #f7f7f7;
+    box-shadow: 1px 0 #e0e0e0;
+}
+
+.djangobb hr {
+    background-color: #ccc;
+}
+.posteditmessage {
+    color: #aaa;
+}
+
+.djangobb blockquote,
+.code,
+.forminfo,
+.blockpost label {
+    border-color: #ccc;
+}
+
+/*
+ * Icons
+ */
+
+.iclosed {
+    background-image: url(../img/icon/closed.png);
+}
+.inew {
+    background-image: url(../img/icon/new.png);
+}
+.isticky {
+    background-image: url(../img/icon/sticky.png);
+}
+.isticky.iclosed {
+    background-image: url(../img/icon/sticky-closed.png);
+}
+.closed-topic a {
+    color: #888;
+}
+
+/*
+ * Miscellaneous
+ */
+
+/* Category disclosure toggle */
+.djangobb .box-head a.toggle  {
+    float: right;
+    background: url(../img/cat_minimize.png);
+    display: block;
+    height: 17px;
+    line-height: 1px;
+    outline-color: -moz-use-text-color;
+    outline-style: none;
+    outline-width: 0;
+    text-indent: -3000em;
+    width: 28px;
+}
+.djangobb .collapsed a.toggle {
+    background-image: url(../img/cat_maximize.png);
+}

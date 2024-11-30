@@ -1,5 +1,4 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
 from django.shortcuts import render
 from django.utils import simplejson as json
 from django.conf import settings
@@ -26,8 +25,7 @@ def csrf(request):
 	so everything that uses a POST request is broken unless we disable csrf.
 	"""
 	response = HttpResponse()
-	context = RequestContext(request)
-	csrf_token = context.get('csrf_token', None)
+	csrf_token = "placeholder"
 	request.META["CSRF_COOKIE"] = csrf_token
 	response.set_cookie(settings.CSRF_COOKIE_NAME,
 						request.META["CSRF_COOKIE"],

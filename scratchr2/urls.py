@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from djangobb_forum import scratchr2_settings as forum_settings
 from django.contrib import admin
+from django.views.i18n import javascript_catalog
 from . import views
 admin.autodiscover()
 
@@ -32,6 +33,7 @@ urlpatterns = [
 
 		url(r'^$', views.homepage, name="home"),
 		url(r'^session/$', views.session, name="session"),
+		url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
 	])),
 	url(r'site-api/', include("siteapi.urls")),
 	url(r'^csrf_token/$', views.csrf),

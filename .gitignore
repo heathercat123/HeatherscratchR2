@@ -33,3 +33,7 @@ dist/
 # Contains database info
 # To set it up, rename database.default.py
 /scratchr2/database.py
+
+# Static files for Django Admin.
+# Not a part of this project.
+/static/admin/

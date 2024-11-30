@@ -1,0 +1,391 @@
+/*
+ * Resets
+ */
+
+.djangobb table,
+.djangobb form,
+.djangobb pre,
+.djangobb blockquote,
+.djangobb ul,
+.djangobb ol,
+.djangobb dl,
+.djangobb dt,
+.djangobb dd,
+.djangobb th,
+.djangobb td,
+.djangobb img {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	list-style: none;
+}
+p, li {
+	margin: 0;
+}
+.djangobb img {
+	border: 0;
+}
+.djangobb input,
+.djangobb select,
+.djangobb textarea,
+.djangobb optgroup {
+	margin: 0;
+}
+
+/*
+ * Structural
+ */
+
+.djangobb .clearer,
+.djangobb .nosize {
+	height: 0;
+	width: 0;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+}
+.djangobb .clearer,
+.djangobb .clearb {
+	clear: both;
+}
+.djangobb .nosize {
+	position: absolute;
+	left: -10000px;
+}
+
+.box,
+.blockpost .box,
+.postleft,
+.postsignature,
+.postmsg {
+	overflow: hidden;
+}
+#reply {
+	overflow: visible;
+}
+.searchposts .postmsg {
+    /* add scoll bars on small postmsg in search results */
+    overflow: auto;
+}
+
+/*
+ * Bug Fixes
+ */
+
+/* This attempts to eliminate rounding errors in Gecko browsers. */
+
+div > div > div.postfootleft,
+div > div > div.postfootright {
+	padding-top: 1px;
+	margin-top: -1px;
+}
+
+/* This is only visible to IE Windows and cures various bugs. Do not alter comments */
+
+/* Begin IEWin Fix \*/
+* html .inbox, * html .inform, * html .djangobb, * html .intd, * html .tclcon {
+	height: 1px;
+}
+* html .inbox div.postmsg {
+	width: 98%;
+}
+/* End of IEWin Fix */
+
+#brdmenu strong {
+	line-height: 0;
+}
+
+/*
+ * Hidden
+ */
+
+#modcontrols dt,
+#searchlinks dt,
+.postright h3 {
+	position: absolute;
+	display: block;
+	overflow: hidden;
+	width: 1em;
+	left: -999em;
+}
+
+/*
+ * Floats
+ */
+
+.conr {
+	float: right;
+	text-align: right;
+	clear: right;
+	width: 40%;
+}
+.conl {
+	float: left;
+	width: 55%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+label.conl {
+	width: auto;
+	overflow: visible;
+	margin-right: 10px;
+}
+
+.linkst .pagination,
+.linksb .pagination {
+	float: right;
+	width: auto;
+}
+
+/*
+ * Tables
+ */
+
+/* 6.1 Table Basic Setup */
+
+.djangobb table {
+	width: 100%;
+}
+
+/* 6.2 Fixed Table Setup */
+
+#djangobbindex table,
+#vf table {
+	table-layout: fixed;
+}
+.tcl {
+	text-align: left;
+	width: 50%;
+}
+.tc2,
+.tc3,
+.tcmod {
+	width: 9%;
+	text-align: center;
+}
+.tcr {
+	width: 32%;
+	text-align: left;
+}
+#djangobbsearch #vf .tcl,
+#djangobbmoderate #vf .tcl {
+	width: 41%;
+}
+#djangobbsearch #vf .tc2 {
+	width: 18%;
+	text-align: left;
+}
+.tcl,
+.tcr {
+	overflow: hidden;
+}
+
+/*
+ * User List
+ */
+
+#users1 .tcl {
+	width: 40%;
+}
+#users1 .tcr {
+	width: 25%;
+}
+#users1 .tc2 {
+	width: 25%;
+	text-align: left;
+}
+#users1 .tc3 {
+	width: 10%;
+	text-align: center;
+}
+
+/*
+ * Posts
+ */
+
+.postleft,
+.postfootleft {
+	float: left;
+	width: 16em;
+	overflow: hidden;
+}	
+.postright,
+.postfootright {
+	border-left-width: 16em;
+	border-left-style: solid
+}
+.postfootright,
+.multidelete {
+	text-align: right;
+}
+div.blockpost > div > div.inbox {
+	padding-bottom: 1px;
+}
+
+.postmsg {
+	width: 100%;
+}
+
+/* Overflow and Scrolling */
+
+.incqbox {
+	width: 100%;
+	overflow: hidden;
+}
+.scrollbox {
+	width: 100%;
+	overflow: auto;
+}
+.postmsg img {
+    max-width: 100%;
+}
+.postsignature {
+    max-height: 168px;
+}
+.postsignature img {
+    max-height: 150px;
+}
+.post_body_html {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.postsignature .edit-signature {
+	float: right;
+}
+.postsignature hr {
+	margin-left: 0;
+	width: 200px;
+	text-align: left;
+	height: 1px;
+	border: 0;
+}
+.searchposts .postmsg {
+	height: 8em;
+}
+
+/*
+ * BBCode
+ */
+.bb-underline {
+	text-decoration: underline;
+}
+.bb-italic {
+	font-style: italic;
+}
+.bb-bold {
+	font-weight: bold;
+}
+.bb-strikethrough {
+	text-decoration: line-through;
+}
+.bb-big {
+	font-size: 17px;
+}
+.bb-small {
+	font-size: 10px;
+}
+
+.bb-quote-author {
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+.postmsg li {
+	margin: 0 0 0 32px;
+}
+.postmsg ul,
+.postmsg ol {
+	margin: 12px 0;
+}
+.postmsg ul li {
+    list-style-type: disc;
+}
+.postmsg ol li {
+    list-style-type: decimal;
+}
+
+/*
+ * Lists
+ */
+
+#onlinelist dd,
+#onlinelist dt,
+#brdmenu li,
+.linkst li,
+.linksb li,
+.postlinksb li,
+.postfootright li,
+.bblinks li {
+	display: inline;
+	height: 0;
+}
+
+#posterror ul li {
+	list-style: square inside;
+}
+
+/*
+ * Forms
+ */
+
+.djangobb label {
+	display: block;
+}
+
+/*
+ * Help
+ */
+
+#helpfile h2 {
+	margin-top: 12px;
+}
+#helpfile .box {
+	padding: 10px;
+}
+#djangobbredirect .block,
+#djangobbmaint .block {
+	margin: 50px 20% 12px 20%;
+}
+#brdfooter .foot {
+	margin-top: 12px;
+}
+
+/*
+ * Errors
+ */
+
+.djangobb input#id_captcha_1 {
+	font-size: 22px;
+	margin-left: 10px;
+	width: 88px;
+}
+
+.djangobb ul.errorlist {
+	margin-bottom: 12px;
+	padding: 9px 10px;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #f5f5f5;
+	border-color: #ff0000;
+	color: #FF0000;
+}
+
+.djangobb img.rss {
+	float: right;
+}
+
+.djangobb img.breadcrumb_rss {
+	vertical-align: top;
+	position: relative;
+	top: 1px;
+}
+
+.djangobb .left {
+	float: left;
+	background: #DDE7EF;
+}
+.message {
+	padding: 20px 20px 15px;
+}
