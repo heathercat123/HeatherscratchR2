@@ -9,3 +9,4 @@ south
 pygments
 postmarkup
 django-pagination
+pillow
