@@ -193,7 +193,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'scratchr2.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'ScratchR2.wsgi.application'
+WSGI_APPLICATION = 'scratchr2.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
