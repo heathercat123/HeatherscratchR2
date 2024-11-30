@@ -4,29 +4,31 @@ WIP open-source remake of ScratchR2
 ## Setting it all up
 **I haven't tested this guide yet. If you have any issues, tell me under, well, issues**
 1. Get Python 2.7 [here](https://www.python.org/downloads/release/python-2718/).
-2. Get PIL from [here](https://github.com/lightkeeper/lswindows-lib/blob/master/amd64/python/PIL-1.1.7.win-amd64-py2.7.exe?raw=true). Link is for Windows.
-3. Install the requirements.
+2. Install the requirements.
   - To do that, run this:
 ```
 python -m pip install -r requirements.txt
 ```
-4. Set up the database access info.
+3. Set up the database access info.
   - To do that, rename /scratchr2/database.default.py to database.py.
   - If you're on a production environment, set up the values for a database engine other than sqlite3.
-5. Install the forums.
-  - To do that, go into /s2forums and run python setup.py install
-6. Set up the database.
+4. Install the forums.
+  - To do that, go into /s2forums and run this command:
+```
+python setup.py install
+```
+5. Set up the database.
   - To do that, run this command:
 ```
 python manage.py syncdb
 ```
-7. Replace every instance of C:/XAMPP/HTDOCS/SCRATCHR2_PY27/ in /scratchr2/settings.py to the path to HeatherscratchR2
-8. Run the dev server.
+6. Replace every instance of C:/XAMPP/HTDOCS/SCRATCHR2_PY27/ in /scratchr2/settings.py to the path to HeatherscratchR2
+7. Run the dev server.
   - To do this, run this command:
 ```
 python manage.py runserver
 ```
-9. Open your web browser at [http://localhost:8000/scratchr2/](http://localhost:8000/scratchr2/)
+8. Open your web browser at [http://localhost:8000/scratchr2/](http://localhost:8000/scratchr2/)
 
 The base site should work. Now, we need to set up a webserver. The rest of this guide is for Apache.
 
