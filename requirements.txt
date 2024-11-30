@@ -9,4 +9,3 @@ south
 pygments
 postmarkup
 django-pagination
-pysolr
