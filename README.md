@@ -2,12 +2,11 @@
 WIP open-source remake of ScratchR2
 
 ## Setting it all up
-**I haven't tested this guide yet. If you have any issues, tell me under, well, issues**
 1. Get Python 2.7 [here](https://www.python.org/downloads/release/python-2718/).
 2. Install the requirements.
   - To do that, run this:
 ```
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 3. Set up the database access info.
   - To do that, rename /scratchr2/database.default.py to database.py.
@@ -70,7 +69,7 @@ The base site should work. Now, we need to set up a webserver. The rest of this 
     </VirtualHost>
 
 ```
-HeatherscratchR2 should now just work.
+HeatherscratchR2 should now just work. Except for the forums index.
 
 ## Extra notes for license
 Some Javascript libraries are under a different license. They can be found under /static/js/lib and opening them in a text editor should reveal their license.
