@@ -1,0 +1,55 @@
+.title {
+  margin: auto;
+  text-align: center;
+  margin-top: -20px;
+}
+
+.posts {  
+  list-style-type: none;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.posts h2 {
+  margin-bottom: 5px;
+}
+
+.posts span.date {
+  display: block;
+  margin-top: 20px;
+  color: #999;
+}
+
+.posts p {
+  margin: 0px;
+}
+
+.posts img.post-icon {
+  float: left;
+  margin-right: 10px;
+  margin-top:5px;
+}
+
+.box {
+  margin-bottom: 20px !important;
+  width: 700px;
+  margin: auto;
+}
+
+.box .box-content {
+  position: static !important;
+  padding: 20px;
+}
+
+.box-head.title {
+  height: 120px;
+  overflow: visible !important;
+  position: relative;
+}
+
+.box-head.title img {
+  display: block;
+  margin: auto;
+  position: relative;
+  top: -45px;
+}

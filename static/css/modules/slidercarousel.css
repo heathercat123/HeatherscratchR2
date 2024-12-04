@@ -1,0 +1,163 @@
+
+/*temp testing stuff*/
+#tiny-vertical {width:220px}
+.testbox {width:90px;height:90px;border:0;padding:0;margin:5px;background-color:#0B0;float:left;font-size: 3em; line-height: 96px; text-align: center; display:block}
+.slider-carousel.vertical .testbox {float:none;margin:5px 5px 0 5px;}
+.slider-carousel.horizontal .testbox {margin:5px ;}
+
+
+
+
+
+
+/* Carousel base */
+.slider-carousel ul,.slider-carousel ol{margin:0;padding:0;border:0}
+.slider-carousel{position:relative;line-height:1;padding:10px 43px}
+.slider-carousel .viewport{clear:both;overflow: auto; position: relative; }
+.slider-carousel .scroll-content { list-style: none; position: absolute; left: 0; top: 0;}
+
+.slider-carousel .disable{ display: none; }
+
+
+/* carousel head */
+.slider-carousel-container h4{display:inline-block}
+.slider-carousel-container .box-head a {float:right}
+
+
+/* carousel controls*/
+.slider-carousel .handle,
+.slider-carousel .handle .end,
+.slider-carousel .scrollbar,
+.slider-carousel .track{
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+}
+
+
+.slider-carousel .scrollbar {
+  position: relative;
+  float: right;
+  opacity: 0;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+}
+.slider-carousel-container:hover .scrollbar {opacity: 1;}
+.slider-carousel .track { background-color: #ccc; height: 100%; width:10px; position: relative; padding: 0 1px; }
+.slider-carousel .handle { background-color: #777; height: 10px; width: 10px; overflow: hidden; position: absolute; top: 0; }
+.slider-carousel .handle .end { background-color: #777; overflow: hidden; height: 10px; width: 10px; }
+
+.slider-carousel-control{position:absolute;width:36px;height:36px;font-size:60px;font-weight:100;line-height:30px;font-family:'Book Antiqua',Lucida Grande,Verdana,Helvetica,Arial,sans-serif;text-align:center;opacity:.5;filter:alpha(opacity=50);}
+.slider-carousel .slider-carousel-control:hover{text-decoration:none}
+.slider-carousel .slider-carousel-control:hover{text-decoration:none;opacity:1;filter:alpha(opacity=100)}
+.slider-carousel .slider-carousel-control.off{color:#CCC;cursor:default;opacity:.5;filter:alpha(opacity=50)}
+
+
+/* items */
+.slider-carousel .item{display:block;float:left;margin-right:30px}
+.slider-carousel li.item:last-child{display:block;float:left;margin-right:-1px}
+.slider-carousel .item>img{display:block;line-height:1}
+.slider-carousel .item.empty {float: none;padding: 0px;width: 848px;text-align: center}
+.slider-carousel .item.empty h4 {color: #aaa;position: absolute;top: 30%}
+.slider-carousel .thumb span.title{font-size:.923em;margin-bottom:1px}
+.slider-carousel .thumb span.title a{text-overflow:ellipsis;display:block;overflow:hidden;white-space:nowrap;font-weight:800}
+.slider-carousel .thumb span.title,.slider-carousel .thumb span.owner,.slider-carousel .thumb span.stats{display:block;line-height:normal;word-wrap:break-word}
+.slider-carousel .thumb span.stats,.slider-carousel .thumb span.owner{color:#666;font-size:.8462em}
+.slider-carousel .thumb img{border:1px solid #ddd}
+
+/* horizontal base*/
+
+.slider-carousel.horizontal {}
+.slider-carousel.horizontal.scratchslider {padding-bottom:20px;}
+.slider-carousel.horizontal .viewport { width: 100%;}
+.slider-carousel.horizontal .scroll-content { overflow:hidden;width: 4000px; float: left; left:0;white-space:nowrap; min-height:80px;position:relative}
+
+
+/* horizontal controls*/
+.slider-carousel.horizontal .scrollbar { padding-top: 0px; height: 10px; }
+.slider-carousel.horizontal .handle { cursor:ew-resize; }
+.slider-carousel.horizontal .slider-carousel-control{position:absolute;top:40%;left:0;margin-top:-20px;text-align:center;}
+.slider-carousel.horizontal .slider-carousel-control.right{left:auto;right:0}
+
+
+/* vertical base */
+.slider-carousel.vertical {height:500px;width:200px}
+.slider-carousel.vertical .viewport { width: 150px; height: 400px; margin:35px 0 10px 0;}
+.slider-carousel.vertical .scroll-content{height:3000px;width:130px;float:left}
+
+/* vertical controls*/
+.slider-carousel.vertical .scrollbar { margin-top: -410px; width: 2em; height:1.5em }
+.slider-carousel.vertical .slider-carousel-control{margin-left:32px;font-size:30px;}
+.slider-carousel.vertical .handle{cursor:ns-resize; }
+.slider-carousel.vertical .arrow-up {}
+.slider-carousel.vertical .arrow-down {}
+
+/*general items*/
+.slider-carousel .thumb span.title {font-size: 0.9230em; /* 12px */margin-bottom: 1px;}
+.slider-carousel .thumb span.title a {text-overflow: ellipsis;display: block;overflow: hidden;white-space: nowrap;font-weight: 800;}
+.slider-carousel .thumb span.title,
+.slider-carousel .thumb span.owner,
+.slider-carousel .thumb span.stats {display: block;line-height: normal;word-wrap: break-word;}
+.slider-carousel .thumb span.owner a {color: #666}
+.slider-carousel .thumb span.stats,
+.slider-carousel .thumb span.owner { color: #666;font-size: 0.8462em; /* 11px */}
+.slider-carousel .thumb img {border: 1px solid #ddd;}
+
+/* project items */
+.slider-carousel .project.thumb a.image {display:block;margin-bottom:3px}
+.slider-carousel .project.thumb {width:146px}
+.slider-carousel .project.thumb img{width:144px;height:108px;margin-bottom:2px}
+
+/* gallery items */
+.slider-carousel .gallery.thumb {
+  padding-left:10px;
+  position: relative;
+  margin-right: 20px !important;
+  width: 180px;
+}
+
+/* classroom items */
+.slider-carousel .classroom.thumb {
+  padding-left:10px;
+  position: relative;
+  margin-right: 20px !important;
+  width: 150px;
+}
+
+/* user items */
+.slider-carousel .user.thumg a.image{display:block}
+
+
+.prevent-select,.prevent-select *{
+-webkit-user-select: none;
+ -khtml-user-select: none;
+   -moz-user-select: none;
+    -ms-user-select: none;
+     -o-user-select: none;
+        user-select: none;
+}
+
+
+.viewport.empty-field {
+  min-height: 80px;
+  position: relative;
+}
+
+.viewport.empty-field div.content {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  top: 20%;
+}
+
+.viewport.empty-field span.icon-sm {
+  display:inline-block;
+  opacity: .7;
+  vertical-align: top;
+}
+
+.viewport.empty-field div.text {
+  display: inline-block;
+}

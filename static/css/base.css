@@ -132,6 +132,8 @@ html, body {
 
 body.staging {
   background-image: url('../images/scratch-bg-dev.png');
+  height: 100%;
+  /* height isn't set in the real ScratchR2 */
 }
 
 body {

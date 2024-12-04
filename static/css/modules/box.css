@@ -1,0 +1,141 @@
+.box {
+  background: #f7f7f7;
+  border: 1px solid #E0E0E0;
+  -moz-border-top-left-radius: 10px;
+  -moz-border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  -moz-box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  -o-box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  box-shadow: 0 2px 3px rgba(34,25,25,0.3);
+  margin: 0px 0px 20px;
+  padding: 0px;
+}
+
+.box .box-content {
+  background: #fff;  
+  border-top: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.box .box-content .inner {
+  padding: 5px 20px;
+  background-color: #fff;
+}
+
+
+.box .box-content .action-bar .inner {
+  padding: 5px 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: #eee;
+  min-height: 30px;
+  border-top: 1px solid #fff;
+}
+
+
+.box .box-content .action-bar input[data-control="select-all"] {
+  margin-right: 12px;
+}
+
+.box .box-content .action-bar.white .inner {
+  background-color: #fff;
+}
+
+.box .box-content .action-bar .inner .right {
+  float: right;
+}
+
+.box .box-content .action-bar .alert-message {
+
+}
+
+
+
+.box .box-head {
+  padding: 7px 20px;
+  position: relative; /* This lets us absolute position elements in the header. ie. Follow, Edit, Share buttons */
+  overflow: hidden;
+  border-top: 1px solid #fff;
+  box-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+
+.box .box-head h4 {
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+/* used for 'View all' */
+.box .box-head a.right {
+  float: right;
+}
+.box .box-head .portrait {
+  float: left;
+  height: 55px;
+}
+
+.box .box-head .portrait a {
+  display: block;
+}
+
+.box .box-head .portrait img {
+  border: 1px solid #ccc;
+  background: #fff;
+  height: 55px;
+  width: 55px;
+}
+
+.box .box-head .header-text {
+  margin-left: 65px;
+}
+
+.box .box-head .header-text h2 {
+  margin: 0px;
+}
+
+.box .box-head .buttons {
+  position: absolute;
+  right: 15px;
+  top: 6px;
+}
+
+
+/* Horizontal tabs */
+.box .box-h-tabs.h-tabs {
+  margin-top: -30px;
+  margin-left: 20px;
+}
+
+.box .box-content.grey {
+  background-color: #f9f9f9;
+}
+
+/* Template feature off */
+.box .box-content .template-feature-off {
+  padding: 20px;
+  font-size: 15px;
+  color: #666;
+  text-align: center;
+}
+.box .box-content .comments-off-img {
+    max-width: 100%;
+    padding-top: 20px;
+}
+
+.box .box-content .pagination {
+  padding: 0px 0px 5px 20px;
+}
+
+.box .box-content .pagination .disabled {
+  color: #999;
+}
+
+.box .box-content .pagination .active {
+  font-weight: bold;
+}
+

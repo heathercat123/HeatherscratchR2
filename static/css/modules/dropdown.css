@@ -1,0 +1,91 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropdown-menu {
+  display: none;
+  background-color: #fff;
+  float: left;
+  position: absolute;
+  top: 26px;
+  left: 0;
+  min-width: 160px;
+  max-width: 220px;
+  z-index: 10000;
+  margin-left: 0;
+  margin-right: 0;
+  zoom: 1;
+  border: 1px solid #ccc;
+  border-top-color: #eee;
+  border-radius: 0 4px 4px 4px;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown .dropdown-menu ul {
+  list-style-type: none;
+  margin: 5px 0px;
+  padding: 0px;
+}
+
+.dropdown .dropdown-menu li {
+  padding: 0px 5px;
+  margin: 0px;
+}
+
+.dropdown.radio-style .dropdown-menu {
+  list-style-position: inside;
+}
+
+.dropdown.radio-style .dropdown-menu li {
+  padding-left: 27px;
+}
+
+.dropdown .dropdown-menu.radio-style li.selected {
+  list-style-image: url('../../images/check_mark.png') !important;
+  padding-left: 10px;
+}
+
+
+.dropdown .dropdown-menu li:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.dropdown .dropdown-menu ul li.divider {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+
+
+.dropdown span.dropdown-toggle span.caret {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-left: 4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+
+.dropdown span.dropdown-toggle.black span.caret {
+  border-top: 4px solid #000;
+}

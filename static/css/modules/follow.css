@@ -1,0 +1,36 @@
+.follow-button {
+  text-align: center;
+}
+
+.follow-button span {
+  display: none;
+  line-height: 18px;
+}
+
+.follow-button.following span.unfollow {
+  display: inline-block;
+}
+
+.follow-button.notfollowing span.follow {
+  display: inline-block;
+}
+
+.follow-button.notfollowing span.icon-sm.follower,
+.follow-button.following span.icon-sm.follower {
+  display: inline;
+}
+
+/* temp revert for userprofile follow until it's migrated to backbone */
+#profile-follow-button .unfollow.on .unfollow-text,
+#profile-follow-button .follow .follow-text {
+  display: inline;
+}
+#profile-follow-button .unfollow .follow-text,
+#profile-follow-button .unfollow .unfollow-text,
+#profile-follow-button .unfollow.on .follow-text,
+#profile-follow-button .unfollow.on .following-text,
+#profile-follow-button .follow .unfollow-text,
+#profile-follow-button .follow .following-text {
+  display:none;
+}
+#profile-follow-button .icon-sm.follower.white {position: relative;top: 2px;}

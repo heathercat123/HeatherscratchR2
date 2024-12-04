@@ -1,0 +1,31 @@
+/* 
+	
+	This CSS is being added to improve readability & typography 
+	on Static pages including the following pages: 
+	
+		- Terms of Service
+		- Privacy Policy
+		- FAQ
+		
+		
+	
+	Eventually this code will be merged with help.css, only after
+	testing across all pages that use help.css for consistency.
+	
+	
+*/
+
+
+
+
+/*CONTENT WIDTH*/
+.help .lg-text-block {padding:20px 80px;}
+
+
+/*TITLES -- TYPOGRAPHY*/
+.help .box-content h4 {font-size: 1.2em; line-height: 1.4em; padding-bottom: .3em;}
+.help .box-content h3 {line-height: 1.4em; padding-bottom: .3em;}
+
+
+/*SPACE AFTER -- TYPOGRAPHY*/
+.help .box-content .space-after{padding-bottom: 1em}

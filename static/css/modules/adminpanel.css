@@ -1,0 +1,489 @@
+
+body.admin .container {
+  margin-left: 260px;
+}
+
+body.admin.editor .container,
+body.admin.closed .container {
+  margin: auto;
+}
+
+body.admin #admin-panel {
+  display: block;
+}
+
+body.admin.closed #admin-panel {
+}
+
+body.admin.closed #admin-panel .admin-content {
+  display: none;
+}
+
+body.admin.editor #admin-panel {
+  display: none;
+}
+
+
+#admin-panel .dismiss,
+#admin-panel .expand {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  background-color: #333;
+  opacity: .8;
+  border: 2px solid #999;
+  border-radius: 15px;
+  width: 20px;
+  height: 20px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 50;
+}
+
+#admin-panel .expand {
+  display: none;
+}
+
+body.admin.closed #admin-panel .expand {
+  display: block;
+}
+
+/* Forms */
+#admin-panel .control-group {
+  margin-bottom: 10px;
+}
+
+#admin-panel {
+  overflow: scroll;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 230px;
+  height: 100%;
+  background-color: #F1F1F1;
+  border: 1px solid #c6c9ce;
+  padding: 0px 10px 10px 10px;
+  -webkit-box-shadow: 0 2px 5px rgba(34,25,25,0.5);
+  -moz-box-shadow: 0 2px 5px rgba(34,25,25,0.5);
+  -o-box-shadow: 0 2px 5px rgba(34,25,25,0.5);
+  box-shadow: 0 2px 5px rgba(34,25,25,0.5);
+  color: #333 !important;
+  text-shadow: none !important;
+  z-index: 70000;
+}
+
+#admin-panel h3,
+#admin-panel h4 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#admin-panel h4 {
+  border-bottom: 1px solid #ccc;
+  margin-top: 15px;
+}
+
+#admin-panel div.line,
+#admin-panel span.line {
+  display: block;
+}
+
+#admin-panel div.line span.button {
+  margin: 5px 0px;
+}
+
+#admin-panel div.status {
+ display: block;
+ border-radius: 3px;
+ padding: 5px;
+ border: 1px solid #ccc;
+ text-transform: uppercase;
+}
+
+#admin-panel div.status.censored,
+#admin-panel div.status.permcensored,
+#admin-panel div.status.unconfirmed {
+ background-color: #F2DEDE;
+ color: #B94A48;
+ border-color: #EED3D7;
+}
+#admin-panel div.status.deleted {
+    color: black;
+    background-color: #DEDEDE;
+    border-color: #D7D7D7;
+}
+
+#admin-panel div.status.unreviewed {
+ background-color: #ccc;
+ color: #666;
+ border-color: #bbb;
+}
+
+#admin-panel div.status.fe,
+#admin-panel div.status.confirmed {
+ background-color: #d9f7e1;
+ color: #3aad52;
+ border-color: #bdf1bc;
+}
+
+#admin-panel div.status.nfe {
+  background-color: #f7e8d9;
+  color: #ad763a;
+  border-color: #f1d9bc;
+}
+
+#admin-panel div.status:hover:not(.selected) {
+  cursor: pointer;
+}
+
+#admin-panel div.status.censored:hover:not(.selected),
+#admin-panel div.status.permcensored:hover:not(.selected) {
+ background-color: #F7F0F0;
+}
+
+#admin-panel div.status.deleted:hover:not(.selected) {
+ background-color: #F0F0F0;
+}
+
+#admin-panel div.status.fe:hover:not(.selected) {
+ background-color: #F0F7F0;
+}
+
+#admin-panel div.status.nfe:hover:not(.selected) {
+ background-color: #f7f1eb;
+}
+
+#admin-panel div.status.unreviewed:hover:not(.selected) {
+ background-color: #eee;
+}
+
+#admin-panel div.status.selected {
+  font-weight: bold;
+  background-image: url(../../images/left_arrow.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+#admin-panel div.status.confirmed:hover,
+#admin-panel div.status.unconfirmed:hover {
+  cursor: auto;
+}
+
+#admin-panel .muted-automod {
+    padding: 12px 0 12px 0;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 12px;
+}
+#admin-panel #user-muted {
+    padding: 12px 0 12px 0;
+}
+#admin-panel .clear-mute-score {
+    float: right;
+    color: #855cd6;
+    cursor:pointer;
+}
+#admin-panel .clear-mute-score:hover {
+    text-decoration: underline;
+}
+
+#admin-panel .cache-list {
+  width: 100%;
+}
+
+#admin-panel .cache-list button {
+  margin-left: 20px;
+  float: right;
+
+}
+
+#admin-panel .cache-list li {
+  padding: 2px 0px;
+  line-height: 28px;
+}
+
+#admin-panel .ip-list,
+#admin-panel .cache-list {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+#admin-panel .ip-list span.ip {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#admin-panel .ip-list span.date {
+  color: #999;
+}
+
+#admin-panel .ip-list span.button {
+  float: right;
+}
+
+#admin-panel .ip-list div.line {
+  margin: 10px 0px;
+}
+
+#admin-panel .visibility {
+  margin-bottom: 10px;
+}
+
+#admin-panel .visibility .visible,
+#admin-panel .visibility .not-visible {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#admin-panel .visibility .status {
+  font-size: 11px;
+  display: block;
+  line-height: 11px;
+}
+
+#admin-panel .visibility .visible {
+  color: green;
+}
+
+#admin-panel .visibility .not-visible {
+  color: red;
+}
+
+
+#admin-panel [data-control="review"] {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+#admin-panel [data-control="review"] input {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+
+body.admin #explore-bar [data-content="view"] {
+  padding-left: 30px;
+}
+
+/*Container for admin notification dialogue*/
+#admin-dialog {
+	display: none;
+  width: 850px;
+  margin: -300px 0px 0px 0px;
+  left: 275px;
+  /*height: 250px;*/
+}
+
+#admin-dialog select[name="template"] {
+  width: 330px;
+}
+
+#admin-dialog textarea{
+  width: 420px;
+  height: 90px;
+}
+
+/*Container for message to be sent to user dialogue*/
+#admin-dialog-message {
+  float: left;
+  width: 400px;
+}
+
+#admin-dialog-message textarea{
+	width: 380px;
+	height: 90px;
+  overflow: scroll;
+}
+
+#admin-dialog-message div[data-action="controls"]{
+	text-align: center;
+}
+
+.admin-dialog-template-dropdown {
+  margin-bottom: 25px;
+}
+
+.admin-dialog-ban-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-dialog-appeal-label {
+  float: left;
+  margin-right: 10px;
+}
+
+#admin-dialog-message .admin-dialog-ban-textarea {
+  height: 125px;
+}
+
+/*Container for displaying comments made by user*/
+#admin-dialog-comments {
+  height: 250px;
+  width: 400px;
+  display: inline-block;
+}
+
+#admin-dialog-comments div[data-action="controls"] {
+  text-align: center;
+}
+
+#admin-dialog-comments .comments-list {
+  height: 210px;
+  overflow: scroll;
+}
+
+#admin-dialog-comments-list {
+  height: auto;
+  list-style-type: none;
+}
+
+#admin-dialog-comments-list li {
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  list-style-type: none;
+  width: 380px;
+}
+
+#admin-dialog-comments-list li .admin-dialog-checkbox {
+  float: left;
+  /*padding-right: 10px;*/
+  width: 10px;
+  /*height: auto;*/
+}
+
+#admin-dialog-comments-list li .comment {
+  width: 320px;
+  margin-left: 30px;
+}
+
+/*
+comment colors below taken from admin_comments.css
+*/
+.comment.cv_flagged,
+.comment.cv_markedbyfilter {
+    background-color: #FFFFBB;
+}
+
+.comment.cv_censbyadmin,
+.comment.cv_censbyfilter,
+.comment.cv_delbyadmin,
+.comment.cv_censbycomm,
+.comment.cv_parentcommentcensored {
+  background-color: #FF9999;
+}
+
+.comment.cv_delbyusr,
+.comment.cv_delbyparentcomment {
+  background-color: lightgrey;
+}
+
+.comment.ct_project,
+.comment.ct_profile,
+.comment.ct_studio {
+  background-color: #FFFFFF;
+}
+
+/*Container for display recent notifications sent to user*/
+#admin-dialog-notifications {
+  width: 100%;
+  border-top: 3px solid black;
+  overflow: auto;
+  height: 200px;
+}
+
+.admin-notifications table tr td:first-child {
+    white-space: nowrap;
+    vertical-align: top;
+}
+.admin-notifications table td, .admin-notifications table th {
+    padding: 2px 3px;
+}
+.admin-notifications table th {
+    text-align: left;
+}
+
+/*-------------------------------*/
+/*Ticket assignment barrel layout*/
+/*-------------------------------*/
+.ticket-barrel-day {
+  height: 10%;
+  background-color: auto;
+  padding: 0px 10px;
+}
+
+#ticket-barrel-day-4.ticket-barrel-day .ticket-barrel-shift {
+  background-color: #bad9c8;
+}
+
+#ticket-barrel-day-3.ticket-barrel-day .ticket-barrel-shift {
+  background-color: #e9ecce;
+}
+
+.ticket-barrel-shift {
+  border: 1px solid #999;
+  color: #707070;
+}
+
+.ticket-barrel-shift, #ticket-barrel th{
+  vertical-align: middle;
+  text-align: center;
+}
+
+#ticket-barrel p{
+  margin: 10px 0;
+  font-size: small;
+  font-weight: 200;
+}
+
+#ticket-barrel strong{
+  font-size: large;
+  font-weight: 700;
+}
+
+.ticket-barrel-shift.active {
+  border-width: 3px;
+}
+
+.day-header {
+  text-align: center;
+  font-weight: 700;
+  font-size: large;
+}
+
+.day-sub-header {
+  text-align: center;
+  font-weight: 200;
+  font-size: small;
+}
+
+.slot-header {
+  text-align: center;
+  font-weight: 400;
+  font-size: small;
+}
+
+.ticket-barrel-header-column {
+  width: 10%;
+  padding-right: 5px;
+}
+
+.internal-note{
+  background-color: #FFFFBB;
+  font-weight: 500;
+}
+
+/* widths must include header rows, so 2 shifts means three columns, really */
+.ticket-barrel-shift[data-width="2"] { width: 45% }
+.ticket-barrel-shift[data-width="3"] { width: 30% }
+.ticket-barrel-shift[data-width="4"] { width: 22.5% }
+.ticket-barrel-shift[data-width="5"] { width: 18% }
+.slot-header[data-width="2"] { width: 45% }
+.slot-header[data-width="3"] { width: 30% }
+.slot-header[data-width="4"] { width: 22.5% }
+.slot-header[data-width="5"] { width: 18% }

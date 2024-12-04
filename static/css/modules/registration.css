@@ -1,0 +1,423 @@
+.registration,
+.registration form,
+.registration form > div {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: fixed;
+  width: 586px;
+}
+
+#registration-alert {
+  position: static !important;
+  margin-left: 0px !important;
+  height: 25px;
+}
+
+.registration{
+  background-color: #fff;
+  padding:0;
+}
+
+.registration.modal.fade {
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transform: translate(0, -75%);
+  -moz-transform: translate(0, -75%);
+  -ms-transform: translate(0, -75%);
+  -o-transform: translate(0, -75%);
+  transform: translate(0, -75%);
+}
+
+.registration.modal.fade.in {
+  -webkit-transform-origin: 50% -25%;
+  -moz-transform-origin: 50% -25%;
+  -ms-transform-origin: 50% -25%;
+  -o-transform-origin: 50% -25%;
+  transform-origin: 50% -25%;
+  -webkit-transform: translate(0, 75%);
+  -moz-transform: translate(0, 75%);
+  -ms-transform: translate(0, 75%);
+  -o-transform: translate(0, 75%);
+  transform: translate(0, 75%);
+}
+
+.registration p{margin-bottom:5px;}
+
+.registration form {
+  background: white;
+  border:0;
+  height:438px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.registration .modal-body input {
+  margin-bottom:3px;
+  line-height:18px;
+  font-size: 15px;
+  height:32px;
+  padding:0 0 0 3px;
+}
+.registration .modal-body textarea {
+  margin-bottom:3px;
+  line-height:18px;
+  font-size: 15px;
+  width:342px;
+  height:125px;
+  padding:0 0 0 3px;
+  resize: none;
+}
+
+.registration .modal-body input:focus,
+.registration .modal-body select:focus,
+.registration .modal-body textarea:focus {
+  webkit-box-shadow: #2cb4da 0 0 0 2px;
+  moz-box-shadow: #2cb4da 0 0 0 2px;
+  box-shadow: #2cb4da 0 0 0 2px;
+}
+
+.registration .modal-body .error input,
+.registration .modal-body .error textarea:focus {
+  webkit-box-shadow: #b94a48 0 0 0 2px;
+  moz-box-shadow: #b94a48 0 0 0 2px;
+  box-shadow: #b94a48 0 0 0 2px;
+}
+
+.registration .modal-body .error .gender_other_text {
+  webkit-box-shadow: none;
+  moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.registration input[type=radio] {
+  margin-left:10px;
+  margin-right:2px;
+  vertical-align: bottom;
+}
+
+.registration input[type=radio]:nth-of-type(1) {
+  margin-left:0;
+}
+
+.registration input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.registration .reg-body-3 input[type=checkbox] {
+  height: inherit;
+}
+
+.registration .reg-body-3 label[for=subscribe] {
+  vertical-align: top;
+}
+
+.registration .gender_other_text{
+  width:150px;
+}
+
+.registration select {
+  display: inline-block;
+  width: auto;
+  line-height:18px;
+  height: 32px;
+  padding:5;
+  margin-bottom: 3px;
+  margin-top: 0px;
+}
+
+.registration ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+.registration li {margin:0;}
+
+/*HEADER*/
+.registration .modal-header {
+  height:42px;
+  top:0px;
+  position: absolute;
+}
+/*BODY*/
+.registration .modal-body{
+  display:none;
+  height: 350px;
+  top:43px;
+  position: absolute;
+}
+.registration .progress0 .reg-body-0,
+.registration .progress1 .reg-body-1,
+.registration .progress2 .reg-body-2,
+.registration .progress3 .reg-body-3 {display:block}
+
+.registration .page-header {
+  margin-bottom: 20px;
+}
+
+.registration .reg-body-4 .page-header {
+  float: left;
+  width: 65%;
+  margin-bottom: 0;
+}
+
+.registration .page-header h4{
+  font-size:20px;
+  color: #F9A739;
+  font-weight: normal;
+}
+
+.registration .reg-body-3 .page-header h4 {
+  margin-bottom: 0px;
+}
+
+.registration .reg-body-3 .page-header .sub-header {
+  color: grey;
+  font-size:15px;
+}
+
+.registration .reg-body-3 .page-header .alert {
+  margin-top:15px;
+}
+
+.registration .reg-body-2 > p {margin-bottom: 0px;line-height:16px;}
+.registration .reg-body-3 h4 {margin-bottom: 6px}
+.registration .reg-body-3 p.liketo,
+.registration .reg-body-3 p.friendly {margin-top: 16px}
+.registration .reg-body-4 h4 {padding-bottom: 20px;}
+.registration .reg-body-4 .page-header > p {padding-top: 20px;}
+
+.registration .reg-body-4 .alert.alert-info {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.registration .controls .field-caption,
+.registration .controls .input-message {
+  line-height: 14px;
+  min-height: 14px;
+}
+
+.registration label {
+  font-weight: 200;
+  font-size: 15px;
+  width: 190px;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.registration .reg-body-2 label {
+  width: 150px;
+}
+
+.registration label .field-caption {
+  display: block !important;
+  font-weight: normal;
+}
+
+.registration a.why-we-ask {
+  color: grey;
+}
+
+.registration a.why-we-ask:hover {
+  text-decoration:none;
+  cursor: help;
+}
+
+.registration a.why-we-ask .question-mark {
+  font-weight: bold;
+  font-size: 10px;
+  background-color: #1aa0d8;
+  padding: 1px 5px;
+  border-radius: 30px;
+  color: white;
+  line-height: 2px;
+}
+
+.registration a.why-we-ask {cursor: default;}
+.registration a.why-we-ask + div {display:none; }
+.registration a.why-we-ask:hover + div {
+  position:absolute;
+  display:block;
+  width:340px;
+  height:auto;
+  border:1px solid #ccc;
+  background-color: #fff;
+  z-index: 1;
+  padding:10px;
+  box-shadow: 1px 1px 6px 2px #ddd;
+}
+
+
+/*images*/
+.registration .sprite-orange { width: 80px; }
+.registration .registration-images img {
+  position:absolute;
+  bottom:20px;
+}
+
+.registration .registration-done-images {
+  position: relative;
+  left: 190px;
+  bottom: 40px;
+}
+
+.registration .reg-body-4 .registration-done-images {
+  float: left;
+  left: 0;
+  width: 35%;
+  padding-top: 30%;
+}
+
+.registration .reg-body-4 .registration-done-images img {
+  float: right;
+  padding-right: 20px;
+}
+
+.registration .progress2 .sprite-orange {left:79px;}
+.registration .progress3 .sprite-yellow {left:120px;}
+.registration .progress3 .sprite-orange {left:145px;}
+.registration .progress3 .sprite-blue {left:310px;}
+.registration .progress4 .sprite-orange {left:210px;}
+
+
+
+/*FOOTER*/
+.registration .modal-footer {
+  height: 65px;
+  padding: 13px 15px;
+  bottom:0px;
+  position: absolute;
+}
+.registration .progress {width:285px; height: 25px; margin-top: 6px;}
+.registration .registration-next {padding:0 10px;}
+.registration .registration-done,
+.registration .registration-signin {
+  padding:0 10px;
+  display: none;
+}
+.registration .progress1 .progress{background:url('../../images/progress-bar-1.png');} 
+.registration .progress2 .progress{background:url('../../images/progress-bar-2.png');} 
+.registration .progress3 .progress{background:url('../../images/progress-bar-3.png');} 
+.registration .progress4 .progress{background:url('../../images/progress-bar-4.png');}
+
+/* TOOLTIPS */
+.registration .control-group {
+  display: block;
+}
+
+.registration .reg-body-3 .control-group {
+  margin-bottom: 10px;
+}
+
+.registration .tooltip.right .hovertext {
+  top: 50%;
+  margin-top: -18px;
+  margin-left: 0px;
+  left: 430px;
+  right: auto;
+}
+
+.registration .tooltip.right .textarea-hovertext {
+  left: 563px;
+}
+
+.registration .reg-body-2 .hovertext {
+  left :480px;
+}
+
+.registration .tooltip:hover .hovertext {
+  visibility: hidden;
+}
+
+.registration .tooltip input:focus + .hovertext {
+  visibility: visible;
+}
+
+.registration .tooltip input:focus + [data-control="error"].hovertext {
+  visibility: hidden;
+}
+.registration .controls.error [data-control="error"].hovertext {
+  visibility: visible !important;
+}
+
+
+.registration .community-disclaimer {
+  border-radius: 3px;
+  background-color: #eee;
+  color: #eee;
+  padding: 10px;
+}
+
+.registration .pop-out-info {
+  position: absolute;
+  left: 200px;
+  top: -10px;
+}
+
+#yesno{
+  display: none;
+}
+
+.registration .g-recaptcha {
+  position: absolute;
+  right: 20px;
+}
+
+/* Additional styles for Educator registration */
+.registration .textarea-label {
+  vertical-align: top;
+}
+.registration .reg-body-confirm {
+  text-align: center;
+  margin-top: 75px;
+}
+
+.registration .reg-body-confirm p {
+  font-size: 14px;
+}
+
+.registration .reg-body-confirm .vr {
+  display: inline-block;
+  height: 60px;
+  border-left: 1px solid #322f31;
+  margin: 25px 15px;
+  vertical-align: middle;
+}
+
+.registration .progress-4-1 .progress{width: 303px; background:url('../../images/progress-bar-4-1.png');}
+.registration .progress-4-2 .progress{width: 303px; background:url('../../images/progress-bar-4-2.png');}
+.registration .progress-4-3 .progress{width: 303px; background:url('../../images/progress-bar-4-3.png');}
+.registration .progress-4-4 .progress{width: 303px; background:url('../../images/progress-bar-4-4.png');}
+
+.registration .progress-4-2 .sprite-orange {left:50px;}
+.registration .progress-4-3 .sprite-orange {left:140px;}
+.registration .progress-4-4 .sprite-orange {left:250px;}
+
+/* Final educator registration panel */
+#educator-registration .registration .reg-body-4 {
+  text-align: center;
+}
+
+#educator-registration .progress-4-4 .page-header {
+  margin-top: 25px;
+}
+#educator-registration .progress-4-4 .registration-done-images{
+  left: auto;
+  bottom: 0;
+  margin: 25px 0;
+}
+#educator-registration .progress-4-4 .button-wrapper {
+  margin: 25px 0;
+}
+#educator-registration .progress-4-4 .button-wrapper a.button,
+#educator-registration .progress-4-4 .button-wrapper a.button:hover {
+  color: #fff;
+}
+#educator-registration .progress-4-4 .modal-footer .buttons-right {
+  display: none;
+}

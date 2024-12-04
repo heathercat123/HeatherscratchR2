@@ -1,0 +1,129 @@
+.leftcol {
+    float: left;
+    width: 55%;
+    clear: none;
+}
+
+.rightcol {
+    float: right;
+    width: 40%;
+    clear: none;
+    margin-bottom: 20px;
+}
+
+svg {
+    height: 500px;
+}
+
+.general {
+    clear: both;
+}
+
+.box-footer {
+    text-align: right;
+    padding: 3px;
+    color: gray;
+}
+
+.box-content {
+    padding: 10px;
+}
+
+.stats li {
+    padding-left: 28px;
+    list-style-type: none;
+    font-size: 1.4923em;
+    line-height: 1.1818em;
+    font-weight: 600;
+    color: #554747;
+}
+
+span.value {
+    font-weight: 700;
+    color: #F9A739;
+}
+
+.toc a {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+
+#country_chart{
+  overflow: hidden;
+}
+
+/* Gradients for countries */
+.q0-9{fill:rgb(255,245,235)}
+.q1-9{fill:rgb(254,230,206)}
+.q2-9{fill:rgb(253,208,162)}
+.q3-9{fill:rgb(253,174,107)}
+.q4-9{fill:rgb(253,141,60)}
+.q5-9{fill:rgb(241,105,19)}
+.q6-9{fill:rgb(217,72,1)}
+.q7-9{fill:rgb(166,54,3)}
+.q8-9{fill:rgb(127,39,4)}
+
+#block-distribution-chart svg {
+    height: 475px;
+}
+
+#block-distribution-chart text {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+  fill: white;
+  pointer-events: none;
+}
+
+#block-distribution-chart .parent-cell text {
+  font-size: 24px;
+}
+
+#block-distribution-chart rect {
+  cursor: pointer;
+  fill: none;
+}
+
+.info-tooltip {
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  border-radius: 5px;
+  color: #333;
+  display: none;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1em;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  z-index: 10;
+}
+
+.info-tooltip .label {
+  font-size: 12px;
+  padding-bottom: 3px;
+}
+
+
+/* Force the tooltips to align */
+.tooltip {
+    width:2%;
+    margin-left:98%;
+}
+.leftcol .hovertext {
+    right: -96px;
+    top:-35px !important;
+}
+.rightcol .hovertext {
+    left: -155px;
+    top:-35px !important;
+}
+.general .hovertext {
+    right: -90px;
+    top:-35px !important;
+}
+
+

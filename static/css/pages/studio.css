@@ -1,0 +1,250 @@
+
+#create-project {
+  margin-left: 30px;
+}
+
+.thumb img {
+  margin-bottom: 5px;
+}
+
+.thumb .date {
+  color: #999;
+  font-size: .9em;
+}
+
+.box-content {
+  padding: 0px;
+}
+
+.media-list {
+  padding: 10px 0px 0px 0px;
+  margin: 0px;
+  list-style-type: none;
+  min-height: 400px;
+}
+
+.media-list li {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin: 0px;
+}
+
+.media-item-content {
+  padding: 10px 15px;
+  position: relative;
+  height: 83px;
+}
+
+.media-item-content .checkbox {
+  position: absolute;
+  top: 40%;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.media-item-content .media-thumb {
+  position: relative;
+  float: left;
+  background: #fff;
+}
+
+.media-item-content .media-thumb a {
+  line-height: 0px;
+  display: block;
+}
+
+.media-item-content .media-thumb img {
+  width: 100px;
+  height: 80px;
+  border: 1px solid #ddd;
+}
+
+.media-item-content .media-info {
+  float: left;
+  margin-left: 15px;
+  margin-right: 10px;
+  width: 240px;
+}
+
+.media-item-content .media-info .media-info-item {
+  display: block;
+}
+
+.media-info-item.title {
+  font-weight: bold;
+}
+
+.media-info-item.title a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-info-item.date,
+.media-info-item.status {
+  color: #888;
+  font-size: 11px;
+}
+
+.media-info-item.rank {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: bold;
+}
+
+.media-info-item
+.media-info-item.date {
+  line-height: 14px;
+}
+
+.media-info-item.status {
+  display: inline-block !important;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 0px;
+  border-radius: 7px;
+  border: 1px solid #387038;
+  padding: 0px 5px;
+  text-shadow: none;
+  color: #fff;
+  background-color: #5BB75B;
+  margin-right: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 50px;
+  margin-top: 10px;
+}
+
+.media-info-item.status span {
+  display: none;
+}
+
+
+.media-item-content .media-control {
+  float: left;
+  position: relative;
+  top: 20px;
+}
+
+.media-item-content .media-control-edit {
+  margin-top: 15px;
+}
+
+.media-item-content .dropdown li {
+  border-bottom: 0px;
+}
+
+.media-item-content .media-stats {
+  float: right;
+  width: 120px;
+  height: 85px;
+  position: relative;
+  text-align: center;
+}
+
+.media-item-content .media-action {
+  float: right;
+  top: 20px;
+  position: relative;
+  width: 100px;
+}
+
+.media-item-content .media-stats .unshare {
+  display: inline-block;
+  margin-left: 20px;
+  clear: both;
+  padding-top: 8px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  text-align: center;
+  width: 110px;
+}
+
+.media-item-content .media-stats .stat {
+  font-size: 11px;
+  display: inline-block;
+  float: left;
+  min-width: 55px;
+  color: #666;
+}
+
+.media-item-content .media-stats .stat .icon-xs {
+  vertical-align: middle;
+  margin: 0px;
+  opacity: .4;
+}
+
+.icon.see-inside.black {
+  background: url('../../images/see-inside.png') no-repeat center;
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  padding-left: 0px;
+  margin:2px 2px 0 2px;
+  background-size: 23px;
+}
+
+.media-item-content .media-status,
+.media-item-content .media-trash {
+  float: left;
+  position: relative;
+  top: 20px;
+  left: 10px;
+}
+
+.media-item-content .media-untrash {
+  float: right;
+  position: relative;
+  top: 20px;
+  right: 10px;
+}
+
+.media-item-content.trashed .media-info {
+  width: 245px;
+}
+
+
+.media-item-content .media-status .status-icon {
+  background-size: 25px 15px;
+  opacity: .8;
+  display: inline-block;
+  width: 22px;
+  height: 15px;
+  vertical-align: middle;
+  margin-bottom: 5px;
+}
+
+.not-shared.media-item-content .media-status .status-icon {
+  background: url('../../images/notshared_user.png') no-repeat center;
+  background-size: 15px 14px;
+}
+
+.media-status .dropdown-menu li{
+  font-size: 12px;
+}
+
+.media-item-content .media-stats {
+  margin-top: 5px;
+  float: right;
+  width: 110px;
+}
+
+.ajax-loader {
+  background-color: #fff;
+  height: 100px;
+  width: 100%;
+}
+
+#sidebar li.sub-list a {
+  margin-left: 15px;
+}
+
+#new-scratcher-gallery-modal .modal-header, #new-scratcher-gallery-modal .modal-body {
+  padding: 12px 24px;
+}
+
+#new-scratcher-gallery-modal .modal-footer{
+  background-color: #fff;
+}

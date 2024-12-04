@@ -1,0 +1,307 @@
+
+/* Tooltip */ 
+
+.tooltip {
+  position: relative;
+  display: block;
+  visibility: visible;
+}
+
+
+.tooltip span.hovertext {
+  background-color: #1b9ed8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #fff;
+  text-shadow: none;
+  line-height: 13px;
+  padding: 10px;
+  position: absolute;
+  display: none;
+  white-space: nowrap;
+  z-index: 999;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip span.hovertext.force-only,
+.tooltip:hover span.hovertext.force-only {
+  display: none;
+}
+
+.tooltip:hover span.hovertext,
+.tooltip.force span.hovertext,
+.tooltip.force span.hovertext.force-only {
+  display: block;
+}
+
+.tooltip.small span.hovertext {
+  padding: 5px;
+  font-size: 11px;
+  border-width: 5px !important;
+  left: 8px;
+}
+
+.tooltip.small span.hovertext .arrow {
+  border-width: 5px !important;
+  top: 70%;
+  left: -10px;
+}
+
+
+/*
+.tooltip span.hovertext:before,
+.tooltip span.hovertext:after {
+  content: "";
+  border-top: 8px solid #1b9ed8;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0;
+  bottom: -7px;
+  left: 20%;
+  margin-left: -8px;
+  position: absolute;
+  z-index: 1000;
+}
+
+.tooltip.left span.hovertext:before,
+.tooltip span.hovertext:after {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-left-color: #000;
+  border-width: 5px 0 5px 5px;
+}
+
+.tooltip span.hovertext:before {
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+*/
+
+
+.tooltip.top .hovertext {
+  top: -60%;
+}
+
+.tooltip.bottom .hovertext {
+  bottom: -20%;
+}
+
+.tooltip.left .hovertext {
+  left: -22%;
+}
+
+.tooltip.right .hovertext {
+  margin-left: 100%;
+  left: 16px;
+}
+
+.tooltip .hovertext .arrow {  
+  width: 0;
+  height: 0;
+  position: absolute;
+  border: 10px solid transparent;
+  display: block;
+}
+
+.tooltip.top .hovertext .arrow {
+  border-top-color: #1b9ed8;
+  left: 50%;
+  margin-left: -10px;
+  bottom: -20px;
+}
+
+.tooltip.bottom .hovertext .arrow {
+  border-bottom-color: #1b9ed8;
+  left: 50%;
+  margin-left: -10px;
+  top: -20px;
+}
+
+.tooltip.left .hovertext .arrow {
+  border-left-color: #1b9ed8;
+  top: 50%;
+  margin-top: -10px;
+  right: -20px;
+}
+
+.tooltip.right .hovertext .arrow {
+  border-right-color: #1b9ed8;
+  top: 50%;
+  margin-top: -10px;
+  left: -20px;
+}
+
+.tooltip.error .hovertext {
+  background-color: #b94a48;
+}
+
+.tooltip.left.error .hovertext .arrow {
+  border-left-color: #b94a48; 
+}
+
+.tooltip.right.error .hovertext .arrow {
+  border-right-color: #b94a48; 
+}
+
+.tooltip.top.error .hovertext .arrow {
+  border-top-color: #b94a48; 
+}
+
+.tooltip.bottom.error .hovertext .arrow {
+  border-bottom-color: #b94a48; 
+}
+
+.tooltip.success .hovertext {
+  background-color: #24cd11;
+}
+
+.tooltip.left.success .hovertext .arrow {
+  border-left-color: #24cd11; 
+}
+
+.tooltip.right.success .hovertext .arrow {
+  border-right-color: #24cd11; 
+}
+
+.tooltip.top.success .hovertext .arrow {
+  border-top-color: #24cd11; 
+}
+
+.tooltip.bottom.success .hovertext .arrow {
+  border-bottom-color: #24cd11; 
+}
+
+
+
+.tooltip.error .hovertext:after {
+  vertical-align: bottom;
+  font-size: 11px;
+  margin-left: 5px;
+  font-weight: bold;
+  line-height: 8px;
+  width: 10px;
+  padding: 2px;
+  display: inline-block;
+  color: #b94a48;
+  border-radius: 30px;
+  background-color: white;
+  content: "!";
+  text-align: center;
+}
+
+.tooltip.error.mute .hovertext:after {
+  content: none;
+}
+
+/* grey tooltips */
+.tooltip.grey .hovertext {
+  background-color: #333;
+}
+
+.tooltip.top.grey .hovertext .arrow {
+  border-top-color: #333;
+}
+
+.tooltip.grey.right .hovertext .arrow {
+  border-right-color: #333;
+}
+
+.tooltip.bottom.grey .hovertext .arrow {
+  border-bottom-color: #333;
+}
+
+
+
+.tooltip.error .hovertext {
+  display: block !important;
+}
+
+/* Tooltips for forms */
+
+.controls.tooltip:hover .hovertext,
+.control-group.tooltip:hover .hovertext {
+  display: none;
+}
+
+.controls.tooltip.force .hovertext,
+.control-group.tooltip.force .hovertext{
+  display: block;
+}
+
+.controls.tooltip input:focus + .hovertext,
+.control-group.tooltip input:focus + .hovertext,
+.controls.tooltip textarea:focus + .hovertext,
+.control-group.tooltip textarea:focus + .hovertext,
+.control-group.tooltip .tooltip-target:focus + .hovertext,
+.controls.tooltip.force input + .hovertext,
+.control-group.tooltip.force input + .hovertext,
+.controls.tooltip.force textarea + .hovertext,
+.control-group.tooltip.force textarea + .hovertext,
+.control-group.tooltip.force .tooltip-target + .hovertext {
+  display: block !important;
+}
+
+.controls.tooltip input:focus + [data-control="error"].hovertext,
+.control-group.tooltip input:focus + [data-control="error"].hovertext,
+.controls.tooltip textarea:focus + [data-control="error"].hovertext,
+.control-group.tooltip textarea:focus + [data-control="error"].hovertext,
+.control-group.tooltip .tooltip-target:focus + [data-control="error"].hovertext,
+.controls.tooltip.force input + [data-control="error"].hovertext,
+.control-group.tooltip.force input + [data-control="error"].hovertext,
+.controls.tooltip.force textarea + [data-control="error"].hovertext,
+.control-group.tooltip.force textarea + [data-control="error"].hovertext,
+.control-group.tooltip.force .tooltip-target + [data-control="error"].hovertext {
+  display: none !important;
+}
+
+.controls.tooltip input:focus,
+.control-group.tooltip input:focus,
+.controls.tooltip textarea:focus,
+.controls.tooltip .tooltip-target:focus,
+.control-group.tooltip textarea:focus,
+.control-group.tooltip .tooltip-target:focus,
+.controls.tooltip.force input,
+.control-group.tooltip.force input,
+.controls.tooltip.force textarea,
+.controls.tooltip.force .tooltip-target,
+.control-group.tooltip.force textarea,
+.control-group.tooltip.force .tooltip-target {
+  webkit-box-shadow: #2cb4da 0 0 0 2px;
+  moz-box-shadow: #2cb4da 0 0 0 2px;
+  box-shadow: #2cb4da 0 0 0 2px;
+}
+
+
+.controls.tooltip.error [data-control="info"].hovertext {
+  display: none !important;
+}
+
+.controls.tooltip.error input,
+.control-group.toolti.error input,
+.controls.tooltip.error textarea,
+.control-group.tooltip.error textarea {
+  webkit-box-shadow: #b94a48 0 0 0 2px;
+  moz-box-shadow: #b94a48 0 0 0 2px;
+  box-shadow: #b94a48 0 0 0 2px;
+}
+
+.controls.tooltip.error input:focus,
+.control-group.toolti.error input:focus,
+.controls.tooltip.error textarea:focus,
+.control-group.tooltip.error textarea:focus, 
+.control-group.tooltip.error .tooltip-target:focus, 
+.controls.tooltip.error.force input,
+.control-group.toolti.error.force input,
+.controls.tooltip.error.force textarea,
+.control-group.tooltip.error.force textarea,
+.control-group.tooltip.error.force .tooltip-target {
+  webkit-box-shadow-color: #2cb4da;
+  moz-box-shadow-color: #2cb4da;
+  box-shadow-color: #2cb4da;
+}
+

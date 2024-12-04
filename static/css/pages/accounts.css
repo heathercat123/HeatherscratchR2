@@ -1,0 +1,298 @@
+.tabs-content {
+  min-height: 400px;
+  padding: 10px 20px 0 20px;
+}
+.tabs-content form {
+  padding-bottom:10px;
+}
+.tabs-content .field-wrapper {
+ margin-bottom: 10px;
+}
+.tabs-content label {
+  font-weight:700;
+}
+.tabs-content input {
+  margin-bottom: 0px;
+}
+.tabs-content button {
+  margin: 20px 0 0 0;
+}
+.tabs-content .reset-password button {
+  margin-top: 10px;
+}
+
+.tabs-content .separator {
+  margin-bottom: 10px;
+}
+
+.tabs-content p {
+  margin-top:10px;
+}
+.v-tabs {
+  margin-top: 50px;
+}
+
+.tabs-content  ul.errorlist {
+  list-style-type: none;
+  color: #b94a48;
+  margin: 0px;
+}
+
+body.password-reset .col-4 {
+  display:none;
+}
+
+body.password-reset .col-12 {
+  width:940px;
+}
+
+body.password-reset .free-text {
+  font-size: 16px;
+}
+
+body.password-reset .bold-text {
+  font-weight: bold;
+}
+
+body.password-reset form {
+  margin-top: 25px;
+}
+
+body.password-reset .input-col {
+  float: left;
+  width: 220px;
+  margin: 25px 0px;
+}
+
+body.password-reset .input-col-start {
+  clear: both;
+}
+
+body.password-reset .separator {
+  float: left;
+  margin: 50px 30px;
+}
+
+.contact .messages p {
+    padding: 25px 10px;
+    margin: 15px 0;
+    border: 1px solid #CCC;
+    font-size: 1.4em;
+}
+.contact .messages .success {
+    background-color: #66FF99;
+    border: 1px solid green;
+}
+.contact .messages .error {
+    border: 1px solid #900;
+    background-color: #EF686D;
+}
+.contact h3 {
+  margin-top:20px;
+}
+.contact li {
+    margin: 0;
+}
+.contact #block-message {
+  background-color: #eee;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.contact #block-message p {
+    margin: 0;
+}
+.contact #block-notifications .alert-info {
+    padding-top: 15px;
+}
+.contact .errorlist {
+    margin: 0;
+    list-style: none;
+}
+.contact .errorlist li {
+    color: #900;
+}
+.contact input[name="email"] {
+  width:25;
+}
+.contact input[name="subject"] {
+  width:50%;
+}
+.contact textarea[name="message"] {
+  width:50%;
+  height:100px;
+}
+.contact .submit button {
+  margin-top: 0;
+}
+
+/*account deletion css*/
+#next-step-deletion {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#deletion-go-back{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 150px;
+  height: 30px;
+  z-index: 1;
+}
+#go-back-link{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 10px;
+  color: white;
+  background-color: #00AEEF;
+  padding: 10px;
+  text-decoration: none;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+  text-align: center;
+}
+#go-back-link:before {
+  top: 5px;
+  left: -15px;
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #00AEEF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  content: "";
+  z-index: -1;
+}
+#next-step {
+  color: black;
+  background-color: #dedede;
+  padding: 10px;
+  text-decoration: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+#deletion-header {
+  font-weight: normal;
+}
+#deletion-header, #deletion-sub-header {
+  padding-bottom: 10px;
+}
+#deletion-password-header {
+  padding-top: 10px;
+}
+#deletion-form-box form .field-wrapper ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+#deletion-form-box form .field-wrapper ul li input {
+  float: left;
+  margin-right: 10px;
+}
+#deletion-form-box form .field-wrapper input[type="password"] {
+  float: left;
+}
+#deletion-form-box form input[type="submit"]:disabled {
+  float: right;
+  color: white;
+  background-color: #ccc;
+}
+#deletion-form-box form input[type="submit"] {
+  float: right;
+  color: white;
+  background-color: #f15a29;
+}
+#deletion-form-box form ul.errors {
+  list-style-type: none;
+  margin-left: 0;
+  clear: both;
+}
+#deletion-form-box form ul.errors li {
+  color: red;
+}
+
+
+.email-change .tooltip .hovertext {
+  position: relative;
+  margin-left: auto;
+  display: none;
+  left: 10px;
+  top: -1px;
+}
+
+.email-change .tooltip:hover .hovertext {
+  display: inline;
+}
+
+.current-email.confirmed:after {
+  content: "\e60c";
+  color: #24CD11;
+  padding-left: 20px;
+
+  font-family: 'scratch-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/*UNCONFIRMED EMAIL BOX*/
+.unconfirmed-email {
+  overflow: hidden;
+}
+.change-email {
+  border-top: thin solid black;
+}
+
+.unconfirmed-email h3 {
+  color: #F9A739;
+}
+
+.unconfirmed-email p {
+  margin: 20px 0px;
+}
+
+.unconfirmed-email .label {
+  font-weight: bold;
+}
+
+.unconfirmed-email .resend-form-footer {
+  margin-top: 20px;
+}
+
+.unconfirmed-email .resend-form-footer p {
+  float: left;
+}
+
+#cancel-email-resend button,
+#email-resend button {
+  margin: 6px 10px 0 0;
+  width: 100px;
+  text-align: center;
+}
+
+#email-resend {
+  float: left;
+}
+
+#update-subscription input[type="checkbox"] {
+  float: left;
+  margin-right: 10px;
+}

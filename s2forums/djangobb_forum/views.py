@@ -569,7 +569,7 @@ def add_topic(request, forum_id, full=True):
         "forum": forum,
         "user": request.user,
         "ip": ip,
-        "is_ip_banned": request.is_ip_banned,
+        "is_ip_banned": False, # STUB
         "request_data":request.META
     }
 

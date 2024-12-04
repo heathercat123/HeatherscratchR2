@@ -1,0 +1,83 @@
+.media-grid::before, .media-grid::after,
+.media-col::before, .media-col::after{
+  display: table;
+  content: "";
+  zoom: 1;
+}
+
+.media-grid::after,
+.media-col::after {
+  clear: both;
+}
+
+.media-grid li,
+.media-col li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.media-grid li>div {
+  float: left;
+  margin: 0 0 18px 20px;
+}
+
+.media-grid,
+.media-col {
+  margin-top: 10px;
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+/* Move this into style specific for view all pages */
+
+.media-col li>div.thumb a.image {
+  float: left;
+  margin-right: 5px;
+}
+
+
+.media-col li>div.thumb.gallery a.image {
+  margin-right: 0px;
+  float: none;
+}
+
+.media-col li>div.thumb.gallery .stats {
+  right: 85px;
+  bottom: 32px;
+}
+.media-col li>div.thumb {
+  width: 255px;
+}
+/*
+.media-col li>div.thumb.gallery {
+  width: 247px;
+}
+
+*/
+.media-col li {
+  margin: 0px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #fff;
+}
+
+.media-grid .project.thumb.item{
+  margin-right:33px;
+}
+.media-grid .user.thumb.item{
+  margin-right:12px;
+}
+
+.media-grid .gallery.thumb.item {
+  margin-right: 33px;
+}
+
+.media-col li.gallery.thumb {
+  width: 255px;
+}
+
+.media-col li.gallery.thumb .stats {
+  right: 88px;
+  bottom: 40px;
+}
+

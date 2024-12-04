@@ -1,0 +1,318 @@
+
+.editable .display {
+  display: block;
+}
+
+.editable.inline .display {
+  display: inline-block;
+}
+
+.editable.inline form {
+  margin-bottom: 0px;
+}
+
+.editable h3 {
+  display: inline-block;
+}
+
+
+.editable.input .display {
+  display: none;
+}
+
+.editable.input form {
+  display: block;
+}
+
+.editable.input textarea {
+  display: block;
+}
+
+.editable.input input {
+  display: inline-block;
+
+}
+
+
+.editable .edit-this {
+  padding: 3px 12px;
+  background: url('../../../images/edit.png') no-repeat center center;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.editable .edit-this:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.editable.input .edit-this {
+  display: none;
+}
+
+.editable-container:hover .editable {
+  margin: -2px -5px;
+  padding: 2px 5px;
+  background-color: #eee;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.editable-container:hover {
+  background: url('../../../images/edit.png') no-repeat 98% 5%;
+  cursor: pointer;
+}
+
+.editable-container:hover .editable.input {
+  background: none;
+}
+
+.editable .ajax-loader {
+  display: none;
+}
+
+.editable .ajax-loader.on {
+  display: inline-block;
+}
+
+
+.editable form,
+.editable-empty form {
+  height: 100%;
+}
+
+.editable textarea,
+.editable input,
+.editable-empty textarea,
+.editable-empty input {
+  height: 100%;
+  width: 100%;
+}
+
+
+.editable textarea,
+.editable input,
+.editable-empty textarea,
+.editable-empty input {
+  font-size: inherit;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 2px solid transparent;
+}
+
+/*
+.editable.read textarea:focus,
+.editable.read input:focus,
+.editable.read textarea:hover,
+.editable.read:hover {
+  border: 2px dashed  #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: 0px;
+  cursor: pointer;
+}
+*/
+
+.editable:hover,
+.editable.write {
+  border: 2px dashed  #ccc !important;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.editable,
+.editable-empty {
+  padding: 10px;
+  border: 2px solid transparent;
+}
+
+
+.editable.read textarea,
+.editable.read input {
+  resize: none;
+  background: transparent; 
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.editable .edit-controls {
+  display: block;
+  margin: 10px 0;
+}
+
+.editable.read .edit-controls {
+  display: none;
+}
+
+.read-only {
+  overflow-y: auto;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.editable-image {
+  position: relative;
+}
+
+.editable-image [data-control="edit"] {
+  display: none;
+  opacity: .8;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px 5px;
+  text-shadow: none;
+  color: white;
+  font-size: 11px;
+  background-color: #333;
+  cursor: pointer;
+  border-bottom-right-radius: 5px;
+}
+
+.editable-image [data-control="edit"] input.hidden {
+  top: 0;
+  left: 0;
+  font-size: 100px; /* this lets you single click the input in IE */
+}
+
+.editable-image.edit [data-control="edit"] {
+  display: block !important;
+}
+
+.editable-image [data-control="edit"] input.hidden[type="file"] {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position:absolute;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.editable-empty {
+  border: 2px dashed #ccc;
+  background-color: #fff;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.editable-empty form {
+  display: none;
+}
+.editable-empty.write form {
+  display: block;
+}
+
+.editable-empty [data-content="prompt"] {
+  color: #BEBEBE;
+  font-size: 16px;
+}
+
+
+.editable [data-content="prompt"] {
+  display: none;
+}
+
+.read-only {
+  overflow: hidden;
+}
+
+.read-only .viewport {
+  height: 100%;
+  position: relative;
+}
+
+.read-only .viewport .overview {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.viewport::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+ background-color: #eee;
+ border-radius: 10px;
+ width: 10px;
+}
+
+.viewport::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+ -webkit-box-shadow: inset 0 0 10px #bbb;
+ box-shadow:         inset 0 0 10px #bbb;
+ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+ border-radius: 10px;
+}
+
+
+.viewport::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #999;
+}
+/* For tinyscrollbar in  read only mode */ 
+
+.scrollbar { 
+  clear: both;
+  position: relative;
+  float: right;
+  width: 18px;
+}
+
+.scrollbar .track { 
+  background-color: #eee;
+  border-radius: 10px;
+  height: 100%;
+  width: 10px;
+  position: relative;
+  padding: 0 1px;
+  -moz-box-shadow:    inset 0 0 10px #bbb;
+  -webkit-box-shadow: inset 0 0 10px #bbb;
+  box-shadow:         inset 0 0 10px #bbb;
+}
+
+.scrollbar .thumb .end,
+.scrollbar .thumb { 
+  background-color: #666;
+  opacity: .8;
+  border-radius: 5px;
+  width: 10px;
+}
+
+.scrollbar .thumb .end {
+  border: none;
+}
+
+.scrollbar .thumb {
+  height: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.scrollbar .thumb .end {
+  overflow: hidden;
+  height: 8px;
+}

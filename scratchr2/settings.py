@@ -14,9 +14,9 @@ sys.setdefaultencoding('UTF8')
 
 # Django settings for ScratchR2 project.
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = True # Set to true for development
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -149,7 +149,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	"C:/xampp/htdocs/ScratchR2_PY27/static",
+	os.path.join(os.path.dirname(BASE_DIR), "static"),
 	"C:/Python27/Lib/site-packages/django/contrib/admin/static/admin",
 )
 
@@ -200,7 +200,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	'C:/xampp/htdocs/ScratchR2_PY27/templates'
+	os.path.join(os.path.dirname(BASE_DIR), "templates")
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -243,6 +243,7 @@ INSTALLED_APPS = (
 	'siteapi',
 	'projects',
 	'help',
+	'rest_framework',
 )
 
 # A sample logging configuration. The only tangible logging

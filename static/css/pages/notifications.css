@@ -1,0 +1,110 @@
+/* Notifications Page */
+.notification-feed {
+  margin-left: 0px;
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.notification-feed ul li.read {
+  opacity: .7;
+}
+
+.notification-feed ul li.unread {
+  background-color: #eed;
+  opacity: 1;
+}
+
+.notification-feed li,
+.scratch-team li {
+  list-style-type: none;
+}
+
+.scratch-team li {
+  padding: .5em .5em;
+}
+
+.notification-feed li {
+  padding: 1em .5em;
+  margin: 0;
+}
+
+.notification-feed ul,
+ul.scratch-team {
+  margin-left: 0px;
+}
+
+#admin-notifications {
+  margin-bottom: 10px;
+}
+
+ul.admin-notification-list {
+  margin: 0;
+}
+
+ul.social-notification-list li,
+ul.scratch-team li {
+  border-bottom: 1px solid #eee;
+}
+
+.notification-feed .time {
+  color: #999;
+}
+
+.notification-feed .comment-snippet {
+  font-style: italic;
+}
+
+.scratch-team li {
+  background-color: #ffe5e5;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.notification-feed div {
+  margin-top: 20px;
+}
+
+.notification-feed li span.delete {
+  float: right;
+  display: inline-block;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0px 5px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.notification-feed li span.delete:hover {
+  background-color: #ddd;
+  color: #fff;
+}
+
+.notification-feed li span.icon-xs {
+  opacity: .7;
+  padding-left: 14px;
+}
+
+.notification-feed li .icon {
+  padding-left: 15px;
+}
+
+.notification-feed li a.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+#message-nav-links {
+  padding: 10px 20px 0px 20px;
+}
+
+#message-nav-links a {
+  display: inline-block;
+}
+
+#message-nav-links .newer {
+  float: right;
+}

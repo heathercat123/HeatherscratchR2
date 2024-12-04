@@ -1,0 +1,31 @@
+#feedback {
+  position: fixed;
+  top: 100px;
+  left: -3px;
+  overflow:hidden;
+  width:3.4em;
+  height:8em;
+  background-color: #28A5DA ;
+  border: 3px solid #91c4da;
+  border-left: none;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-align:left;
+}
+
+#feedback h3 {
+  color:#fff;
+  width:5em;
+  height:5em;
+  line-height:2.2em;
+  overflow:visible;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  /* -ms-transform: rotate(-90deg); */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  text-shadow: none;
+  background-color:#28A5DA;
+}

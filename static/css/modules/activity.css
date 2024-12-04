@@ -1,0 +1,40 @@
+/* Activity stream */
+.activity-stream {
+  margin-left: 0px;
+  height: 230px;
+  overflow: hidden;
+}
+
+.activity-stream li{
+  list-style-type: none;
+  padding: .2em 0em;
+}
+
+.activity-stream .time {
+  color: #999;
+  display: block;
+  font-size: 10px;
+}
+
+.activity-stream img.avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+.activity-stream div {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 15px;
+  width:420px;
+}
+
+.activity-stream .actor {
+  font-weight: bold;
+}
+
+.activity-stream .actor a {
+  color: #333 !important;
+}
+

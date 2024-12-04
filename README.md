@@ -21,13 +21,12 @@ python setup.py install
 ```
 python manage.py syncdb
 ```
-6. Replace every instance of C:/XAMPP/HTDOCS/SCRATCHR2_PY27/ in /scratchr2/settings.py to the path to HeatherscratchR2
-7. Run the dev server.
+6. Run the dev server.
   - To do this, run this command:
 ```
 python manage.py runserver
 ```
-8. Open your web browser at [http://localhost:8000/scratchr2/](http://localhost:8000/scratchr2/)
+7. Open your web browser at [http://localhost:8000/scratchr2/](http://localhost:8000/scratchr2/)
 
 The base site should work. Now, we need to set up a webserver. The rest of this guide is for Apache.
 

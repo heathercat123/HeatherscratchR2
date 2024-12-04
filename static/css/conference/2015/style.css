@@ -1,0 +1,272 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+dialog {
+  border: none;
+  padding: 0; }
+
+/*-----------End of Reset-----------*/
+*::selection {
+  color: white;
+  background-color: #eab012; }
+
+html {
+  font-family: 'Open Sans','Helvetica Neue','arial' ,sans-serif;
+  font-size: 6px;
+  color: #343434;
+  background-color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+#logo {
+  height: 5rem;
+  display: inline-block;
+  margin: 2.5rem 0; }
+
+nav {
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  background-color: #a015f0;
+  z-index: 9999;
+  margin-bottom: 10rem; }
+  nav ul {
+    float: right;
+    display: inline-block; }
+    nav ul a {
+      color: white; }
+    nav ul a:hover {
+      color: white; }
+    nav ul li {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 2em;
+      display: inline-block;
+      padding: 2rem 5rem; }
+    nav ul li:hover {
+      background-color: rgba(0, 0, 0, 0.2); }
+  nav section {
+    width: 80%;
+    max-width: 940px;
+    padding: 0; }
+
+#main-content {
+  max-width: 940px;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 1rem;
+  margin: 15rem auto 10rem auto;
+  padding: 6rem 0;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1); }
+
+section {
+  max-width: 650px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem; }
+
+.conference {
+  width: 43%;
+  min-width: 250px;
+  margin: 2rem 5% 2rem 0;
+  display: inline-block;
+  border-radius: 1rem;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  vertical-align: top; }
+  .conference h3 {
+    font-size: 2.33rem;
+    border-bottom: 1px solid #ececec;
+    padding: 1rem 0;
+    text-align: center; }
+  .conference h2 {
+    color: white;
+    text-align: center;
+    background-color: #eeac1b;
+    padding: 2rem;
+    border-radius: 1rem 1rem 0 0; }
+  .conference p {
+    font-size: 2.33rem;
+    line-height: 2em;
+    width: 90%;
+    margin: 2rem auto; }
+  .conference a {
+    font-size: 2.33rem;
+    line-height: 2em; }
+
+.clear {
+  clear: all; }
+
+.faq {
+  border-top: 1px solid #ececec;
+  padding: 2rem 0; }
+  .faq h3 {
+    display: inline-block;
+    margin: 0 6rem; }
+  .faq p {
+    margin: 0 6rem; }
+  .faq .collapse {
+    transition: none;
+    display: none; }
+
+.last {
+  border-bottom: 1px solid #ececec; }
+
+.faq-icon {
+  width: 4rem;
+  position: absolute;
+  display: inline-block;
+  transition: all .5s ease;
+  vertical-align: top; }
+
+.faq-click {
+  cursor: pointer; }
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 5rem;
+  background-color: #ffffff; }
+  footer section {
+    width: 80%;
+    max-width: 940px; }
+  footer #footer-about, footer #scratch-fam {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 9%; }
+  footer #scratch-fam a {
+    font-size: 2.33rem;
+    line-height: 2em; }
+
+/*-----------Typography-----------*/
+h1 {
+  font-size: 5rem;
+  line-height: 1.5em;
+  font-weight: 800;
+  width: 100%;
+  padding-bottom: 1rem; }
+
+h2 {
+  font-size: 2.66rem;
+  font-weight: 800;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: .05em; }
+
+h3 {
+  font-size: 2.66rem;
+  font-weight: 600;
+  line-height: 1.5em;
+  margin-bottom: 1rem; }
+
+p {
+  font-size: 2.66rem;
+  line-height: 2em;
+  color: #676767;
+  margin-bottom: 2rem; }
+
+a {
+  color: #457feb;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none; }
+
+a:hover {
+  color: #295ab4; }
+
+.caps {
+  text-transform: uppercase;
+  letter-spacing: .05em; }
+
+/*-----------Actions for JS-----------*/
+.rotate {
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */ }
+
+/*-----------Media Queries-----------*/
+@media (max-width: 900px) {
+  #main-content {
+    margin-top: 15rem;
+    padding: 3rem 0;
+    width: 90%; }
+
+  section {
+    padding: 2rem; }
+
+  p, a {
+    font-size: 2.33rem; }
+
+  h1 {
+    font-size: 4rem; }
+
+  h2 {
+    font-size: 3rem; }
+
+  .conference {
+    width: 100%; }
+
+  #logo {
+    margin: 1rem auto;
+    height: 4rem;
+    display: block; }
+
+  nav ul {
+    float: none;
+    width: 100%; }
+    nav ul li {
+      width: 33%;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 2.33rem; }
+    nav ul li:hover {
+      border-radius: 1rem 1rem 0 0; } }
