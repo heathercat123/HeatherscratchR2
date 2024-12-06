@@ -1,0 +1,12 @@
+{% extends 'mystuff/base.html' %}
+{% load i18n %}
+
+{% block studio-tabs %}
+<!-- templates/mystuff/studio.html block studio-tabs -->
+<li class="active first" data-tab="projects"><a href="#projects">{% blocktrans %}All Projects (<span data-content="project-count">{{projects_count}}</span>){% endblocktrans %}</a></li>
+<li class="sub-list" data-tab="shared"><a href="#shared">{% blocktrans %}Shared Projects (<span data-content="shared-count">{{shared_count}}</span>){% endblocktrans %}</a></li>
+<li class="sub-list" data-tab="unshared"><a href="#unshared">{% blocktrans %}Unshared Projects (<span data-content="unshared-count">{{notshared_count}}</span>){% endblocktrans %}</a></li>
+<li data-tab="galleries"><a href="#galleries">{% blocktrans %}My Studios (<span data-content="gallery-count">{{gallery_count}}</span>){% endblocktrans %}</a></li>
+<li data-tab="trash"><a href="#trash">Trash</a></li>
+<!-- end block studio-tabs -->
+{% endblock studio-tabs %}

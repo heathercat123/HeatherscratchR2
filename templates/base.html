@@ -28,6 +28,7 @@
 
     <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/gaq-ga4.js"></script>
 
 
     <script>
@@ -243,30 +244,17 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
     <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery-ui.min.js"></script>
 
     <script type="application/javascript" src="{{ STATIC_URL }}/js/main.js" charset="utf-8"></script>
-
-  
-  <script type="text/javascript">
-    // load gaq script
-	/* or not
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-	*/
-  </script>
-  <script>
-    $(document).ready(function(){
-      $('.slider-carousel').sliderCarousel();
-    });
-  </script>
-
-    
-
-
     <script type="application/javascript" src="{{ STATIC_URL }}/js/base.js" charset="utf-8"></script>
     <script type="application/javascript" src="{{ STATIC_URL }}/js/lazyload.js" charset="utf-8"></script>
     {% block js %}{% endblock js %}
+
+    
+
+    
+
+    
+
+	{% block templates %}{% endblock templates %}
     
     
     
@@ -294,8 +282,7 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
       }
     </script>
     
-{% block js2 %}
-{% endblock %}
+{% block js2 %}{% endblock %}
     
     <script>
     $(document).on("accountnavready", function(e){

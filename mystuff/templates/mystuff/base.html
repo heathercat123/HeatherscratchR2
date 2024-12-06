@@ -1,0 +1,488 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+<!-- templates/mystuff/base.html block css -->
+<link href="{{ STATIC_URL }}/css/pages/studio.css" rel="stylesheet">
+<!-- end block css -->
+{% endblock css %}
+
+{% block main-content %}
+<!-- templates/mystuff/base.html block main-content -->
+
+<div class="cols">
+  <div class="col-4 left">
+    <div class="box v-tabs">
+      <div id="sidebar" class="tabs-index">
+        <ul data-control="tabs" id="tabs">
+          
+{% block studio-tabs %}{% endblock %}
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="box">
+      <div class="box-head">
+        
+<h2>My Stuff</h2>
+<div class="buttons">
+  <a href="/projects/editor/" class="button small grey">
+    <span id="new_project" class="text">+ New Project</span>
+  </a>
+  <form id="new_studio" action="/studios/create/" method="post" class="post-link">
+    <input type='hidden' name='csrfmiddlewaretoken' value='ARdIZHmd2mLsAErf3N8QJXZTkI7Z8kp3' />
+    <button type="submit" class="button small grey">
+      <span>+ New Studio</span>
+      
+    </button>
+  </form>
+</div>
+
+      </div>
+      <div class="box-content v-tabs-content" id="main-content">
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end block main-content -->
+{% endblock main-content %}
+
+{% block js %}
+<!-- templates/mystuff/base.html block js -->
+
+
+<!-- end block js -->
+{% endblock js %}
+
+{% block js2 %}
+<script src="{{ STATIC_URL }}/js/apps/mystuff/router.js"></script>
+
+<script src="{{ STATIC_URL }}/js/views/tabs.js"></script>
+<script src="{{ STATIC_URL }}/js/views/counter.js"></script>
+<script src="{{ STATIC_URL }}/js/views/mixins.js"></script>
+<script src="{{ STATIC_URL }}/js/apps/mystuff/views/page.js"></script>
+<script src="{{ STATIC_URL }}/js/apps/mystuff/views/project-thumbnail.js"></script>
+<script src="{{ STATIC_URL }}/js/models/project-thumbnail.js"></script>
+<script src="{{ STATIC_URL }}/js/apps/mystuff/views/gallery-thumbnail.js"></script>
+<script src="{{ STATIC_URL }}/js/models/gallery-thumbnail.js"></script>
+<script src="{{ STATIC_URL }}/js/apps/mystuff/views/addto-gallery.js"></script>
+{% endblock js2 %}
+
+{% block templates %}
+<script type="text/template" id="template-collection-count">
+  <%- count %>
+</script>
+
+<script type="text/template" id="template-comment-actions">
+<% if (can_delete) { %>
+  <% if (is_staff && comment_user == current_user) { %>
+    <span data-control="delete" class="actions report">Delete</span>
+  <% } else if (type != "gallery" || comment_user == current_user) { %>
+    <span data-control="delete" class="actions report">Delete</span>
+  <% } %>
+<% } %>
+<% if (current_user != comment_user) { %>
+  <span data-control="report" class="actions report">
+  <% if (student_of_educator) { %>
+    Delete
+  <% } else { %>
+    Report
+  <% } %></span>
+<% } %>
+</script>
+
+<script type="text/template" id="template-modal-login">
+<div class="modal hide fade in" id="login-dialog" style="width: 450px">
+  <form method="post" action="/login/">
+    <fieldset>
+      <div class="modal-header">
+        <a href="#" data-dismiss="modal" class="close">x
+        </a>
+        <h3>Login</h3>
+      </div>
+      <div class="modal-body">
+        <div class="control-group">
+        <label class="control-label" for="username">Username
+          </label>
+          <div class="controls">
+            <input id="username" type="text" name="username" maxlength="30" />
+          </div>
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="password">Password
+          </label>
+          <div class="controls">
+            <input type="password" name="password" id="password" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="error">
+        </span>
+        <span class="button primary" id="sign-in" data-control="site-login">
+        <span>{% trans "Sign in" $}
+          </span>
+        </span>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</script>
+
+<script type="text/template" id="template-comment-reply">
+  <form>
+    <div class="control-group tooltip right">
+      <textarea name="content"></textarea>
+      
+      <span class="hovertext error" data-control="error" data-content="comment-error"><span class="arrow"></span><span class="text"></span></span>
+      <span class="small-text">You have <span id="chars-left-<%- comment_id %>">500</span> characters left.</span>
+    </div>
+    <div class="control-group">
+        <div class="button small" data-parent-thread="<%- thread_id %>" data-commentee-id="<%- commentee_id %>" data-control="post"><a href="#null">Post</a></div>
+        <div class="button small grey" data-control="cancel"><a href="#null">Cancel</a></div>
+      <span class="notification"></span>
+    </div>
+  </form>
+</script>
+
+<script type="text/template" id="template-deletion-canceled">
+<div class="deletion-canceled">
+  <div class="form">
+    <p>
+    Your account was scheduled for deletion but you logged in. Your account has been reactivated. If you didn’t request for your account to be deleted, you should <a href="/accounts/password_change/">change your password</a> to make sure your account is secure. 
+    </p>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="template-unsupported-browser">
+  <div class="unsupported-browser banner" data-cue="unsupported_browser">
+    <div class="container">
+      <span>Scratch works best on newer browsers. We suggest you upgrade to <a href="/info/faq/#requirements">a supported browser</a>, <a href="/scratch2download/">download the offline editor</a>, <a href="https://en.scratch-wiki.info/wiki/List_of_Bug_Workarounds">or read about common workarounds</a>.</span>
+      <div class="close">x</div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="template-unsupported-msie">
+  <div class="unsupported-browser banner" data-cue="unsupported_browser">
+    <div class="container">
+      <span>Scratch will stop supporting Internet Explorer 8 on April 30, 2015. We suggest you upgrade to <a href="/info/faq/#requirements">a supported browser</a>, <a href="/scratch2download/">download the offline editor</a>, or <a href="https://en.scratch-wiki.info/wiki/List_of_Bug_Workarounds">read about common workarounds</a>.</span>
+      <div class="close">x</div>
+    </div>
+  </div>
+</script>
+
+
+
+
+    
+
+<script type="text/template" id="template-counter">
+<%- count %>
+</script>
+
+<script type="text/template" id="template-project-content">
+<div class="tab-content" id="main-content">
+  <div class="action-bar scroll">
+    <div class="inner">
+      
+<div class="dropdown radio-style button grey small">
+  <span class="dropdown-toggle black" data-toggle="dropdown">
+	  <span class="selected">Sort by</span> 
+    <span class="caret"></span>
+  </span>
+  <div class="dropdown-menu radio-style">
+    <ul data-control="sort">
+	    <li class="selected" data-decsort="datetime_modified">Last modified</li>
+	    <li data-descsort="view_count">Views</li>
+	    <li data-descsort="love_count">Loves</li>
+	    <li data-descsort="remixers_count">Remixes</li>
+      <li data-ascsort="title">A-Z</li>
+      <li data-descsort="title">Z-A</li>
+    </ul>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+  <div id="alert-view"></div>
+    <div data-content="list" class="media-list">
+    </div>
+    <div style="position:relative; left: 45%" data-control="load-more" class="grey button"><span class="text">Load More</span></div>
+</div>
+</script>
+
+<script type="text/template" id="template-trashed-content">
+<div class="tab-content" id="main-content">
+  <div class="action-bar scroll">
+    <div class="inner">
+      
+<div class="dropdown radio-style button grey small">
+  <span class="dropdown-toggle black" data-toggle="dropdown">
+	  <span class="selected">Sort by</span> 
+    <span class="caret"></span>
+  </span>
+  <div class="dropdown-menu radio-style">
+    <ul data-control="sort">
+	    <li class="selected" data-decsort="datetime_modified">Last modified</li>
+	    <li data-descsort="view_count">Views</li>
+	    <li data-descsort="love_count">Loves</li>
+	    <li data-descsort="remixers_count">Remixes</li>
+      <li data-ascsort="title">A-Z</li>
+      <li data-descsort="title">Z-A</li>
+    </ul>
+  </div>
+</div>
+
+
+      <div class="right">
+        <div data-control="empty-trash" class="button small grey">
+          <span class="text">Empty Trash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="alert-view" class="alert-message hide">
+    <div data-control="message"></div>
+    <div data-control="close" class="close">x</div>
+  </div>
+  <div data-content="list" class="media-list">
+  </div>
+  <div style="position:relative; left: 45%" data-control="load-more" class="grey button"><span class="text">Load More</span></div>
+</div>
+</script>
+
+<script type="text/template" id="template-gallery-content">
+<div class="tab-content" id="main-content">
+  
+<div class="action-bar">
+    <div class="inner">
+      <div data-control="ordering" class="dropdown select button grey small">
+        <span class="dropdown-toggle black" data-toggle="dropdown">
+		<span class="selected">All</span>
+          <span class="caret"></span>
+        </span>
+        <div class="dropdown-menu">
+          <ul data-control="filter">
+            <li data-filter="all" class="hide">All</li>
+	    <li data-filter="owned">Hosted by me</li>
+	    <li data-filter="curated">Curated by me</li>
+          </ul>
+        </div>
+      </div>
+      <div data-control="ordering" class="dropdown radio-style button grey small">
+        <span class="dropdown-toggle black" data-toggle="dropdown">
+		<span class="selected">Sort by</span>
+          <span class="caret"></span>
+        </span>
+        <div class="dropdown-menu radio-style">
+          <ul data-control="sort">
+		  <li data-decsort="newest" class="selected">Last modified</li>
+		  <li data-descsort="projecters_count">Projects</li>
+            <li data-ascsort="title">A-Z</li>
+            <li data-descsort="title">Z-A</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <div id="alert-view" class="alert-message hide">
+    <div data-control="message"></div>
+    <div data-control="close" class="close">x</div>
+  </div>
+  <div data-content="list" class="media-list">
+  </div>
+  <div style="position:relative; left: 45%" data-control="load-more" class="grey button"><span class="text">Load More</span></div>
+</div>
+</script>
+
+<script type="text/template" id="template-project-shared-list-item">
+    <div class="media-item-content <%= isPublished? '' : 'not-shared' %>">
+      <div class="media-thumb">
+        <a href="/projects/<%- id %>/">
+            <img src="<%- uncached_thumbnail_url %>">
+        </a>
+      </div>
+      <div class="media-info">
+        <span class="media-info-item title"><a href="/projects/<%- id %>/"><%- title %></a></span>
+      	<span class="media-info-item date shortDateFormat">
+          Last modified: 
+          <% if (prettyDate(datetime_modified)) { %>
+            <%- $.timeago(datetime_modified + 'Z') %>
+          <% } else { %>
+            <%- $.format.date(datetime_created, "d MMM yyyy") %>
+          <% } %>
+        </span>
+        <a href="/projects/<%- id %>/#editor" data-control="edit" class="media-control-edit small button grey">
+		<span>See inside</span>
+        </a>
+      </div>
+      
+      <div class="media-stats">
+        <span class="stat"><span class="icon-xs view black"></span><%- view_count %></span>
+        <span class="stat"><span class="icon-xs remix black"></span><%- remixers_count %></span>
+        <span class="stat"><span class="icon-xs love black"></span><%- love_count %></span>
+        <span class="stat"><span class="icon-xs favorite black"></span><%- favorite_count %></span>
+        <span class="stat"><span class="icon-xs comment black"></span><% if (commenters_count > 100) { %>100+<% } else { %><%- commenters_count %><% } %></span>
+        <span class="stat"><span class="icon-xs project  black"></span>0</span>
+	<a href="#" class="unshare" data-control="unshare">Unshare</a>
+      </div>
+    </div>
+</script>
+
+<script type="text/template" id="template-project-list-item">
+    <div class="media-item-content <%= isPublished? '' : 'not-shared' %>">
+      <div class="media-thumb">
+        <a href="/projects/<%- id %>/">
+          <img src="<%- uncached_thumbnail_url %>">
+        </a>
+      </div>
+      <div class="media-info">
+        <span class="media-info-item title"><a href="/projects/<%- id %>/"><%- title %></a></span>
+      	<span class="media-info-item date shortDateFormat">
+          Last modified: 
+          <% if (prettyDate(datetime_modified)) { %>
+            <%- $.timeago(datetime_modified + 'Z') %>
+          <% } else { %>
+            <%- $.format.date(datetime_created, "d MMM yyyy") %>
+          <% } %>
+        </span>
+      <a href="/projects/<%- id %>/#editor" data-control="edit" class="media-control-edit small button grey">
+	      <span>See inside</span>
+      </a>
+      </div>
+      <div class="media-action">
+	      <div><a href="#" class="media-trash" data-control="trash">Delete</a></div>
+      </div>
+    </div>
+</script>
+
+<script type="text/template" id="template-project-trashed-list-item">
+    <div class="media-item-content trashed">
+      <div class="media-thumb">
+        <a href="/projects/<%- id %>/">
+          <img src="<%- uncached_thumbnail_url %>">
+        </a>
+      </div>
+      <div class="media-info">
+        <span class="media-info-item title"><a href="/projects/<%- id %>/"><%- title %></a></span>
+      	<span class="media-info-item date shortDateFormat">
+          Last modified: 
+          <% if (prettyDate(datetime_modified)) { %>
+            <%- $.timeago(datetime_modified + 'Z') %>
+          <% } else { %>
+            <%- $.format.date(datetime_created, "d MMM yyyy") %>
+          <% } %>
+        </span>
+        <a href="/projects/<%- id %>/#editor" data-control="edit" class="media-control button grey small">
+		<span>See inside</span>
+        </a>
+      </div>
+      <div data-control="restore" class="media-untrash small grey button">
+        <span class="text">Put back</span>
+      </div>
+    </div>
+</script>
+
+<script type="text/template" id="template-gallery-list-item">
+    <div class="media-item-content">
+      <div class="media-thumb">
+        <a href="/studios/<%- id %>">
+          <img src="<%- thumbnail_url %>" />
+        </a>
+      </div>
+      <div class="media-info">
+        <span class="media-info-item title">
+          <a href="/studios/<%- id %>"><%- title %></a>
+        </span>
+        <span class="media-info-item date shortDateFormat">Created: <%- $.format.date(datetime_created, "dd/MM/yyyy") %></span>
+        <% if (owner.username == Scratch.INIT_DATA.LOGGED_IN_USER.model.username) { %>
+          <span class="media-info-item rank">Host</span>
+          <% } else { %>
+          <span class="media-info-item rank">Curator</span>
+          <% } %>
+      </div>
+      <div class="media-stats">
+        <span class="stat">
+          <span class="icon-xs project black"></span>
+           <% if (projecters_count > 100) { %>100+<% } else { %><%- projecters_count %><% } %>
+        </span>
+        <span class="stat">
+          <span class="icon-xs comment black"></span>
+           <% if (commenters_count > 100) { %>100+<% } else { %><%- commenters_count %><% } %>
+          </span>
+          <% if (owner.username == Scratch.INIT_DATA.LOGGED_IN_USER.model.username) { %>
+            <a href="#" class="unshare" data-control="trash">Delete</a>
+          <% } %>
+      </div>
+    </div>
+</script>
+
+<script type="text/template" id="template-addto-gallery-item">
+  <span data-control="<%- id %>"><%- title %></span>
+</script>
+
+
+
+<div class="modal hide fade in" id="password-form-box">
+    <form method="post" action="/accounts/check_password/">
+        <fieldset>
+            <div class="modal-header">
+                <a href="#" data-dismiss="modal" class="close">x</a>
+                <h3>Please verify your account</h3>
+            </div>
+            <div class="modal-body">
+                <h4 id="password-form-sub-header">To delete these projects for good, please type your password below.</h4>
+                <input type='hidden' name='csrfmiddlewaretoken' value='ARdIZHmd2mLsAErf3N8QJXZTkI7Z8kp3' />
+                <div class="control-group">
+                    <input type="password" name="password" class="password" />
+                </div>
+                <script src="https://www.recaptcha.net/recaptcha/api.js?render=explicit" async defer></script>
+                <div class="g-recaptcha" id="recaptcha-container" data-sitekey="6LeRbUwUAAAAAFYhKgk3G9OKWqE_OJ7Z-7VTUCbl"></div>
+
+                </div>
+                <ul class="errors"></ul>
+                <div class="modal-footer">
+                    <div class="buttons-right">
+                        <button type="submit" class="button primary" value="Submit Password">Submit Password</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <iframe class="iframeshim" frameborder="0" scrolling="no"><html><head></head><body></body></html></iframe>
+</div>
+
+
+<div id="new-scratcher-gallery-modal" class="modal hide fade in">
+    <div class="modal-header">
+        <a href="#" data-dismiss="modal" class="close">x</a>
+        <h3>Want to create a studio on Scratch?</h3>
+    </div>
+    <div class="modal-body">
+        <p class="look-for-invitation">
+            Look for the link at the top of your profile page to become a Scratcher.
+        </p>
+        <p class="no-invitation-yet">
+            If you don't see it yet, keep making and sharing projects, commenting helpfully on other Scratcher's projects, and be patient! After a few weeks, you’ll see the link on your profile page.
+        </p>
+        <p class="learn-more">
+            <a href="/discuss/topic/515548">
+                Learn more about becoming a Scratcher.
+            </a>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <div class="buttons-right">
+          <input id="close-new-scratcher-gallery-modal" class="button" type="button" value="OK, back to Scratch" data-dismiss="modal"/>
+        </div>
+    </div>
+</div>
+{% endblock templates %}

@@ -18,6 +18,7 @@ from djangobb_forum import scratchr2_settings as forum_settings
 from django.contrib import admin
 from django.views.i18n import javascript_catalog
 from . import views
+import mystuff
 admin.autodiscover()
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
 		url(r'^fragment/', include("fragment.urls")),
 		url(r'^projects/', include("projects.urls")),
 		url(r'^help/', include("help.urls")),
+		url(r'^mystuff/$', include("mystuff.urls")),
 
 		url(r'^$', views.homepage, name="home"),
 		url(r'^session/$', views.session, name="session"),

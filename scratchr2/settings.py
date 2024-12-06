@@ -243,7 +243,7 @@ INSTALLED_APPS = (
 	'siteapi',
 	'projects',
 	'help',
-	'rest_framework',
+	'mystuff',
 )
 
 # A sample logging configuration. The only tangible logging
