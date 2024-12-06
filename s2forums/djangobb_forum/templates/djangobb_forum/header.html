@@ -18,6 +18,7 @@
 		<ul>
 		{% block menu %}
 			<li id="navindex"><a href="{% url djangobb:index %}">{% trans "Discussion Home" %}</a></li>
+			<li id="navsearch"><a href="{% url djangobb:search %}">{% trans "Search" %}</a></li>
 			{% if user|forum_can_view_reports %}
 				<li class="moderator-only"><a href="{% url djangobb:forum_reports %}">
 					{% with user|forum_reports as report_count %}
