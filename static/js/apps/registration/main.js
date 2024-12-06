@@ -45,7 +45,7 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
 
   initialize: function() {
     var self = this; 
-    this.$el.load('/scratchr2/accounts/modal-registration/', function(data) {self.initData(data)});
+    this.$el.load('/scratchr2/accounts/modal-registration', function(data) {self.initData(data)});
     
     _.bindAll(this, 'onSubmit')
     _.bindAll(this, 'onError')
@@ -125,6 +125,7 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
           url: '/scratchr2/accounts/check_username/' + username + '/',
           success: function(response) {
             var msg = response[0].msg;
+			console.log(msg);
             if (msg == 'username exists') {
               $usernameError.html(Scratch.Registration.FORM_ERRORS['usernameExists']);
               flag = true;
@@ -320,6 +321,8 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
         this.$('#registration-next').hide();
         this.$('.modal-footer .buttons-right .ajax-loader').show();
         var self = this;
+		this.onSubmit()
+		/*
         $.withCSRF(function(csrf) {
           $.ajax({
             data: JSON.stringify({
@@ -342,6 +345,7 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
             error: self.onError,
           });
         });
+		*/
         return;
       }
       this.nextStep();
@@ -351,9 +355,9 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
 
   onSubmit: function(response) {
     this.$('.modal-footer .buttons-right .ajax-loader').hide();
-    if (response[0].success) {
-      this.username = response[0].username;
-      this.user_id = response[0].user_id; 
+    if (true) { // response[0].success
+      this.username = "Heathercat321"; // response[0].username
+      this.user_id = 1; // response[0].user_id
       this.accountCreated = true;
       this.nextStep();
     } else {
@@ -379,4 +383,3 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
     }
   },
 });
-
