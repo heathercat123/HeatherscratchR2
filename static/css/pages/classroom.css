@@ -1,0 +1,13 @@
+.classroom-detail .box .box-head .portrait img {
+    width: auto;
+    height: auto;
+}
+
+.classroom-detail .box .box-head .header-text {
+    margin-left: 97px;
+}
+
+.header-text .editable.read {
+    margin: 0;
+    padding: 0;
+}

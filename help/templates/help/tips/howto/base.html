@@ -1,0 +1,48 @@
+{% extends 'help/tips/base.html' %}
+{% block tip-content %}
+
+    <div class="multi-step">
+        <div class="progress-bar finished">
+            <span id="tip-progress-bar" style="width:%"></span>
+        </div>
+        <div class="tutorial-dropdown-menu-bar">
+            <h3 class="tutorial-menu-name">
+                <a href="../"></a>
+            </h3>
+            <div class="tutorial-dropdown-menu">
+                <nav>
+                    <a href="#" id="tutorial-menu-icon" class="dropdown-closed"></a>
+                    <ul style="display:none;">
+						{% block dropdown %}{% endblock %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="navcenter">
+			{% block navcenter %}
+			{% endblock %}
+        </div>
+        <h2></h2>
+        
+        {% block content %}{% endblock %}
+    </div>
+
+    {% endblock tip-content %}
+    
+	{% block js %}
+    <script type="text/javascript">
+      /* Initialize progress bar and navcenter translation */
+      $(function($){
+        $(document).on('click', '#tutorial-menu-icon', function() {
+            $('.tutorial-dropdown-menu nav ul').toggle();
+            if ($('#tutorial-menu-icon').hasClass('dropdown-opened')) {
+                $('#tutorial-menu-icon').removeClass('dropdown-opened');
+                $('#tutorial-menu-icon').addClass('dropdown-closed');
+            } else {
+                $('#tutorial-menu-icon').removeClass('dropdown-closed');
+                $('#tutorial-menu-icon').addClass('dropdown-opened');
+            }
+        })
+      });
+    </script>
+	{% endblock js %}

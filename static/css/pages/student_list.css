@@ -1,0 +1,13 @@
+/* allow full student username to show */
+user.thumb span.title a {
+  font-size: 0.846em; /* 11px */
+  line-height: 1.1em;
+  width: 76px;
+  white-space: normal;
+}
+.user.thumb.item span.title a {
+  font-size: 0.846em; /* 11px */
+  line-height: 1.1em;
+  width: 76px;
+  white-space: normal;
+}
