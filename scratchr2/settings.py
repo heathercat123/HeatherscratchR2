@@ -12,7 +12,12 @@ DEFAULT_CHARSET = 'utf-8'
 reload(sys)
 sys.setdefaultencoding('UTF8')
 
-# Django settings for ScratchR2 project.
+# ScratchR2
+ROOT_URL = '/scratchr2'
+WIKI_ROOT = ROOT_URL
+WIKI_URL = WIKI_ROOT + '/wiki'
+
+# Django
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -212,6 +217,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
     'djangobb_forum.context_processors.forum_settings',
+	'scratchr2.context_processors.settings',
 )
 
 INSTALLED_APPS = (
@@ -296,5 +302,3 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_FORM_CLASS = 'bugaga.forms.SignupForm'
-
-AUTH_USER_MODEL = 'accounts.ScratchUser'

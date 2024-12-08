@@ -15,13 +15,13 @@
   <div class="cols clearfix">
     <div class="intro col-10">
 	    <h1 class="title">{% trans "Create stories, games, and animations" %}<br/>{% trans "Share with others around the world" %}</h1>
-      <a id="orange-char" class="char" href="projects/editor/?tip_bar=getStarted">
+      <a id="orange-char" class="char" href="{{ settings.ROOT_URL}}/projects/editor/?tip_bar=getStarted">
         <img class="img-a" src="{{ STATIC_URL }}/images/cat-a.png">
         <img class="img-b" src="{{ STATIC_URL }}/images/cat-b.png">
         <div class="circle"></div>
         <div class="text">{% trans "TRY IT OUT" %}</div>
       </a>
-      <a id="blue-char" class="char" href="starter_projects">
+      <a id="blue-char" class="char" href="{{ settings.ROOT_URL}}/starter_projects">
         <img class="img-a" src="{{ STATIC_URL }}/images/tera-a.png">
         <img class="img-b" src="{{ STATIC_URL }}/images/tera-b.png">
         <div class="circle"></div>
@@ -36,9 +36,9 @@
       </a>
       <div class="subtext">A creative learning community with <span class="projcount">PLACEHOLDER</span> projects shared</div>
       <div class="links">
-        <a href="/scratchr2/about">{% trans "ABOUT SCRATCH" %}</a>
-        <a href="/scratchr2/educators">{% trans "FOR EDUCATORS" %}</a>
-        <a class="last" href="/scratchr2/parents">{% trans "FOR PARENTS" %}</a>
+        <a href="{{ settings.ROOT_URL}}/about">{% trans "ABOUT SCRATCH" %}</a>
+        <a href="{{ settings.ROOT_URL}}/educators">{% trans "FOR EDUCATORS" %}</a>
+        <a class="last" href="{{ settings.ROOT_URL}}/parents">{% trans "FOR PARENTS" %}</a>
       </div>
     </div>
     <div class="col-6">

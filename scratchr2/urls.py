@@ -30,7 +30,7 @@ urlpatterns = [
 		url(r'^messages/', include("notifications.urls")),
 		url(r'^fragment/', include("fragment.urls")),
 		url(r'^projects/', include("projects.urls")),
-		url(r'^help/', include("help.urls")),
+		url(r'^help/', include("help.urls", namespace='help')),
 		url(r'^mystuff/$', include("mystuff.urls")),
 
 		url(r'^$', views.homepage, name="home"),

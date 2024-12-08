@@ -144,7 +144,7 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
     
 
   </head>
-  <body class="">
+  <body class="{% block body-class %}{% endblock %} {% if DEBUG %}staging{% endif %}">
  
     <!--[if lt IE 8]>
       <p class="upgrade-browser">Scratch 2.0 only supports IE8 and above. To use the site, <a href="http://browsehappy.com/">upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>.</p>
@@ -157,10 +157,10 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
         <div class="container">
           <a href="{% url home %}" class="logo"><span class="scratch"></span></a>
           <ul class="site-nav">
-            <li><a id="project-create" href="/scratchr2/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="/scratchr2/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="{% url djangobb:index %}">{% trans "Discuss" %}</a></li><li class="last"><a href="/scratchr2/help/">{% trans "Help" %}</a></li>
+            <li><a id="project-create" href="{{ settings.ROOT_URL}}/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="{{ settings.ROOT_URL}}/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="{% url djangobb:index %}">{% trans "Discuss" %}</a></li><li class="last"><a href="{% url help:index %}">{% trans "Help" %}</a></li>
           </ul>
             
-            <form class="search" action="/scratchr2/search/google_results/" method="get" class="search">
+            <form class="search" action="{{ settings.ROOT_URL}}/search/google_results/" method="get" class="search">
             <input type="submit" class="glass" value="">
         
 	<input id="search-input" type="text" placeholder="{% trans 'Search' %}" name="q">
@@ -197,13 +197,13 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
     <div id="footer">
       <div class="container">
 	      <ul class="clearfix" id="footer-menu">
-          <li><a href="/about">{% trans "About" %}</a></li>
-          <li><a href="/educators">{% trans "Educators" %}</a></li>
-          <li><a href="/parents">{% trans "Parents" %}</a></li>
-          <li><a href="/community_guidelines">{% trans "Community Guidelines" %}</a></li>
-          <li><a href="/DMCA">{% trans "DMCA" %}</a></li>
-          <li><a href="/contact-us/">{% trans "Contact Us" %}</a></li> 
-          <li><a href="/jobs">{% trans "Jobs" %}</a></li>
+          <li><a href="{{ settings.ROOT_URL}}/about">{% trans "About" %}</a></li>
+          <li><a href="{{ settings.ROOT_URL}}/educators">{% trans "Educators" %}</a></li>
+          <li><a href="{{ settings.ROOT_URL}}/parents">{% trans "Parents" %}</a></li>
+          <li><a href="{{ settings.ROOT_URL}}/community_guidelines">{% trans "Community Guidelines" %}</a></li>
+          <li><a href="{{ settings.ROOT_URL}}/DMCA">{% trans "DMCA" %}</a></li>
+          <li><a href="{{ settings.ROOT_URL}}/contact-us/">{% trans "Contact Us" %}</a></li> 
+          <li><a href="{{ settings.ROOT_URL}}/jobs">{% trans "Jobs" %}</a></li>
           <li><a href="http://codetolearn.org/">{% trans "Donate" %}</a></li> 
           <li>
             <form id="lang-dropdown" method="post" action="/i18n/setlang/">

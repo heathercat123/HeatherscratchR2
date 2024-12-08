@@ -5,6 +5,9 @@ from django.http import Http404
 from django.template import TemplateDoesNotExist
 
 # Create your views here.
+def index(request):
+	return render(request, 'help/index.html')
+
 def tips(request, tip):
 	if tip[-1] == '/':
 		tip = tip[:-1]
