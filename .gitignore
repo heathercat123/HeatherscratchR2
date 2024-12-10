@@ -3,6 +3,7 @@
 
 # Databases
 *.sqlite3
+*.sqlite3-journal
 
 # This is source code, we shouldn't include compiled files
 *.pyc
