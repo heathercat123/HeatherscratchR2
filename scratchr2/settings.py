@@ -21,7 +21,7 @@ WIKI_URL = WIKI_ROOT + '/wiki'
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True # Set to true for development
+DEBUG = False # Set to true for development
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
