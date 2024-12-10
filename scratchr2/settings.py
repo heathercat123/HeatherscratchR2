@@ -238,7 +238,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'pagination',
-    #'haystack', # For Solr
+    'haystack', # For Solr
 
     'djangobb_forum',
 	'base_comments',
@@ -283,16 +283,26 @@ LOGGING = {
 
 
 # Haystack settings
+# TODO: Install Solr
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://localhost:8983/solr/default',
-        'TIMEOUT': 60 * 5,
-        'INCLUDE_SPELLING': True,
-        'BATCH_SIZE': 100,
-        'EXCLUDED_INDEXES': ['thirdpartyapp.search_indexes.BarIndex'],
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+
+# For Solr:
+#
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+#         'URL': 'http://localhost:8983/solr/default',
+#         'TIMEOUT': 60 * 5,
+#         'INCLUDE_SPELLING': True,
+#         'BATCH_SIZE': 100,
+#         'EXCLUDED_INDEXES': ['thirdpartyapp.search_indexes.BarIndex'],
+#     },
+# }
+
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # Cache settings
