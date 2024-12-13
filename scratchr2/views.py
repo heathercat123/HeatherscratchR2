@@ -4,16 +4,19 @@ from django.utils import simplejson as json
 from django.conf import settings
 
 def error404(request, exception):
-	context = {}
-	return render(request, "404.html", context)
+	return render(request, "404.html")
 	
 def error500(request, exception):
-	context = {}
-	return render(request, "500.html", context)
+	return render(request, "500.html")
 	
 def homepage(request):
-	context = {}
-	return render(request, "homepage/index.html", context)
+	return render(request, "homepage/index.html")
+
+def forgot_settings_1(request):
+	return render(request, "heather/forgot_settings_1.html")
+
+def forgot_settings_2(request):
+	return render(request, "heather/forgot_settings_2.html")
 
 def csrf(request):
 	"""

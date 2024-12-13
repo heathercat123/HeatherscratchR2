@@ -6,7 +6,6 @@ import sys
 sys.path.append('../djangobb_forum')
 from djangobb_forum.scratchr2_settings import *
 from django_replicated.settings import *
-from database import *
 
 DEFAULT_CHARSET = 'utf-8'
 reload(sys)
@@ -20,9 +19,6 @@ WIKI_URL = WIKI_ROOT + '/wiki'
 # Django
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-DEBUG = False # Set to true for development
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -312,3 +308,16 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_FORM_CLASS = 'bugaga.forms.SignupForm'
+
+
+# Local settings must come last to overwrite any other settings
+FORGOT_SETTINGS = 0
+try:
+	from local_settings import *
+except:
+	try:
+		from database import *
+		FORGOT_SETTINGS = 1
+	except:
+		FORGOT_SETTINGS = 2
+		DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': 'db.sqlite3' } }

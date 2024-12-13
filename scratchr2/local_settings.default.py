@@ -12,3 +12,5 @@ DATABASES = {
         'NAME': 'slave2.db.sqlite3'
     }
 }
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG

@@ -26,14 +26,13 @@
 /.pydevproject
 .project
 .settings
-local_settings.py
 .env
 build/
 dist/
 
-# Contains database info
-# To set it up, rename database.default.py
-/scratchr2/database.py
+# Contains local settings such as database info
+# To set it up, rename local_settings.default.py
+/scratchr2/local_settings.py
 
 # Static files for Django Admin.
 # Not a part of this repository.
