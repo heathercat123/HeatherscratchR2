@@ -244,7 +244,7 @@ INSTALLED_APPS = (
 	'base_comments',
 	'accounts',
 	'lib',
-	'profiles',
+	'userprofiles',
 	'notifications',
 	'siteapi',
 	'projects',

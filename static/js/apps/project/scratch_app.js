@@ -382,23 +382,3 @@ function JSsetProjectStats(scripts, sprites, usesCloudData, oldScratchProjectUrl
 
 
 }
-/*
-     FILE ARCHIVED ON 16:24:10 Nov 23, 2014 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:28:29 Nov 05, 2024.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  captures_list: 0.588
-  exclusion.robots: 0.018
-  exclusion.robots.policy: 0.008
-  esindex: 0.052
-  cdx.remote: 12.614
-  LoadShardBlock: 382.507 (3)
-  PetaboxLoader3.datanode: 344.307 (4)
-  PetaboxLoader3.resolve: 250.525 (3)
-  load_resource: 269.8
-*/

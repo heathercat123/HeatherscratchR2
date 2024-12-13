@@ -26,7 +26,7 @@ urlpatterns = [
 		url(r'^admin/', admin.site.urls),
 		url(r'^discuss/', include('djangobb_forum.urls', namespace='djangobb')),
 		url(r'^accounts/', include('accounts.urls')),
-		url(r'^users/', include("profiles.urls")),
+		url(r'^users/', include("userprofiles.urls")),
 		url(r'^messages/', include("notifications.urls")),
 		url(r'^fragment/', include("fragment.urls")),
 		url(r'^projects/', include("projects.urls")),

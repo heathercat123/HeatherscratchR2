@@ -36,5 +36,5 @@ dist/
 /scratchr2/database.py
 
 # Static files for Django Admin.
-# Not a part of this project.
+# Not a part of this repository.
 /static/admin/
