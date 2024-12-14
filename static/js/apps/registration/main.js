@@ -322,7 +322,6 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
         this.$('.modal-footer .buttons-right .ajax-loader').show();
         var self = this;
 		this.onSubmit()
-		/*
         $.withCSRF(function(csrf) {
           $.ajax({
             data: JSON.stringify({
@@ -345,7 +344,6 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
             error: self.onError,
           });
         });
-		*/
         return;
       }
       this.nextStep();
@@ -355,9 +353,9 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
 
   onSubmit: function(response) {
     this.$('.modal-footer .buttons-right .ajax-loader').hide();
-    if (true) { // response[0].success
-      this.username = "Heathercat321"; // response[0].username
-      this.user_id = 1; // response[0].user_id
+    if (response[0].success) {
+      this.username = response[0].username;
+      this.user_id = response[0].user_id1;
       this.accountCreated = true;
       this.nextStep();
     } else {
