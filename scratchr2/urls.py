@@ -24,14 +24,17 @@ admin.autodiscover()
 
 urlpatterns = []
 if settings.FORGOT_SETTINGS == 1:
-	urlpatterns = [url(r'^', views.forgot_settings_1, name="forgot_settings_1")]
+	urlpatterns = [url(r'^', views.forgot_settings_1)]
 
 if settings.FORGOT_SETTINGS == 2:
-	urlpatterns = [url(r'^', views.forgot_settings_2, name="forgot_settings_2")]
+	urlpatterns = [url(r'^', views.forgot_settings_2)]
 
 urlpatterns += [
 	url(r'^scratchr2/', include([ # Remove this url block to make every /scratchr2 url be at root
 		url(r'^admin/', admin.site.urls),
+		url(r'^forgotsettings1/$', views.forgot_settings_1),
+		url(r'^forgotsettings2/$', views.forgot_settings_2),
+		
 		url(r'^discuss/', include('djangobb_forum.urls', namespace='djangobb')),
 		url(r'^accounts/', include('accounts.urls')),
 		url(r'^users/', include("userprofiles.urls")),

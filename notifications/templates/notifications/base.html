@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block css %}
+<!-- templates/notifications/notifications.html block css -->
+<link href="{{ STATIC_URL }}/css/pages/studio.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}/css/pages/notifications.css" rel="stylesheet">
+<!-- end block css -->
+{% endblock css %}
+
+{% block main-content %}
+<!-- templates/notifications/notifications.html block main-content -->
+
+<div class="cols">
+  <div class="col-4 left">
+    <div class="box v-tabs">
+      <div id="sidebar" class="tabs-index">
+        <ul data-control="tabs" id="tabs">
+          
+{% block studio-tabs %}{% endblock %}
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="box">
+      <div class="box-head">
+        
+<h2>{% trans 'Messages' %}</h2>
+
+      </div>
+      <div class="box-content v-tabs-content" id="main-content">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end block main-content -->
+{% endblock main-content %}
+
+{% block js %}
+<!-- templates/notifications/notifications.html block js -->
+
+
+<!-- end block js -->
+{% endblock js %}
+
+{% block js2 %}
+<script src="{{ STATIC_URL }}/js/views/tabs.js"></script>
+<script src="{{ STATIC_URL }}/js/views/mixins.js"></script>
+{% endblock js2 %}

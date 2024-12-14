@@ -1,0 +1,76 @@
+{% extends 'notifications/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="admin-notifications-list">
+<ul class="scratch-team">
+<li>class_scratch-team</li>
+</ul>
+</div>
+<div class="notification-feed">
+<ul class="scratch-team">
+<li>class_scratch-team</li>
+</ul>
+<ul class="social-notification-list">
+<li class="unread"> <span class="icon-xs black comment"></span> "icon-xs black comment" class_unread <span class="comment-snippet">class_comment-snippet</span> <a class="class_title" href="https://en.scratch-wiki.info/w/images/archive/20170909093445%21Messages_Page.PNG">title</a> <span class="time">span_time</span> <span class="delete">span_delete</span></li>
+<li class="read"> <span class="icon-xs black follower"></span> "icon-xs black follower" class_read <span class="comment-snippet">class_comment-snippet</span> <a class="class_title" href="https://en.scratch-wiki.info/w/images/archive/20170909093445%21Messages_Page.PNG">title</a> <span class="time">span_time</span> <span class="delete">span_delete</span></li>
+</ul>
+</div>
+
+<div style="margin: auto; text-align: center;">
+<h4>Icons Testing Area</h4>
+<br/>
+<p>"icon-xs white comment"</p>	<span class="icon-xs white comment"></span>
+<p>"icon-xs grey comment"</p>	<span class="icon-xs grey comment"></span>
+<p>"icon-xs black comment"</p>	<span class="icon-xs black comment"></span>
+<p>"icon-xs active comment"</p>	<span class="icon-xs active comment"></span>
+<p><br/></p>
+<p>"icon-xs white love"</p>	<span class="icon-xs white love"></span>
+<p>"icon-xs grey love"</p>	<span class="icon-xs grey love"></span>
+<p>"icon-xs black love"</p>	<span class="icon-xs black love"></span>
+<p>"icon-xs active love"</p>	<span class="icon-xs active love"></span>
+<p><br/></p>
+<p>"icon-xs white favorite"</p>	<span class="icon-xs white favorite"></span>
+<p>"icon-xs grey favorite"</p>	<span class="icon-xs grey favorite"></span>
+<p>"icon-xs black favorite"</p>	<span class="icon-xs black favorite"></span>
+<p>"icon-xs active favorite"</p>	<span class="icon-xs active favorite"></span>
+<p><br/></p>
+<p>"icon-xs white remix"</p>	<span class="icon-xs white remix"></span>
+<p>"icon-xs grey remix"</p>	<span class="icon-xs grey remix"></span>
+<p>"icon-xs black remix"</p>	<span class="icon-xs black remix"></span>
+<p>"icon-xs active remix"</p>	<span class="icon-xs active remix"></span>
+<p><br/></p>
+<p>"icon-xs white project"</p>	<span class="icon-xs white project"></span>
+<p>"icon-xs grey project"</p>	<span class="icon-xs grey project"></span>
+<p>"icon-xs black project"</p>	<span class="icon-xs black project"></span>
+<p><br/></p>
+<p>"icon-xs white follower"</p>	<span class="icon-xs white follower"></span>
+<p>"icon-xs grey follower"</p>	<span class="icon-xs grey follower"></span>
+<p>"icon-xs black follower"</p>	<span class="icon-xs black follower"></span>
+<p><br/></p>
+<p>"icon-xs white follow"</p>	<span class="icon-xs white follow"></span>
+<p>"icon-xs grey follow"</p>	<span class="icon-xs grey follow"></span>
+<p>"icon-xs black follow"</p>	<span class="icon-xs black follow"></span>
+<p><br/></p>
+<p>"icon-xs white gallery"</p>	<span class="icon-xs white gallery"></span>
+<p>"icon-xs grey gallery"</p>	<span class="icon-xs grey gallery"></span>
+<p>"icon-xs black gallery"</p>	<span class="icon-xs black gallery"></span>
+<p><br/></p>
+<p>"icon-xs white notification"</p>	<span class="icon-xs white notification"></span>
+<p>"icon-xs grey notification"</p>	<span class="icon-xs grey notification"></span>
+<p>"icon-xs black notification"</p>	<span class="icon-xs black notification"></span>
+<p><br/></p>
+<p>"icon-xs grey view"</p>	<span class="icon-xs grey view"></span>
+<p>"icon-xs black view"</p>	<span class="icon-xs black view"></span>
+<p><br/></p>
+</div>
+
+{% endblock %}
+
+{% block studio-tabs %}
+<!-- templates/mystuff/studio.html block studio-tabs -->
+<li class="active first" data-tab="all"><a href="#all">{% trans 'All Messages' %}</a></li>
+<li class="" data-tab="comments"><a href="#comments">{% trans 'Comments' %}</a></li>
+<li class="" data-tab="alerts"><a href="#alerts">{% trans 'Alerts' %}</a></li>
+<!-- end block studio-tabs -->
+{% endblock studio-tabs %}
