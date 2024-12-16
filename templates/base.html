@@ -123,10 +123,12 @@ Scratch.ALERT_MSGS = {
 Scratch.INIT_DATA.IS_IP_BANNED = false;
 
 Scratch.INIT_DATA.GLOBAL_URLS = {
-  'media_url': '/',
+  'media_url': '/scratchr2/',
   'static_url': '/scratchr2/static/',
-  'static_path': '/scratchr2/static'
+  'static_path': '/scratchr2/static',
 }
+
+Scratch.ROOT_URL = '{{ settings.ROOT_URL }}'
 
 Scratch.INIT_DATA.IS_SOCIAL = true;
 
@@ -157,7 +159,7 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
         <div class="container">
           <a href="{% url home %}" class="logo"><span class="scratch"></span></a>
           <ul class="site-nav">
-            <li><a id="project-create" href="{{ settings.ROOT_URL}}/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="{{ settings.ROOT_URL}}/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="{% url djangobb:index %}">{% trans "Discuss" %}</a></li><li class="last"><a href="{% url help:index %}">{% trans "Help" %}</a></li>
+            <li><a id="project-create" href="{{ settings.ROOT_URL}}/projects/editor/?tip_bar=getStarted">{% trans "Create" %}</a></li><li><a href="{{ settings.ROOT_URL}}/explore/?date=this_month">{% trans "Explore" %}</a></li><li><a href="{% url djangobb:index %}">{% trans "Discuss" %}</a></li><li class="last"><a href="{% url help %}">{% trans "Help" %}</a></li>
           </ul>
             
             <form class="search" action="{{ settings.ROOT_URL}}/search/google_results/" method="get" class="search">
@@ -233,12 +235,8 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
     
 
     
-
-<div class="modal hide fade in" id="modal-video">
-  <a href="#" data-dismiss="" class="close">x</a>
-  <iframe id="vimeo-vid" src="http://player.vimeo.com/video/65583694?title=0&amp;byline=0&amp;portrait=0" width="570" height="357" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
-
+{% block extra-modals %}
+{% endblock %}
 
 
     <script type="text/javascript" src="{{ STATIC_URL }}/js/jquery-ui.min.js"></script>

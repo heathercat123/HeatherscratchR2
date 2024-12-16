@@ -1,7 +1,7 @@
 function setCue(e, t, n) {
     $.withCSRF(function (r) {
         $.ajax({
-            url: "/site-api/users/set-template-cue/",
+            url: Scratch.ROOT_URL + "/site-api/users/set-template-cue/",
             type: "POST",
             data: JSON.stringify({
                 cue: e,
@@ -29,7 +29,7 @@ function openResendDialogue() {
             $("#email-resend-box form").submit(function (e) {
                 e.preventDefault(),
                 $.ajax({
-                    url: "/accounts/email_resend/",
+                    url: Scratch.ROOT_URL + "/accounts/email_resend/",
                     type: "POST",
                     data: {
                         email_address: $("#hidden-email-address").val()
@@ -56,7 +56,7 @@ function openResendDialogue() {
         }
     };
     $("#email-resend-box").length > 0 ? openDialogue("#email-resend-box", e) : $.ajax({
-        url: "/accounts/email_resend/"
+        url: Scratch.ROOT_URL + "/accounts/email_resend/"
     }).done(function (t) {
         var n = $(_.template(t)());
         openDialogue(n, e)
@@ -821,7 +821,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
             e.preventDefault(),
             $.ajax({
                 type: "POST",
-                url: "/accounts/logout/",
+                url: Scratch.ROOT_URL + "/accounts/logout/",
                 success: function (e, t, n) {
                     window.location.href = "/"
                 }
@@ -958,7 +958,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
         this.student_usernames = [];
         if (Scratch.INIT_DATA.LOGGED_IN_USER.model && Scratch.INIT_DATA.LOGGED_IN_USER.model.is_educator) {
             var n = new Scratch.UserThumbnailCollection([], {
-                url: "/site-api/classrooms/students/of/" + Scratch.INIT_DATA.LOGGED_IN_USER.model.username,
+                url: Scratch.ROOT_URL + "/site-api/classrooms/students/of/" + Scratch.INIT_DATA.LOGGED_IN_USER.model.username,
                 model: Scratch.UserThumbnail
             });
             this.gotStudents = $.Deferred();
@@ -1029,7 +1029,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
         return Scratch.INIT_DATA.ADMIN && (n = "with-deleted/"),
         t.page++,
         $.ajax({
-            url: "/site-api/comments/" + n + this.type + "/" + this.typeId + "/?page=" + this.page
+            url: Scratch.ROOT_URL + "/site-api/comments/" + n + this.type + "/" + this.typeId + "/?page=" + this.page
         }).done(function (n) {
             if (t.page > 40)
                 throw "more than 40 pages of comments shouldn't be happening";
@@ -1163,7 +1163,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
             type: "POST",
             dataType: "html",
             data: JSON.stringify(i),
-            url: "/site-api/comments/" + this.type + "/" + this.typeId + "/add/"
+            url: Scratch.ROOT_URL + "/site-api/comments/" + this.type + "/" + this.typeId + "/add/"
         }).done(function (e) {
             var n = $(e).filter("#error-data");
             if (n.length > 0) {
@@ -1218,7 +1218,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
         var t = $(e.currentTarget).closest("[data-comment-id]"),
         n = t.attr("data-comment-id");
         $.ajax({
-            url: "/site-api/comments/" + this.type + "/" + this.typeId + "/del/",
+            url: Scratch.ROOT_URL + "/site-api/comments/" + this.type + "/" + this.typeId + "/del/",
             type: "POST",
             dataType: "html",
             data: JSON.stringify({
@@ -1255,7 +1255,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
         n = t.attr("data-comment-id"),
         r = this;
         $.ajax({
-            url: "/site-api/comments/" + this.type + "/" + this.typeId + "/undel/",
+            url: Scratch.ROOT_URL + "/site-api/comments/" + this.type + "/" + this.typeId + "/undel/",
             type: "POST",
             dataType: "html",
             data: JSON.stringify({
@@ -1292,7 +1292,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
         var t = $(e.currentTarget).closest("[data-comment-id]"),
         n = t.attr("data-comment-id");
         $.ajax({
-            url: "/site-api/comments/" + this.type + "/" + this.typeId + "/rep/",
+            url: Scratch.ROOT_URL + "/site-api/comments/" + this.type + "/" + this.typeId + "/rep/",
             type: "POST",
             dataType: "html",
             data: JSON.stringify({
@@ -1309,7 +1309,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
         r = $(e.currentTarget).data("report-id"),
         i = this;
         $.ajax({
-            url: "/site-api/comments/" + this.type + "/" + this.typeId + "/unrep/",
+            url: Scratch.ROOT_URL + "/site-api/comments/" + this.type + "/" + this.typeId + "/unrep/",
             type: "POST",
             dataType: "html",
             data: JSON.stringify({
@@ -1394,7 +1394,7 @@ Scratch.Utils = {}, Scratch.Utils.viewMixin = function (e) {
             s.show()
         };
         o ? u() : a(),
-        $.post("/site-api/comments/" + this.type + "/" + this.typeId + "/toggle-comments/", {}).fail(function (e) {
+        $.post(Scratch.ROOT_URL + "/site-api/comments/" + this.type + "/" + this.typeId + "/toggle-comments/", {}).fail(function (e) {
             o ? (a(), t.removeAttr("checked")) : (u(), t.attr("checked", "checked"))
         })
     }
@@ -1684,11 +1684,11 @@ Scratch.ALERT_MSGS = {
     "studio-rate-limit": gettext_noop("Woah, seems like you're creating studios really quickly. Please wait a bit longer between creating studios."),
     "thumbnail-changed": gettext_noop("Thumbnail changed")
 }, Scratch.UserThumbnail = Scratch.Model.extend({
-    urlRoot: "/site-api/users/all/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/users/all/",
     slug: "username"
 }), Scratch.UserThumbnailCollection = Scratch.Collection.extend({
     model: Scratch.UserThumbnail,
-    urlRoot: "/site-api/users/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/users/",
     slug: "username",
     initialize: function (e, t) {
         this._meta = t,
@@ -1715,9 +1715,9 @@ Scratch.ALERT_MSGS = {
 }), Scratch.LoggedInUserModel = Scratch.UserThumbnail.extend({
     authenticated: !1,
     admin: !1,
-    loginUrl: "/login/",
-    loginRetryUrl: "/login_retry/",
-    currentLoginUrl: "/login/",
+    loginUrl: Scratch.ROOT_URL + "/login/",
+    loginRetryUrl: Scratch.ROOT_URL + "/login_retry/",
+    currentLoginUrl: Scratch.ROOT_URL + "/login/",
     initialize: function (e, t) {
         this.constructor.__super__.initialize.apply(this, [e, t]),
         this.authenticated = t.authenticated
@@ -1733,10 +1733,10 @@ Scratch.ALERT_MSGS = {
         this.authenticated = !1
     }
 }), Scratch.ProjectThumbnail = Scratch.Model.extend({
-    urlRoot: "/site-api/projects/all/"
+    urlRoot: Scratch.ROOT_URL + "/site-api/projects/all/"
 }), Scratch.ProjectThumbnailCollection = Scratch.Collection.extend({
     model: Scratch.ProjectThumbnail,
-    urlRoot: "/site-api/projects/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/projects/",
     initialize: function (e, t) {
         _.bindAll(this, "added"),
         _.bindAll(this, "deletedAll"),
@@ -1761,10 +1761,10 @@ Scratch.ALERT_MSGS = {
         this._meta[e] = t
     }
 }), Scratch.GalleryThumbnail = Scratch.Model.extend({
-    urlRoot: "/site-api/galleries/all/"
+    urlRoot: Scratch.ROOT_URL + "/site-api/galleries/all/"
 }), Scratch.GalleryThumbnailCollection = Scratch.Collection.extend({
     model: Scratch.GalleryThumbnail,
-    urlRoot: "/site-api/galleries/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/galleries/",
     initialize: function (e, t) {
         this._meta = t,
         this.options = t
@@ -1775,10 +1775,10 @@ Scratch.ALERT_MSGS = {
         this._meta[e] = t
     }
 }), Scratch.Comment = Scratch.Model.extend({
-    urlRoot: "/site-api/comments/"
+    urlRoot: Scratch.ROOT_URL + "/site-api/comments/"
 }), Scratch.CommentCollection = Scratch.Collection.extend({
     model: Scratch.Comment,
-    urlRoot: "/site-api/comments/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/comments/",
     initialize: function (e, t) {
         this.options = t
     },

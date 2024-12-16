@@ -5,7 +5,7 @@
  */
 ;
 function prettyDate(e) {
-    var t = new Date((e || "").replace(/-/g, "/scratchr2/").replace(/[TZ]/g, " ")),
+    var t = new Date((e || "").replace(/-/g, "/").replace(/[TZ]/g, " ")),
     n = new Date,
     r = (n.getTime() + n.getTimezoneOffset() * 6e4 - t.getTime()) / 1e3,
     i = Math.floor(r / 86400);
@@ -601,7 +601,7 @@ jQuery.migrateMute === void 0 && (jQuery.migrateMute = !0), function (e, t, n) {
         },
         url: function () {
             var e = T(this, "urlRoot") || T(this.collection, "url") || N();
-            return this.isNew() ? e : e + ("/scratchr2/" == e.charAt(e.length - 1) ? "" : "/scratchr2/") + encodeURIComponent(this.id)
+            return this.isNew() ? e : e + (Scratch.ROOT_URL == e.charAt(e.length - 1) ? "" : Scratch.ROOT_URL) + encodeURIComponent(this.id)
         },
         parse: function (e) {
             return e
@@ -929,7 +929,7 @@ jQuery.migrateMute === void 0 && (jQuery.migrateMute = !0), function (e, t, n) {
                 throw Error("Backbone.history has already been started");
             v.started = !0,
             this.options = s.extend({}, {
-                root: "/scratchr2/"
+                root: Scratch.ROOT_URL
             }, this.options, e),
             this._wantsHashChange = !1 !== this.options.hashChange,
             this._wantsPushState = !!this.options.pushState,
@@ -944,7 +944,7 @@ jQuery.migrateMute === void 0 && (jQuery.migrateMute = !0), function (e, t, n) {
             t = e.pathname == this.options.root;
             if (this._wantsHashChange && this._wantsPushState && !this._hasPushState && !t)
                 return this.fragment = this.getFragment(null, !0), window.location.replace(this.options.root + "#" + this.fragment), !0;
-            this._wantsPushState && this._hasPushState && t && e.hash && (this.fragment = this.getHash().replace(m, ""), window.history.replaceState({}, document.title, e.protocol + "/scratchr2//" + e.host + this.options.root + this.fragment));
+            this._wantsPushState && this._hasPushState && t && e.hash && (this.fragment = this.getHash().replace(m, ""), window.history.replaceState({}, document.title, e.protocol + Scratch.ROOT_URL + e.host + this.options.root + this.fragment));
             if (!this.options.silent)
                 return this.loadUrl()
         },
@@ -1336,7 +1336,7 @@ jQuery.migrateMute === void 0 && (jQuery.migrateMute = !0), function (e, t, n) {
                             m += b,
                             v = "";
                             break;
-                        case "/scratchr2/":
+                        case Scratch.ROOT_URL:
                             m += b,
                             v = "";
                             break;
@@ -2426,40 +2426,40 @@ function (e) {
 (window.jQuery);
 var scratch = scratch || {};
 scratch.users = scratch.users || {}, scratch.projects = scratch.projects || {}, scratch.comments = scratch.comments || {}, scratch.notifications = scratch.notifications || {}, scratch.users.URLS = {
-    edit: "/scratchr2/users/ajax/edit/user/",
-    add_favorite: "/scratchr2/users/ajax/<id>/add_to/favorites/",
-    add_following: "/scratchr2/users/ajax/<id>/add_to/following/",
-    list_followers: "/scratchr2/users/ajax/<username>/followers/",
-    list_following: "/scratchr2/users/ajax/<username>/following/",
-    list_curators: "/scratchr2/users/ajax/<galleryId>/curators/"
+    edit: Scratch.ROOT_URL + "/users/ajax/edit/user/",
+    add_favorite: Scratch.ROOT_URL + "/users/ajax/<id>/add_to/favorites/",
+    add_following: Scratch.ROOT_URL + "/users/ajax/<id>/add_to/following/",
+    list_followers: Scratch.ROOT_URL + "/users/ajax/<username>/followers/",
+    list_following: Scratch.ROOT_URL + "/users/ajax/<username>/following/",
+    list_curators: Scratch.ROOT_URL + "/users/ajax/<galleryId>/curators/"
 }, scratch.projects.URLS = {
-    edit: "/scratchr2/projects/ajax/edit/<id>/",
-    create: "/scratchr2/projects/ajax/create/",
-    add_love: "/scratchr2/projects/ajax/add_to/<id>/loves/",
-    action: "/scratchr2/projects/ajax/action/",
-    list_projects: "/scratchr2/projects/ajax/<id>/all/",
-    list_shared: "/scratchr2/projects/ajax/<id>/public/",
-    list_favorites: "/scratchr2/projects/ajax/<id>/favorites/",
-    list_loves: "/scratchr2/projects/ajax/<id>/loves/",
-    list_notshared: "/scratchr2/projects/ajax/<id>/private/",
-    list_trashed: "/scratchr2/projects/ajax/<id>/trashed/",
-    list_remixes: "/scratchr2/projects/ajax/<id>/remixes/",
-    list_in_gallery: "/scratchr2/projects/ajax/in-gallery/<id>/",
-    list_recent: "/scratchr2/projects/ajax/recent/"
+    edit: Scratch.ROOT_URL + "/projects/ajax/edit/<id>/",
+    create: Scratch.ROOT_URL + "/projects/ajax/create/",
+    add_love: Scratch.ROOT_URL + "/projects/ajax/add_to/<id>/loves/",
+    action: Scratch.ROOT_URL + "/projects/ajax/action/",
+    list_projects: Scratch.ROOT_URL + "/projects/ajax/<id>/all/",
+    list_shared: Scratch.ROOT_URL + "/projects/ajax/<id>/public/",
+    list_favorites: Scratch.ROOT_URL + "/projects/ajax/<id>/favorites/",
+    list_loves: Scratch.ROOT_URL + "/projects/ajax/<id>/loves/",
+    list_notshared: Scratch.ROOT_URL + "/projects/ajax/<id>/private/",
+    list_trashed: Scratch.ROOT_URL + "/projects/ajax/<id>/trashed/",
+    list_remixes: Scratch.ROOT_URL + "/projects/ajax/<id>/remixes/",
+    list_in_gallery: Scratch.ROOT_URL + "/projects/ajax/in-gallery/<id>/",
+    list_recent: Scratch.ROOT_URL + "/projects/ajax/recent/"
 }, scratch.comments.URLS = {
-    create_project_comment: "/scratchr2/comments/ajax/project/<parentId>/create/",
-    create_user_comment: "/scratchr2/comments/ajax/user/<parentId>/create/",
-    delete_project_comment: "/scratchr2/comments/ajax/project/delete/",
-    flag_project_comment: "/scratchr2/comments/ajax/project/flag/",
-    list_project: "/scratchr2/comments/ajax/project/<id>/",
-    list_user: "/scratchr2/comments/ajax/user/<id>/"
+    create_project_comment: Scratch.ROOT_URL + "/comments/ajax/project/<parentId>/create/",
+    create_user_comment: Scratch.ROOT_URL + "/comments/ajax/user/<parentId>/create/",
+    delete_project_comment: Scratch.ROOT_URL + "/comments/ajax/project/delete/",
+    flag_project_comment: Scratch.ROOT_URL + "/comments/ajax/project/flag/",
+    list_project: Scratch.ROOT_URL + "/comments/ajax/project/<id>/",
+    list_user: Scratch.ROOT_URL + "/comments/ajax/user/<id>/"
 }, scratch.notifications.URLS = {
-    list: "/scratchr2/messages/ajax/messages-list/",
-    unread: "/scratchr2/messages/ajax/get-message-count/",
-    clear: "/scratchr2/messages/ajax/messages-clear/",
-    "delete": "/scratchr2/messages/ajax/messages-delete/",
-    activity: "/scratchr2/messages/ajax/user-activity/",
-    "friends-activity": "/scratchr2/messages/ajax/friends-activity/"
+    list: Scratch.ROOT_URL + "/messages/ajax/messages-list/",
+    unread: Scratch.ROOT_URL + "/messages/ajax/get-message-count/",
+    clear: Scratch.ROOT_URL + "/messages/ajax/messages-clear/",
+    "delete": Scratch.ROOT_URL + "/messages/ajax/messages-delete/",
+    activity: Scratch.ROOT_URL + "/messages/ajax/user-activity/",
+    "friends-activity": Scratch.ROOT_URL + "/messages/ajax/friends-activity/"
 }, scratch.users.loadUsers = function (e, t, n, r) {}, scratch.users.loadCurators = function (e, t, n, r, i) {
     var s = scratch.users.URLS.list_curators.replace(/<galleryId>/, t);
     e.load(s, i)
@@ -2748,7 +2748,7 @@ scratch.users = scratch.users || {}, scratch.projects = scratch.projects || {}, 
         parse: function (t) {
             var n = e.trim(t);
             return n = n.replace(/\.\d+/, ""),
-            n = n.replace(/-/, "/scratchr2/").replace(/-/, "/scratchr2/"),
+            n = n.replace(/-/, "/").replace(/-/, "/"),
             n = n.replace(/T/, " ").replace(/Z/, " UTC"),
             n = n.replace(/([\+\-]\d\d)\:?(\d\d)/, " $1$2"),
             n = n.replace(/([\+\-]\d\d)$/, " $100"),

@@ -41,14 +41,15 @@ urlpatterns += [
 		url(r'^messages/', include("notifications.urls")),
 		url(r'^fragment/', include("fragment.urls")),
 		url(r'^projects/', include("projects.urls")),
-		url(r'^help/', include("help.urls", namespace='help')),
+		url(r'^help/', include("help.urls")),
+		url(r'^news/', include("news.urls")),
 		url(r'^mystuff/$', include("mystuff.urls")),
 
 		url(r'^$', views.homepage, name="home"),
 		url(r'^session/$', views.session, name="session"),
 		url(r'^jsi18n/$', javascript_catalog, name='javascript-catalog'),
+		url(r'^site-api/', include("siteapi.urls")),
 	])),
-	url(r'^site-api/', include("siteapi.urls")),
 	url(r'^csrf_token/$', views.csrf),
 	url(r'^i18n/', include('django.conf.urls.i18n')),
 ]

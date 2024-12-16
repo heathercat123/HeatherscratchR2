@@ -182,7 +182,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	
-    #DjangoBB_Forum part
+    # For DjangoBB
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'pagination.middleware.PaginationMiddleware',
@@ -234,7 +234,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'pagination',
-    'haystack', # For Solr
+    'haystack', # For Solr search
 
     'djangobb_forum',
 	'base_comments',
@@ -246,6 +246,7 @@ INSTALLED_APPS = (
 	'projects',
 	'help',
 	'mystuff',
+	'news',
 )
 
 # A sample logging configuration. The only tangible logging

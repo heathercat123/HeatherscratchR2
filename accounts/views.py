@@ -14,9 +14,8 @@ def check_username(request, username):
 		msg = "invalid username"
 	else:
 		msg = "valid username"
-	
-	jsonTuple = ('[{"username": ', username, ', "msg": ', msg, '}]')
-	json = '"'.join(jsonTuple)
+
+	json = '[{"username": "' + username + '", "msg": "' + msg + '"}]'
 	response = HttpResponse(json, content_type='application/json')
 	response['Content-Length'] = len(json)
 	return response

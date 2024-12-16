@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link href="{{ STATIC_URL }}/css/pages/news.css" rel="stylesheet">
+{% endblock %}
+
+{% block main-content %}
+  <div class="title"><img src="{{ STATIC_URL }}/images/scratchnews-logo_light.png"></div>
+  <div id="blog-feed">
+  </div>
+{% endblock %}
+
+{% block js2 %}
+<script>
+$.getScript('http://blogscratch.tumblr.com/api/read/json/?callback="displayPosts"'); 
+
+function displayPosts(data) {
+  var items = []
+  for (i=0; i < data['posts'].length; i++) {
+    items.push('<a name="' + data['posts'][i]['id'] + '"></a><div class="box"><div class="box-head"><h2>' + data['posts'][i]['regular-title'] + '</h2></div>');
+    //items.push('<span class="date">' + prettyDate(data['posts'][i]['date']) + '</span>');  #If we want it listed in fuzzy date
+    // check for span announcment, update or tip and the appropriate image if one of those three exist
+    formatted_body = (data['posts'][i]['regular-body']).replace(/\n\n/g, '<br />');
+    items.push('<div class="box-content"><p>' + formatted_body + '</p>');
+    items.push('<span class="date">' + $.format.date(new Date(data['posts'][i]['date']), "MMMM dd yyyy @hh:mma") + '</span></div></div>');
+}
+
+$('#blog-feed').addClass('posts').append(items.join(''));
+  // after posts are created in body, get the hash from url and scroll to that post
+  scrollToAnchor(window.location.hash.split('#')[1]);  
+}
+
+function scrollToAnchor(aid){
+  if (aid) {
+    var aTag = $("a[name='"+ aid +"']");
+    // subtract 50 because of fixed topnav height
+    $('html,body').animate({scrollTop: aTag.offset().top - 50},'slow');
+  }
+}
+
+</script>
+{% endblock %}

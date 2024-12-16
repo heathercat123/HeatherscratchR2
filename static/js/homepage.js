@@ -27,7 +27,7 @@ $(document).ready(function(){
 
   //$('#welcome-to-scratch [data-control="dismiss"]').on('click', dismissCue);
 
-  $.getScript('/external/blog/api/read/json/?callback="displayPosts"&num=3');
+  $.getScript('http://blogscratch.tumblr.com/api/read/json/?callback="displayPosts"&num=3');
 
     if (Scratch.INIT_DATA.ADMIN) {
       this.adminView = new Scratch.AdminPanel({model: {}, el: $('#admin-panel')}); 
@@ -38,7 +38,7 @@ function setCue() {
   $.ajax({
     url: '/site-api/users/set-template-cue/',
     type: 'POST',
-    data: JSON.stringify({'cue': 'welcome'}),
+    data: JSON.stringify({'cue': 'HP_welcome_to_scratch_off'}),
   })
   .done(function(data) {
     $('#welcome-to-scratch').hide("slide", { direction: "up", complete: function() {$('#whats-happenin').show() }}, 1000); 
@@ -50,7 +50,7 @@ function dismissCue() {
   $.ajax({
     url: '/site-api/users/dismiss-template-cue/',
     type: 'POST',
-    data: JSON.stringify({'cue': 'welcome'}),
+    data: JSON.stringify({'cue': 'HP_welcome_to_scratch_off'}),
   });
 }
 
@@ -70,7 +70,4 @@ function displayPosts(data) {
   $('<ul>', {
     html: items.join(''),
   }).addClass('event-list').appendTo('#news-feed'); 
-}
-
-
 }

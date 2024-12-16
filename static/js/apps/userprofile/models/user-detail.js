@@ -3,7 +3,7 @@
  */
 Scratch.UserProfile.UserDetail = Backbone.Model.extend({
   
-  urlRoot: '/users',
+  urlRoot: Scratch.ROOT_URL + '/users',
   
   initialize: function() {
     _.bindAll(this, 'copyAttributes');
@@ -18,7 +18,7 @@ Scratch.UserProfile.UserDetail = Backbone.Model.extend({
   /* get or set data from server */
   sync: function(method, model, options) { 
     // override backbone's REST based urls
-    options.url = '/users/ajax/edit/user/';
+    options.url = Scratch.ROOT_URL + '/users/ajax/edit/user/';
     Backbone.sync(method, model, options);
   },
   

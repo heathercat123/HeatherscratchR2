@@ -183,3 +183,10 @@ sessionStorage.removeItem("explore_by")
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}/js/homepage.js"></script>
 {% endblock %}
+
+{% block extra-modals %}
+<div class="modal hide fade in" id="modal-video">
+  <a href="#" data-dismiss="" class="close">x</a>
+  <iframe id="vimeo-vid" src="http://player.vimeo.com/video/65583694?title=0&amp;byline=0&amp;portrait=0" width="570" height="357" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+{% endblock %}
