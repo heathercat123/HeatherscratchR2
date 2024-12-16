@@ -1,0 +1,31 @@
+
+.help .thumb-with-subtext img {
+border:1px solid #ccc;
+padding:0px; 
+margin:0 auto; 
+width:158px
+}
+
+.help .thumb-with-subtext p {
+text-align:center;
+padding:0px; 
+margin:0 auto
+}
+
+.help .thumb-with-subtext{
+width:24%; 
+text-align:center; 
+margin:0 auto
+}
+
+td{
+padding-left:30px;
+padding-right:30px;
+padding-top:15px;
+}
+
+
+table{
+margin-left:auto; 
+margin-right:auto;
+}
