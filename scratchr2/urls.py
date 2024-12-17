@@ -41,7 +41,8 @@ urlpatterns += [
 		url(r'^messages/', include("notifications.urls")),
 		url(r'^fragment/', include("fragment.urls")),
 		url(r'^projects/', include("projects.urls")),
-		url(r'^help/', include("help.urls")),
+		url(r'^help/', include("info.urls")),
+		url(r'^info/', include("info.urls")),
 		url(r'^news/', include("news.urls")),
 		url(r'^mystuff/$', include("mystuff.urls")),
 

@@ -244,7 +244,7 @@ INSTALLED_APPS = (
 	'notifications',
 	'siteapi',
 	'projects',
-	'help',
+	'info',
 	'mystuff',
 	'news',
 )

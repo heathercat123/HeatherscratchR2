@@ -6,12 +6,12 @@ from django.template import TemplateDoesNotExist
 
 # Create your views here.
 def base(request):
-	return render(request, 'help/base.html')
+	return render(request, 'info/base.html')
 
 def tips(request, tip):
 	if tip[-1] == '/':
 		tip = tip[:-1]
 	try :
-		return render(request, 'help/tips/' + tip + '.html')
+		return render(request, 'info/tips/' + tip + '.html')
 	except TemplateDoesNotExist:
            raise Http404("Tip does not exist")
