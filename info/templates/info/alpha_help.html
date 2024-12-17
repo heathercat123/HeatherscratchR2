@@ -1,0 +1,116 @@
+{% extends 'info/layout/base.html' %}
+
+{% block main-content %}
+<p>We hope you enjoy previewing and experimenting with the Scratch 2.0 prototype!</p>
+<p>Go to <a href="{% url home %}#featured-projects">Featured Projects</a> and <a href="{% url home %}#featured-galleries">Featured Galleries</a> to try sample projects created in Scratch 2.0. </p>
+<p>Have feedback or suggestions? Fill out the <a href="https://docs.google.com/spreadsheet/viewform?formkey=dHZmUEtwaFY0eXR0YjllMWd2aENkbmc6MA" target="_blank">
+                         Survey on Scratch 2.0 Prototype
+
+                     </a>.</p>
+
+
+
+                     <h3>Inside the Studio</h3>
+
+
+
+                     <p>When viewing a project page, click <img src="{{ STATIC_URL }}/images/help/see-inside-button.png" style="vertical-align: middle; margin-top: -20px"> to view and play with the scripts. (If you are logged in, you can save your changes as a remix.) 
+
+
+
+                     <p>Click <strong>Create</strong> at the top of the page to make a new project.</p>
+
+                     <p class = "center"> <img src = "{{ STATIC_URL }}/images/help/Studio-tips-conference.jpg">
+
+
+                     </p>
+
+
+
+                     <h3>Questions about the Scratch 2.0 Prototype:</h3>
+
+
+
+                     <h4>What  are some new features I can try?</h4>
+
+                     <h5>New Programming Blocks</h5>
+
+                     <ul>
+								{# TODO: Switch from settings.ROOT_URL to reverse url match #}
+                           <li><strong>Camera sensing:</strong> If you have a webcam, you can experiment with <a href="{{ settings.ROOT_URL }}/galleries/171004/">video motion sensing</a>.</li>
+
+                             <li><strong>Switch scenes:</strong> New blocks make it easier to <a href="{{ settings.ROOT_URL }}/galleries/171003/">change scenes</a>.</li>
+
+                               <li><strong>Make a block:</strong> You can define your <a href="{{ settings.ROOT_URL }}/galleries/171005/">own blocks (or procedures)</a> to make your scripts more organized and modular. </li>
+
+                                 <li><strong>Create clones:</strong> You can now <a href="{{ settings.ROOT_URL }}/galleries/171006/">create clones</a> (duplicates) of sprites from within a script. Note: Clones disappear when you click stop.</li>
+
+                                   <li><strong>Cloud variables:</strong> Preview projects that use <a href="{{ settings.ROOT_URL }}/galleries/171008/">cloud variables</a> to store high scores, survey responses, and other data.</li>
+
+                               </ul>
+
+                               <p>To find out about the new blocks, click here: </br> <a href="http://info.scratch.mit.edu/prototype">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ STATIC_URL }}/images/help/how%20do%20I%20make%20blocks%20new%201.png" width="250px"></a>
+
+
+
+                               <h5>New Web Features</h5>
+
+                               <ul>
+
+                                     <li><strong>Improved browsing:</strong> You can more easily browse projects on the home page and Explore page.</li>
+
+                                       <li><strong>See inside projects:</strong> You can now see and experiment with a project's scripts, without downloading.</li>
+
+                                         <li><strong>Enhanced search:</strong> You can interact with projects within the Search results. </li>
+
+                                           <li><strong>Backpack:</strong> Easily copy sprites, scripts, and costumes between projects. (You can drag objects into the backpack only if you are logged in or in projects that were previously saved.)</li>
+
+                                       </ul>
+
+
+
+                                       <h4>Can I save projects that I create with the Scratch 2.0 prototype?</h4>
+
+                                       <p>If you are onsite at MIT during the Scratch@MIT conference <strong>and</strong> have an account on the current Scratch website (scratch.mit.edu) that was created before July 10th, you can use that account to login and save online. Note: anything created on this prototype site may be deleted before the official release of Scratch 2.0. 
+
+                                       <p>You can save any project you make in 2.0 on your computer or a USB drive to open later. Select "Save to local file" from the <strong>More</strong> menu inside the Studio.</p>
+                                    
+                                       
+
+
+                                       <h4>When will Scratch 2.0 be released?</h4>
+
+                                       <p>The official release of Scratch 2.0 is planned for sometime later this year. </p>
+
+
+
+                                       <h4>Will there be a version to use offline if I'm not connected to the Internet?</h4>
+
+                                       <p>Yes, we are planning to have a stand-alone version that will not require an Internet connection.</p>
+
+
+
+                                       <h4>How can I help test and improve Scratch 2.0?</h4>
+
+                                       <p>You can fill out the <a href="https://docs.google.com/spreadsheet/viewform?formkey=dHZmUEtwaFY0eXR0YjllMWd2aENkbmc6MA" target="new">Survey on Scratch 2.0 Prototype</a>, and add suggestions to the <a href="http://suggest.scratch.mit.edu">Scratch Suggestions</a> site. Later this summer, we will announce ways to get involved in testing the beta version of Scratch 2.0.</p>
+
+
+
+                                       <h4>Will projects that I've created in Scratch 1.4 be available on the new site?</h4>
+
+                                       <p>Yes, all projects from the previous site be available on the 2.0 site. Also, you will still be able to share projects from the 1.4 application onto the 2.0 site.</p>
+
+
+
+                                       <h4>What projects are included on the Scratch 2.0 prototype website?</h4>
+
+                                       <p>The prototype includes all projects that were shared to the Scratch website before July 10, 2012, plus some new Scratch 2.0 projects developed by the MIT Scratch Team and Scratch 2.0 testers. Note that any projects created in the current prototype may not be available on the official release.</p>
+
+
+
+                                       <p>To find out more about the plans for Scratch 2.0, please see the <a href="http://info.scratch.mit.edu/Scratch2FAQ">Scratch 2.0 FAQ</a></p>
+
+
+
+        </div>
+{% endblock %}
