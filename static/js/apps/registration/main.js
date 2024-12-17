@@ -45,7 +45,7 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
 
   initialize: function() {
     var self = this; 
-    this.$el.load('/scratchr2/accounts/modal-registration', function(data) {self.initData(data)});
+    this.$el.load(Scratch.ROOT_URL + '/accounts/modal-registration', function(data) {self.initData(data)});
     
     _.bindAll(this, 'onSubmit')
     _.bindAll(this, 'onError')
@@ -338,7 +338,7 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
               csrfmiddlewaretoken: csrf,
             }),
             dataType: 'json',
-            url: '/accounts/register_new_user/',
+            url: Scratch.ROOT_URL + '/accounts/register_new_user/',
             type: 'post',
             success: self.onSubmit,
             error: self.onError,

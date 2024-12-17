@@ -210,7 +210,7 @@
             sensor: ['slider', 'light', 'sound', 'resistance-A', 'resistance-B', 'resistance-C', 'resistance-D'],
             lessMore: ['>', '<']
         },
-        url: '/info/help/studio/tips/ext/PicoBoard/'
+        url: Scratch.ROOT_URL + '/info/help/studio/tips/ext/PicoBoard/'
     };
     ScratchExtensions.register('PicoBoard', descriptor, ext, {type: 'serial'});
 })({});

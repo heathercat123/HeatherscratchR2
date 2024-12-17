@@ -24,7 +24,7 @@ Scratch.Accounts.UpdateNewsletterSubscriptionView = Backbone.View.extend({
         }
 
         $.ajax({
-            url: '/accounts/settings/update_subscription/',
+            url: Scratch.ROOT_URL + '/accounts/settings/update_subscription/',
             type: 'POST',
             data: data_obj,
         }).done(function(data) {

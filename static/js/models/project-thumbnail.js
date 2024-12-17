@@ -12,7 +12,7 @@ Scratch.ProjectThumbnail = Scratch.Model.extend({
    * selected
    */
   // TODO: Remove the 'all' portion of the URL
-  urlRoot: '/site-api/projects/all/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/projects/all/',
 });
 
 
@@ -23,7 +23,7 @@ Scratch.ProjectThumbnail = Scratch.Model.extend({
 */
 Scratch.ProjectThumbnailCollection = Scratch.Collection.extend({
   model: Scratch.ProjectThumbnail,
-  urlRoot: '/site-api/projects/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/projects/',
   
   initialize: function(models, options) {
     // _meta contains 'filter, sort, collectionType, urlParams

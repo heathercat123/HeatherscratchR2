@@ -104,9 +104,9 @@ Scratch.AdminPanel = Backbone.View.extend({
     var self = this;
     var el = $(this.el);
       if(this.entity == 'users' || this.entity == 'scratch_admin') {
-          var ban_url = '/scratch_admin/ban/' + Scratch.INIT_DATA.PROFILE.model.username + '/';
-          var notify_url = '/scratch_admin/notify/' + Scratch.INIT_DATA.PROFILE.model.username + '/';
-          var note_url = '/scratch_admin/create_internal_note/' + Scratch.INIT_DATA.PROFILE.model.username + '/'
+          var ban_url = Scratch.ROOT_URL + '/scratch_admin/ban/' + Scratch.INIT_DATA.PROFILE.model.username + '/';
+          var notify_url = Scratch.ROOT_URL + '/scratch_admin/notify/' + Scratch.INIT_DATA.PROFILE.model.username + '/';
+          var note_url = Scratch.ROOT_URL + '/scratch_admin/create_internal_note/' + Scratch.INIT_DATA.PROFILE.model.username + '/'
           var states = {
               'active': 'activate',
               'banned': 'ban',
@@ -245,7 +245,7 @@ Scratch.AdminPanel = Backbone.View.extend({
               }
 
               var comments = null;
-              var url = '/scratch_admin/comments/' + Scratch.INIT_DATA.PROFILE.model.username + '/';
+              var url = Scratch.ROOT_URL + '/scratch_admin/comments/' + Scratch.INIT_DATA.PROFILE.model.username + '/';
               var nextPage = 1; // /comments/user/?page=1 is the next page after /comments/user/
               var hasMore = 1;
               $.ajax(url, {
@@ -301,7 +301,7 @@ Scratch.AdminPanel = Backbone.View.extend({
                         break;
                     }
                     var filterParam = deletedFilter ? ('&deleted=' + deletedFilter) : '';
-                    url = '/scratch_admin/comments/' + Scratch.INIT_DATA.PROFILE.model.username + '/?page=' + nextPage + filterParam;
+                    url = Scratch.ROOT_URL + '/scratch_admin/comments/' + Scratch.INIT_DATA.PROFILE.model.username + '/?page=' + nextPage + filterParam;
                     $.ajax(url, {
                       type: 'GET',
                       success: function (data) {
@@ -415,14 +415,14 @@ Scratch.AdminPanel = Backbone.View.extend({
           var mod_url;
           var notify_user;
           if(this.entity=='projects'){
-            mod_url = '/scratch_admin/moderate_project/' + Scratch.INIT_DATA.PROJECT.model.id + '/';
+            mod_url = Scratch.ROOT_URL + '/scratch_admin/moderate_project/' + Scratch.INIT_DATA.PROJECT.model.id + '/';
             notify_user = Scratch.INIT_DATA.PROJECT.model.creator;
           }else if(this.entity=='studios'){
-            mod_url = '/scratch_admin/moderate_gallery/' + Scratch.INIT_DATA.GALLERY.model.id + '/';
+            mod_url = Scratch.ROOT_URL + '/scratch_admin/moderate_gallery/' + Scratch.INIT_DATA.GALLERY.model.id + '/';
             notify_user = Scratch.INIT_DATA.GALLERY.model.owner;
           }
           self.model_data = data;
-          var notify_url = '/scratch_admin/notify/' + notify_user + '/';
+          var notify_url = Scratch.ROOT_URL + '/scratch_admin/notify/' + notify_user + '/';
           var mod_states = {
               safe: 'fe',
               notsafe: 'nfe',
@@ -505,7 +505,7 @@ Scratch.AdminPanel = Backbone.View.extend({
           el.find('.community-censored-section .status').on('click', function(evt) {
             var $target = $(evt.target);
             var uncensor = $target.data('control-action') === 'uncensor' ? 1:0;
-            $.post('/scratch_admin/community-uncensor/'+ $target.data('project-id'),
+            $.post(Scratch.ROOT_URL + '/scratch_admin/community-uncensor/'+ $target.data('project-id'),
             {'uncensor': uncensor}).done(function(projectVisibility) {
                 document.location.reload(true);
             });
@@ -520,21 +520,21 @@ Scratch.AdminPanel = Backbone.View.extend({
   },
 
   clear_avatar_image: function(e) {
-    var url = '/users/' + Scratch.INIT_DATA.PROFILE.model.username + '/clear_avatar_image/';
+    var url = Scratch.ROOT_URL + '/users/' + Scratch.INIT_DATA.PROFILE.model.username + '/clear_avatar_image/';
     $.ajax(url, {type: 'POST', dataType: 'json', success: function(data) {
       alert('done');
     }});
   },
 
   clear_studio_image: function(e) {
-    var url = '/studios/' + Scratch.INIT_DATA.GALLERY.model.id + '/clear_studio_image/';
+    var url = Scratch.ROOT_URL + '/studios/' + Scratch.INIT_DATA.GALLERY.model.id + '/clear_studio_image/';
     $.ajax(url, {type: 'POST', dataType: 'json', success: function(data) {
       alert('done');
     }});
   },
 
   clear_project_image: function(e) {
-    var url = '/projects/' + Scratch.INIT_DATA.PROJECT.model.id + '/clear_project_image/';
+    var url = Scratch.ROOT_URL + '/projects/' + Scratch.INIT_DATA.PROJECT.model.id + '/clear_project_image/';
     $.ajax(url, {type: 'POST', dataType: 'json', success: function(data) {
       alert('done');
     }});
@@ -542,7 +542,7 @@ Scratch.AdminPanel = Backbone.View.extend({
 
   toggleTeacherStatus: function(username, action) {
     var cb = cb || function(){};
-    var url = '/scratch_admin/profile/' + username + '/toggle_teacher/';
+    var url = Scratch.ROOT_URL + '/scratch_admin/profile/' + username + '/toggle_teacher/';
     $.ajax(url, {
       type: 'POST',
       data: {action: action},
@@ -614,7 +614,7 @@ Scratch.AdminPanel = Backbone.View.extend({
       id = Scratch.INIT_DATA.GALLERY.model.id;
     }
 
-    $.ajax('/scratch_admin/feature/' + this.entity + '/' + id, {
+    $.ajax(Scratch.ROOT_URL + '/scratch_admin/feature/' + this.entity + '/' + id, {
       type: 'POST',
       data: {},
       dataType: 'json',
@@ -637,7 +637,7 @@ Scratch.AdminPanel = Backbone.View.extend({
       id = Scratch.INIT_DATA.GALLERY.model.id;
     }
 
-    $.ajax('/scratch_admin/defeature/' + this.entity + '/' + id, {
+    $.ajax(Scratch.ROOT_URL + '/scratch_admin/defeature/' + this.entity + '/' + id, {
       type: 'POST',
       data: {},
       dataType: 'json',
@@ -665,7 +665,7 @@ Scratch.AdminPanel = Backbone.View.extend({
         post_data['message'] = message;
       }
 
-      $.ajax('/scratch_admin/moderate_project_remixes/' + Scratch.INIT_DATA.PROJECT.model.id + '/', {
+      $.ajax(Scratch.ROOT_URL + '/scratch_admin/moderate_project_remixes/' + Scratch.INIT_DATA.PROJECT.model.id + '/', {
         type: 'POST',
         data: post_data,
         dataType: 'json',
@@ -706,7 +706,7 @@ Scratch.AdminPanel = Backbone.View.extend({
   make_design_studio: function(e) {
     var id = Scratch.INIT_DATA.GALLERY.model.id;
 
-    $.ajax('/scratch_admin/make_design_studio/' + this.entity + '/' + id, {
+    $.ajax(Scratch.ROOT_URL + '/scratch_admin/make_design_studio/' + this.entity + '/' + id, {
       type: 'POST',
       data: {},
       dataType: 'json',
@@ -739,7 +739,7 @@ Scratch.AdminPanel = Backbone.View.extend({
 
   confirmUserEmail: function(e) {
     var button = $(e.target);
-    $.ajax('/scratch_admin/profile/' + $(e.target).data('controlUser') + '/confirm_email/', {
+    $.ajax(Scratch.ROOT_URL + '/scratch_admin/profile/' + $(e.target).data('controlUser') + '/confirm_email/', {
       type: 'POST',
       data: {'confirmed_email': true},
       dataType: 'json',

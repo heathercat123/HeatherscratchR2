@@ -17,8 +17,8 @@ $(function () {
 });
 
 Scratch.Registration.StudentRegistrationView=Scratch.Registration.RegistrationView.extend({
-    postUrl: '/classes/register_new_student/',
-    modalUrl: '/classes/modal-registration/',
+    postUrl: Scratch.ROOT_URL + '/classes/register_new_student/',
+    modalUrl: Scratch.ROOT_URL + '/classes/modal-registration/',
 
     submit: function(e) {
       if (this.step !== 0) {

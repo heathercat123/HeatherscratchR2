@@ -112,26 +112,26 @@ Scratch.Models = Scratch.Models || {}, Scratch.Models.TipBar = Backbone.Model.ex
         stackPos: 0,
         urlStack: [],
         tipsMap: {
-            home: "/help/studio/tips/home",
-            scratchUI: "/help/studio/tips/ui/editor-map",
-            paint: "/help/studio/tips/ui/image-editor-map",
-            getStarted: "/help/studio/tips/howto/get-started-1",
-            "changeXposBy:": "/help/studio/tips/blocks/change-x",
-            "changeYposBy:": "/help/studio/tips/blocks/change-y",
-            heading: "/help/studio/tips/blocks/direction",
-            "glideSecs:toX:y:elapsed:from:": "/help/studio/tips/blocks/glide",
-            "gotoSpriteOrMouse:": "/help/studio/tips/blocks/go-to",
-            "gotoX:y:": "/help/studio/tips/blocks/go-to-xy",
-            bounceOffEdge: "/help/studio/tips/blocks/if-on-edge-bounce",
-            "forward:": "/help/studio/tips/blocks/move-steps",
-            "heading:": "/help/studio/tips/blocks/point-direction",
-            "pointTowards:": "/help/studio/tips/blocks/point-towards",
-            "say:": "/help/studio/tips/blocks/say",
-            "say:duration:elapsed:from:": "/help/studio/tips/blocks/say-for-seconds",
-            "turnLeft:": "/help/studio/tips/blocks/turn-left",
-            "turnRight:": "/help/studio/tips/blocks/turn-right",
-            "xpos:": "/help/studio/tips/blocks/set-x",
-            "ypos:": "/help/studio/tips/blocks/set-y"
+            home: Scratch.ROOT_URL + "/help/studio/tips/home",
+            scratchUI: Scratch.ROOT_URL + "/help/studio/tips/ui/editor-map",
+            paint: Scratch.ROOT_URL + "/help/studio/tips/ui/image-editor-map",
+            getStarted: Scratch.ROOT_URL + "/help/studio/tips/howto/get-started-1",
+            "changeXposBy:": Scratch.ROOT_URL + "/help/studio/tips/blocks/change-x",
+            "changeYposBy:": Scratch.ROOT_URL + "/help/studio/tips/blocks/change-y",
+            heading: Scratch.ROOT_URL + "/help/studio/tips/blocks/direction",
+            "glideSecs:toX:y:elapsed:from:": Scratch.ROOT_URL + "/help/studio/tips/blocks/glide",
+            "gotoSpriteOrMouse:": Scratch.ROOT_URL + "/help/studio/tips/blocks/go-to",
+            "gotoX:y:": Scratch.ROOT_URL + "/help/studio/tips/blocks/go-to-xy",
+            bounceOffEdge: Scratch.ROOT_URL + "/help/studio/tips/blocks/if-on-edge-bounce",
+            "forward:": Scratch.ROOT_URL + "/help/studio/tips/blocks/move-steps",
+            "heading:": Scratch.ROOT_URL + "/help/studio/tips/blocks/point-direction",
+            "pointTowards:": Scratch.ROOT_URL + "/help/studio/tips/blocks/point-towards",
+            "say:": Scratch.ROOT_URL + "/help/studio/tips/blocks/say",
+            "say:duration:elapsed:from:": Scratch.ROOT_URL + "/help/studio/tips/blocks/say-for-seconds",
+            "turnLeft:": Scratch.ROOT_URL + "/help/studio/tips/blocks/turn-left",
+            "turnRight:": Scratch.ROOT_URL + "/help/studio/tips/blocks/turn-right",
+            "xpos:": Scratch.ROOT_URL + "/help/studio/tips/blocks/set-x",
+            "ypos:": Scratch.ROOT_URL + "/help/studio/tips/blocks/set-y"
         }
     }
 }), Scratch.Views = Scratch.Views || {}, Scratch.Views.TipBar = Backbone.View.extend({
@@ -463,7 +463,7 @@ Scratch.FlashAppView = Backbone.View.extend({
         if (e == null || e.length == 0)
             return;
         $.ajax({
-            url: "/internalapi/project/" + this.model.get("id") + "/set/",
+            url: Scratch.ROOT_URL + "/internalapi/project/" + this.model.get("id") + "/set/",
             type: "POST",
             async: !1,
             data: e
@@ -671,7 +671,7 @@ Scratch.Project = Scratch.Project || {}, Scratch.Project.EditTitle = Scratch.Edi
         galleryId = $(e.target).parent("li").data("studio-id"),
         $(e.target).addClass("loading"),
         $.ajax({
-            url: "/site-api/projects/in/" + galleryId + "/add/?pks=" + this.projectId,
+            url: Scratch.ROOT_URL + "/site-api/projects/in/" + galleryId + "/add/?pks=" + this.projectId,
             type: "PUT"
         }).done(function (t) {
             $(e.target).removeClass("checkmark").addClass("checkmark-checked")
@@ -858,11 +858,11 @@ Scratch.Project = Scratch.Project || {}, Scratch.Project.EditTitle = Scratch.Edi
         this.addTo.toggleOpen()
     }
 }), Scratch.Tag = Scratch.Model.extend({
-    urlRoot: "/site-api/tags/all/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/tags/all/",
     slug: "name"
 }), Scratch.TagCollection = Scratch.Collection.extend({
     model: Scratch.Tag,
-    urlRoot: "/site-api/tags/",
+    urlRoot: Scratch.ROOT_URL + "/site-api/tags/",
     slug: "name",
     initialize: function (e, t) {
         this.options = t

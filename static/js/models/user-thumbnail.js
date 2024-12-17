@@ -6,7 +6,7 @@ Scratch.UserThumbnail = Scratch.Model.extend({
    * username 
    * thumbnail 
    */
-  urlRoot: '/site-api/users/all/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/users/all/',
   slug: 'username', 
  /*
   parse: function(response) {
@@ -25,7 +25,7 @@ Scratch.UserThumbnail = Scratch.Model.extend({
 */
 Scratch.UserThumbnailCollection = Scratch.Collection.extend({
   model: Scratch.UserThumbnail,
-  urlRoot: '/site-api/users/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/users/',
   slug: 'username', 
 
 
@@ -84,9 +84,9 @@ Scratch.LoggedInUserModel = Scratch.UserThumbnail.extend({
   authenticated: false,
   admin: false, /* TODO: this might not be a good idea */
   
-  loginUrl: '/login/',
-  loginRetryUrl: '/login_retry/',
-  currentLoginUrl: '/login/',
+  loginUrl: Scratch.ROOT_URL + '/login/',
+  loginRetryUrl: Scratch.ROOT_URL + '/login_retry/',
+  currentLoginUrl: Scratch.ROOT_URL + '/login/',
   
   initialize: function(attributes, options) {
     this.constructor.__super__.initialize.apply(this, [attributes, options])

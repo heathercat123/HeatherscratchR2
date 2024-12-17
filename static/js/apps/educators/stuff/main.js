@@ -294,7 +294,7 @@ Scratch.EducatorStuff.Controller = {
     this.currentView.render();
   },
   getStudentNames: function(model){
-    var url = '/site-api/classrooms/student_names/' + model.id;
+    var url = Scratch.ROOT_URL + '/site-api/classrooms/student_names/' + model.id;
     $.ajax({
       url: url,
       success: function (response) {
@@ -304,7 +304,7 @@ Scratch.EducatorStuff.Controller = {
     });
   },
   getClassroomNames: function(model){
-    var url = '/site-api/classrooms/all/names/';
+    var url = Scratch.ROOT_URL + '/site-api/classrooms/all/names/';
     $.ajax({
       url: url,
       success: function (response) {

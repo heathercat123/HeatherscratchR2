@@ -2,14 +2,14 @@
 
 Scratch.GalleryThumbnail = Scratch.Model.extend({
 
-  urlRoot: '/site-api/galleries/all/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/galleries/all/',
 
 });
 
 
 Scratch.GalleryThumbnailCollection = Scratch.Collection.extend({
   model: Scratch.GalleryThumbnail,
-  urlRoot: '/site-api/galleries/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/galleries/',
   
   initialize: function(models, options) {
     // _meta contains 'filter, sort, collectionType, urlParams

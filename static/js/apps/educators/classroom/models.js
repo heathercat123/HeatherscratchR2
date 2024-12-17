@@ -1,5 +1,5 @@
 Scratch.Classroom.ClassroomModel = Scratch.UserThumbnail.extend({
-  urlRoot: '/site-api/classrooms/all/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/classrooms/all/',
   slug: 'id',
 
   initialize: function(attributes, options) {

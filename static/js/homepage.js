@@ -36,7 +36,7 @@ $(document).ready(function(){
 function setCue() {
   console.log('setting');
   $.ajax({
-    url: '/site-api/users/set-template-cue/',
+    url: Scratch.ROOT_URL + '/site-api/users/set-template-cue/',
     type: 'POST',
     data: JSON.stringify({'cue': 'HP_welcome_to_scratch_off'}),
   })
@@ -48,7 +48,7 @@ function setCue() {
 function dismissCue() {
   console.log('dismissing');
   $.ajax({
-    url: '/site-api/users/dismiss-template-cue/',
+    url: Scratch.ROOT_URL + '/site-api/users/dismiss-template-cue/',
     type: 'POST',
     data: JSON.stringify({'cue': 'HP_welcome_to_scratch_off'}),
   });

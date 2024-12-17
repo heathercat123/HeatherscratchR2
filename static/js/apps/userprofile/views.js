@@ -380,7 +380,7 @@ Scratch.UserProfile.ScratcherPromotionModal = Backbone.View.extend({
         }
     },
     agree: function() {
-        $.get('/users/'+ Scratch.INIT_DATA.PROFILE.model.username +'/promote-to-scratcher/').success(_.bind(function() {
+        $.get(Scratch.ROOT_URL + '/users/'+ Scratch.INIT_DATA.PROFILE.model.username +'/promote-to-scratcher/').success(_.bind(function() {
             $('#scratcher-promotion').remove(); // remove link to become scratcher
             $('#profile-data .profile-details .group').html('Scratcher');
 
@@ -402,7 +402,7 @@ Scratch.UserProfile.ScratcherPromotion = Backbone.View.extend({
     },
     showModal: function(evt) {
         evt.preventDefault();
-        $.get('/users/'+ Scratch.INIT_DATA.PROFILE.model.username +'/scratcher-promotion/').success(function(html) {
+        $.get(Scratch.ROOT_URL + '/users/'+ Scratch.INIT_DATA.PROFILE.model.username +'/scratcher-promotion/').success(function(html) {
             if ($('#scratcher-promotion-modal').html() === '') {
                 // if we already got the popup, don't rebind
                 $('#scratcher-promotion-modal').html(html).modal();

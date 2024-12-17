@@ -345,7 +345,7 @@ Scratch.LogoutView = Backbone.View.extend({
     e.preventDefault();
     $.ajax({
       type: "POST",
-      url: '/accounts/logout/',
+      url: Scratch.ROOT_URL + '/accounts/logout/',
       success: function (data, status, xhr) {
         window.location.href = '/';
       }
@@ -555,7 +555,7 @@ Scratch.Comments = Backbone.View.extend({
     this.student_usernames = [];
     if (Scratch.INIT_DATA.LOGGED_IN_USER.model && Scratch.INIT_DATA.LOGGED_IN_USER.model.is_educator) {
       var students = new Scratch.UserThumbnailCollection([], {
-        url: '/site-api/classrooms/students/of/' + Scratch.INIT_DATA.LOGGED_IN_USER.model.username,
+        url: Scratch.ROOT_URL + '/site-api/classrooms/students/of/' + Scratch.INIT_DATA.LOGGED_IN_USER.model.username,
         model: Scratch.UserThumbnail
       });
       this.gotStudents = $.Deferred();
@@ -649,7 +649,7 @@ Scratch.Comments = Backbone.View.extend({
 
     self.page++;
     return $.ajax({
-      url: '/site-api/comments/' + admin_comment_path + this.type + '/' + this.typeId + '/?page=' + this.page,
+      url: Scratch.ROOT_URL + '/site-api/comments/' + admin_comment_path + this.type + '/' + this.typeId + '/?page=' + this.page,
     }).done(function(data) {
       // after comments are loaded scroll to comment if defined
       if(self.page > 40) throw "more than 40 pages of comments shouldn't be happening";
@@ -845,7 +845,7 @@ Scratch.Comments = Backbone.View.extend({
         type: "POST",
         dataType: 'html',
         data: JSON.stringify(commentData),
-        url: '/site-api/comments/' + this.type + '/' + this.typeId + '/add/',
+        url: Scratch.ROOT_URL + '/site-api/comments/' + this.type + '/' + this.typeId + '/add/',
     }).done(function(data) {
         // if there is a comment error, get data about the error and show a message
         var errorTag = $(data).filter('#error-data');
@@ -923,7 +923,7 @@ Scratch.Comments = Backbone.View.extend({
         cid = $comment.attr('data-comment-id');
 
     $.ajax({
-      url: '/site-api/comments/' + this.type + '/' + this.typeId + '/del/',
+      url: Scratch.ROOT_URL + '/site-api/comments/' + this.type + '/' + this.typeId + '/del/',
       type: 'POST',
       dataType: 'html',
       data: JSON.stringify({id: cid}),
@@ -965,7 +965,7 @@ Scratch.Comments = Backbone.View.extend({
         self=this;
 
     $.ajax({
-       url: '/site-api/comments/' + this.type + '/' + this.typeId + '/undel/',
+       url: Scratch.ROOT_URL + '/site-api/comments/' + this.type + '/' + this.typeId + '/undel/',
        type: 'POST',
        dataType: 'html',
        data: JSON.stringify({id: cid}),
@@ -1013,7 +1013,7 @@ Scratch.Comments = Backbone.View.extend({
 
 
      $.ajax({
-      url: '/site-api/comments/' + this.type + '/' + this.typeId + '/rep/',
+      url: Scratch.ROOT_URL + '/site-api/comments/' + this.type + '/' + this.typeId + '/rep/',
       type: 'POST',
       dataType: 'html',
       data: JSON.stringify({id: cid}),
@@ -1032,7 +1032,7 @@ Scratch.Comments = Backbone.View.extend({
         self=this;
 
     $.ajax({
-       url: '/site-api/comments/' + this.type + '/' + this.typeId + '/unrep/',
+       url: Scratch.ROOT_URL + '/site-api/comments/' + this.type + '/' + this.typeId + '/unrep/',
        type: 'POST',
        dataType: 'html',
        data: JSON.stringify({id: cid, rid: rid }),
@@ -1149,7 +1149,7 @@ Scratch.Comments = Backbone.View.extend({
         commentingEnabled();
     }
     $.post(
-        '/site-api/comments/' + this.type + '/' + this.typeId + '/toggle-comments/',
+        Scratch.ROOT_URL + '/site-api/comments/' + this.type + '/' + this.typeId + '/toggle-comments/',
         {}
     ).fail(function(data) {
         // reset things back to correct state

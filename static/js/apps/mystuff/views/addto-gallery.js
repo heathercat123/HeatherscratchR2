@@ -22,7 +22,7 @@ Scratch.MyStuff.AddToGalleryItemView = Backbone.View.extend({
     var self = this;
     projectId = $(this.el).closest('[data-content="addto-gallery-list"]').data('project-id');
     $.ajax({
-      url: '/site-api/projects/in/' + this.model.id + '/add/?pks=' + projectId, 
+      url: Scratch.ROOT_URL + '/site-api/projects/in/' + this.model.id + '/add/?pks=' + projectId, 
       type: 'PUT',
     })
     .done(function(data) {

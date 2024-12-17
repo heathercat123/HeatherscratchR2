@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 	function getSpriteData(md5){ //get sprite data
 		$.ajax({
-			url:'/internalapi/asset/'+md5+'/get/',
+			url: Scratch.ROOT_URL + '/internalapi/asset/'+md5+'/get/',
 			context: {md5 : md5}, 
 			dataType: 'json',
 			success: function(data) {
@@ -113,9 +113,9 @@ $(document).ready(function() {
 			  	var html = "<div class='media thumbnail'>";
 				for (i in curr_metadata.costumes){
 					if (i==0){ 
-						html += "<img class='' src='/internalapi/asset/"+curr_metadata.costumes[0]+"/get/'>";
+						html += "<img class='' src='" + Scratch.ROOT_URL + "/internalapi/asset/"+curr_metadata.costumes[0]+"/get/'>";
 					}else{
-						html+="<img class='hidden' src='/internalapi/asset/"+curr_metadata.costumes[i]+"/get/'>";
+						html+="<img class='hidden' src='" + Scratch.ROOT_URL + "/internalapi/asset/"+curr_metadata.costumes[i]+"/get/'>";
 					}
 				}
 				html+='<div class="arrows"><a id="left" class="carousel-control left arrow-left off" href="#" data-slide="prev">‹</a>\<a id="right" class="carousel-control right arrow-right off" href="#" data-slide="next">›</a></div>';
@@ -141,7 +141,7 @@ $(document).ready(function() {
 				$("#"+md5_selector).append(html);
 				break;
 			default:
-				$("#"+md5_selector).append("<div class='media thumbnail'><img class='' src='/internalapi/asset/"+md5+"/get/'></div><div class='name titlecase'>"+trimTitle(curr_metadata.name,15)+"</div>");  
+				$("#"+md5_selector).append("<div class='media thumbnail'><img class='' src='" + Scratch.ROOT_URL + "/internalapi/asset/"+md5+"/get/'></div><div class='name titlecase'>"+trimTitle(curr_metadata.name,15)+"</div>");  
 		}
 	}
 	
@@ -332,14 +332,14 @@ $(document).ready(function() {
 		$(".pause-icon").addClass("hidden")
 		$("#"+md5_selector+ " .play-icon").addClass("hidden")
 		$("#"+md5_selector+ " .pause-icon").removeClass("hidden")
-		sound = new Audio("/internalapi/asset/"+md5+"/get/");
+		sound = new Audio(Scratch.ROOT_URL + "/internalapi/asset/"+md5+"/get/");
 		sound.play()
 		/*
 var audio_type = md5.substring(md5.indexOf(".")+1)
 		if (audio_type=="mp3"){
-			$("#sound").html("<audio id='audio-player' name='audio-player' type='audio/mpeg3' src='/internalapi/asset/"+md5+"/get/'>")
+			$("#sound").html("<audio id='audio-player' name='audio-player' type='audio/mpeg3' src=Scratch.ROOT_URL+'/internalapi/asset/"+md5+"/get/'>")
 		}else if (audio_type=="wav"){
-			$("#sound").html("<audio id='audio-player' name='audio-player' type='audio/wav' src='/internalapi/asset/"+md5+"/get/'>")
+			$("#sound").html("<audio id='audio-player' name='audio-player' type='audio/wav' src=Scratch.ROOT_URL+'/internalapi/asset/"+md5+"/get/'>")
 		}
 		setTimeout(function(){ $("#audio-player")[0].play()},300)
 		$("#audio-player").bind('ended', function(){

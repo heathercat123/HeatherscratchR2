@@ -1,4 +1,4 @@
-$.getJSON("/statistics/data/daily/", function( data ) {
+$.getJSON(Scratch.ROOT_URL + "/statistics/data/daily/", function( data ) {
   $(".daily-timestamp").text($.format.date(new Date(data['_TS']*1000), "dd/MM/yyyy"));
 
   $("#numproject").text(data['PROJECT_COUNT'].toLocaleString());
@@ -7,7 +7,7 @@ $.getJSON("/statistics/data/daily/", function( data ) {
   $("#numstudios").text(data['STUDIO_COUNT'].toLocaleString());
 });
 
-$.getJSON("/statistics/data/monthly-ga/", function( data ) {
+$.getJSON(Scratch.ROOT_URL + "/statistics/data/monthly-ga/", function( data ) {
   $(".ga-monthly-timestamp").text($.format.date(new Date(data['_TS']*1000), "MMM yyyy"));
 
   $("#ga-pageviews").text(parseInt(data['pageviews']).toLocaleString());
@@ -16,7 +16,7 @@ $.getJSON("/statistics/data/monthly-ga/", function( data ) {
 });
 
 
-$.getJSON("/statistics/data/monthly/", function( data ) {
+$.getJSON(Scratch.ROOT_URL + "/statistics/data/monthly/", function( data ) {
   $(".monthly-timestamp").text($.format.date(new Date(data['_TS']*1000), "MMM yyyy"));
 
   var activity_data = data['activity_data'];

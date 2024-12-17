@@ -351,7 +351,7 @@
             lessMore: ['<', '>'],
             eNe: ['=', 'not =']
         },
-        url: '/info/help/studio/tips/ext/LEGO WeDo/'
+        url: Scratch.ROOT_URL + '/info/help/studio/tips/ext/LEGO WeDo/'
     };
     ScratchExtensions.register('LEGO WeDo', descriptor, ext, {type: 'hid', vendor: 1684, product: 3});
 })({});

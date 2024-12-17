@@ -1,10 +1,10 @@
 Scratch.Comment = Scratch.Model.extend({
-  urlRoot: '/site-api/comments/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/comments/',
 }); 
 
 Scratch.CommentCollection = Scratch.Collection.extend({
   model: Scratch.Comment,
-  urlRoot: '/site-api/comments/',
+  urlRoot: Scratch.ROOT_URL + '/site-api/comments/',
 
   initialize: function(models, options) {
     this.options = options;

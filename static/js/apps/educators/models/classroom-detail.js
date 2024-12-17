@@ -3,7 +3,7 @@
  */
 Scratch.Classroom.ClassroomDetail = Backbone.Model.extend({
   
-  urlRoot: '/classes',
+  urlRoot: Scratch.ROOT_URL + '/classes',
   
   initialize: function() {
     _.bindAll(this, 'copyAttributes');
@@ -18,7 +18,7 @@ Scratch.Classroom.ClassroomDetail = Backbone.Model.extend({
   /* get or set data from server */
   sync: function(method, model, options) {
     // override backbone's REST based urls
-    options.url = '/classes/ajax/edit/classroom/';
+    options.url = Scratch.ROOT_URL + '/classes/ajax/edit/classroom/';
     Backbone.sync(method, model, options);
   },
   

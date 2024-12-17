@@ -32,8 +32,8 @@ $(function () {
 
 Scratch.Registration.educatorRegistrationView=Scratch.Registration.RegistrationView.extend({
 
-  postUrl: '/classes/register_educator/',
-  modalUrl: '/classes/educator-modal-registration/',
+  postUrl: Scratch.ROOT_URL + '/classes/register_educator/',
+  modalUrl: Scratch.ROOT_URL + '/classes/educator-modal-registration/',
   registrationStep: 4, // sumbit on this step triggers registration
   finalStep: 5, // submit on this step closes the registration modal
   totalSteps: 5, // used to set progress classes

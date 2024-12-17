@@ -88,7 +88,7 @@ function setAccountNav(context){
 function setAccountNavFromJson() {
 var accountNavContext;
     $.ajax({
-        url: '/scratchr2/fragment/account-nav.json',
+        url: Scratch.ROOT_URL + '/fragment/account-nav.json',
     }).done(function (data_json) {
         accountNavContext = JSON.parse(data_json);
         setAccountNav(accountNavContext);

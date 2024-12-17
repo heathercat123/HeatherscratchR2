@@ -212,7 +212,7 @@ Scratch.CheckPasswordFormView = Backbone.View.extend({
 
     $.ajax({
       type: 'POST',
-      url: '/accounts/check_password/',
+      url: Scratch.ROOT_URL + '/accounts/check_password/',
       data: data_obj,
     }).done(function(data) {
       if (data['success']) {
