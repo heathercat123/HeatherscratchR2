@@ -456,3 +456,92 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
 <script src="{{ STATIC_URL }}/js/apps/userprofile/views.js"></script>
 <script src="{{ STATIC_URL }}/js/apps/userprofile/models/user-detail.js"></script>
 {% endblock %}
+
+{% block admin-content %}
+<div class="special-status line"><strong>Status</strong>: New User, Moderator, Administrator, Curator</div>
+<div class="status fe">Active</div>
+<div class="status censored">Banned</div>
+<div class="status censored">Banned from frontpage</div>
+<div class="status censored">Deleted</div>
+<form> 
+  <h4>Account status</h4>
+  <div class="control-group">
+    <label class="radio">
+      <input type="radio" name="review-status" checked>Active
+    </label>
+    <label class="radio">
+      <input type="radio" name="review-status">Banned
+    </label>
+    <label class="radio">
+      <input type="radio" name="review-status">Banned from frontpage
+    </label>
+    <label class="radio">
+      <input type="radio" name="review-status">Deleted
+    </label>
+  </div>
+  <p class="control-group">Last reviewed by: N/A</p>
+</form>
+
+<h4>Past notifications</h4>
+<div>3/24</div>
+
+<h4>IP history</h4>
+<div class="ip-list">
+  <div class="line">
+    <span class="ip">216.27.61.137</span>
+    <span class="date">3 days ago</span>
+    <span class="button small grey"><span>Ban</span></span>
+  </div>
+  <div class="line">
+    <span class="ip">216.27.61.137</span>
+    <span class="date">3 days ago</span>
+    <span class="button small grey"><span>Ban</span></span>
+  </div>
+
+</div>
+
+<h4>Permissions</h4>
+<form>
+  <label class="checkbox">
+    <input type="checkbox" name="censor-projects">Censor Projects
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="censor-galleries">Censor Galleries 
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="set-project-status">Set project as FE or NFE
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="set-gallery-status">Set gallery as FE or NFE
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="feature-projects">Feature projects
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="feature-galleries">Feature galleries
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="delete-project-comments">Delete project comments
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="delete-gallery-comments">Delete gallery comments
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="block-ip">Block IP
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="block-account">Block account
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="censor-projects">Censor Projects
+  </label>
+</form>
+
+<h4>Comments</h4>
+<span>Show Deleted</span>
+
+<h4>Details</h4>
+<span class="line"><strong>Gender:</strong> Male</span>
+<span class="line"><strong>Age:</strong> 14</span>
+<span class="line"><strong>Sign up:</strong> 2011-12-30 03:05:53 (46.254.70.208)</span>
+{% endblock %}

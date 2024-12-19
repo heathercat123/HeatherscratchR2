@@ -81,8 +81,11 @@ var Scratch = Scratch || {};
 Scratch.INIT_DATA = Scratch.INIT_DATA || {};
 
 
-
-Scratch.INIT_DATA.ADMIN = false;
+{% if request.user.is_superuser %}
+	Scratch.INIT_DATA.ADMIN = true;
+{% else %}
+	Scratch.INIT_DATA.ADMIN = false;
+{% endif %}
 Scratch.INIT_DATA.LOGGED_IN_USER = {
 
   options: {
@@ -358,9 +361,36 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
 	{% block templates %}{% endblock templates %}
 	
     
+    {% if request.user.is_superuser %}
+          <div id="admin-panel" style="width: 10px;">
+  <div class="expand" data-control="show">></div>
+  <div class="admin-content">
+    <h3>Admin Panel</h3>
+    <div class="dismiss" data-control="hide">x</div>
     
-    
-     
+    {% block admin-content %}
+    <h4>Page Cache</h4>
+    <ul class="cache-list">
+      <li>
+       <form method="post" action="{{ settings.ROOT_URL }}/scratch_admin/page/clear-anon-cache/">
+         {% csrf_token %}
+         <input type="hidden" name="path" value="{{ request.path }}"/>
+        For anonymous users:
+        <button type="submit"><span>Clear</span></span><br/>
+        </form>
+      </li>
+    </ul>
+    {% endblock %}
+
+  </div>
+</div>
+<div id="admin-dialog" class="modal hide fade in" style="display: none;"></div>
+
+        
+        <script type="text/javascript" src="{{ STATIC_URL }}/js/views/admin-panel.js"></script>
+{% endif %}
+
+	
 
     <!-- load javascript translation catalog, and javascript fuzzy date library -->
     <script type="text/javascript" src="/scratchr2/jsi18n/"></script>
