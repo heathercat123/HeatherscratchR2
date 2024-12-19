@@ -50,129 +50,24 @@
   </div>
 </div>
 
-
+{# TODO: Fix translations #}
 <a name="community_featured_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-<!-- templates/carousel/carousel.html -->
-<div class="box slider-carousel-container prevent-select">
-	<div class="box-head">
-	  <h4>{% trans "Featured Projects" %}</h4>
-  </div>
-  <div class="box-content slider-carousel horizontal" id="featured">
-    <div class="viewport">
-      <ul class="scroll-content">
-			<!-- insert templates/carousel/project-thumb.html here -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- end templates/carousel/carousel.html  -->
+{% include 'carousel/carousel.html' with title='Featured Projects' id='featured' %}
 
 <a name="community_featured_studios" style="display: block; height: 60px; margin-top:-60px"></a>
-<!-- templates/carousel/carousel.html -->
-<div class="box slider-carousel-container prevent-select">
-	<div class="box-head">
-	  <h4>{% trans "Featured Studios" %}</h4>
-  </div>
-  <div class="box-content slider-carousel horizontal" id="featured">
-    <div class="viewport">
-      <ul class="scroll-content">
-			<!-- insert templates/carousel/gallery-thumb.html here -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- end templates/carousel/carousel.html  -->
+{% include 'carousel/carousel.html' with title='Featured Studios' id='featured' %}
 
 <a name="curator_top_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-<!-- templates/carousel/carousel.html -->
-<div class="box">
-    <div class="box-head">
-        <a style="float:right;" href="http://scratch.mit.edu/studios/386359/">{% trans "Learn more" %}</a>
-	  <h4>{% trans "Projects Curated by" %} PLACEHOLDER</h4>
-  </div>
-  <div class="box-content slider-carousel horizontal" id="featured">
-    <div class="viewport">
-      <ul class="scroll-content">
-			<!-- insert templates/carousel/project-thumb.html here -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- end templates/carousel/carousel.html  -->
+{% include 'carousel/carousel.html' with title='Projects Curated by PLACEHOLDER' viewall='http://scratch.mit.edu/studios/386359/' viewalltext='Learn more' id='featured' %}
 
 <a name="scratch_design_studio" style="display: block; height: 60px; margin-top:-60px"></a>
-<!-- templates/carousel/carousel.html -->
-<div class="box slider-carousel-container prevent-select">
-	<div class="box-head">
-		<a style="float:right;" href="http://scratch.mit.edu/studios/PLACEHOLDER/">{% trans "Visit the studio" %}</a>
-	  <h4>{% trans "Scratch Design Studio" %} - "PLACEHOLDER"</h4>
-  </div>
-  <div class="box-content slider-carousel horizontal" id="featured">
-    <div class="viewport">
-      <ul class="scroll-content">
-			<!-- insert templates/carousel/project-thumb.html here -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- end templates/carousel/carousel.html  -->
-
-
-
-
-
-
-
-
+{% include 'carousel/carousel.html' with title='Scratch Design Studio - "PLACEHOLDER"' viewall='http://scratch.mit.edu/studios/386359/' viewalltext='Visit the studio' id='featured' %}
 
 <a name="community_most_remixed_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-
-
-
-<!-- templates/carousel/carousel.html -->
-<div class="box slider-carousel-container prevent-select">
-	<div class="box-head">
-	  <h4>{% trans "What the Community is Remixing" %} </h4>
-
-    
-  </div>
-
-
-
-  <div class="box-content slider-carousel horizontal" id="remixes">
-    <div class="viewport">
-      <ul class="scroll-content">
-			<!-- insert templates/carousel/project-thumb.html here -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- end templates/carousel/carousel.html  -->
-
+{% include 'carousel/carousel.html' with title='What the Community is Remixing' id='remixes' %}
 
 <a name="community_most_loved_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-
-
-
-<!-- templates/carousel/carousel.html -->
-<div class="box slider-carousel-container prevent-select">
-	<div class="box-head">
-	  <h4>{% trans "What the Community is Loving" %} </h4>
-
-    
-  </div>
-
-
-
-  <div class="box-content slider-carousel horizontal" id="loves">
-    <div class="viewport">
-      <ul class="scroll-content">
-			<!-- insert templates/carousel/project-thumb.html here -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- end templates/carousel/carousel.html  -->
+{% include 'carousel/carousel.html' with title='What the Community is Loving' id='loves' %}
 {% endblock %}
 
 {% block js %}

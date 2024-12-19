@@ -1,0 +1,18 @@
+{% load i18n %}
+<!-- templates/carousel/carousel.html -->
+<div class="box slider-carousel-container prevent-select">
+	<div class="box-head">
+	  <h4>{{ title }}</h4>
+	  {% if viewall %}
+	  <a href="{{ viewall }}" data-control="view-all">{% if viewalltext %}{{ viewalltext }}{% else %}{% trans 'View all' %}{% endif %}</a>
+	  {% endif %}
+  </div>
+  <div class="box-content slider-carousel horizontal" id="{{ id }}">
+    <div class="viewport">
+      <ul class="scroll-content">
+			<!-- insert templates/carousel/project-thumb.html here -->
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- end templates/carousel/carousel.html  -->
