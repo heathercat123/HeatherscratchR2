@@ -1,15 +1,17 @@
-{# TODO: Make this work #}
+{% load i18n %}
+
+{# URLTODO: project #}
 <li class="project thumb item">
-  <a href="{# URL #}">
-    <img class="lazy image" data-original="{# THUMB URL #}" width="144" height="108" />
+  <a href="{{ settings.ROOT_URL }}/projects/{{ project.pk }}/">
+    <img class="lazy image" data-original="{{ project.fields.thumbnail_url }}" width="144" height="108" />
   </a>
   <span class="title">
-    <a href="{# URL #}">Fixing Scratch News</a>
+    <a href="{{ settings.ROOT_URL }}/projects/{{ project.pk }}/">{{ project.fields.title }}</a>
   </span>
   <span class="owner" >
       
         
-            {% trans 'by' %} <a href="{# USERURL %}">{# USERNAME #}</a>
+            {% trans 'by' %} <a href="{% url userprofile project.fields.creator.username %}">{{ project.fields.creator.username }}</a>
         
       
   </span>

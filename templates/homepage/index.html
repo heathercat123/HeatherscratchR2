@@ -52,22 +52,22 @@
 
 {# TODO: Fix translations #}
 <a name="community_featured_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-{% include 'carousel/carousel.html' with title='Featured Projects' id='featured' %}
+{% include 'carousel/carousel.html' with title='Featured Projects' projects=featuredprojects id='featured' %}
 
 <a name="community_featured_studios" style="display: block; height: 60px; margin-top:-60px"></a>
-{% include 'carousel/carousel.html' with title='Featured Studios' id='featured' %}
+{% include 'carousel/carousel.html' with title='Featured Studios' galleries=featuredgalleries id='featured' %}
 
 <a name="curator_top_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-{% include 'carousel/carousel.html' with title='Projects Curated by PLACEHOLDER' viewall='http://scratch.mit.edu/studios/386359/' viewalltext='Learn more' id='featured' %}
+{% include 'carousel/carousel.html' with title='Projects Curated by PLACEHOLDER' projects=curated viewall='http://scratch.mit.edu/studios/386359/' viewalltext='Learn more' id='featured' %}
 
 <a name="scratch_design_studio" style="display: block; height: 60px; margin-top:-60px"></a>
-{% include 'carousel/carousel.html' with title='Scratch Design Studio - "PLACEHOLDER"' viewall='http://scratch.mit.edu/studios/386359/' viewalltext='Visit the studio' id='featured' %}
+{% include 'carousel/carousel.html' with title='Scratch Design Studio - "PLACEHOLDER"' projects=sds viewall='http://scratch.mit.edu/studios/386359/' viewalltext='Visit the studio' id='featured' %}
 
 <a name="community_most_remixed_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-{% include 'carousel/carousel.html' with title='What the Community is Remixing' id='remixes' %}
+{% include 'carousel/carousel.html' with title='What the Community is Remixing' projects=remixes id='remixes' %}
 
 <a name="community_most_loved_projects" style="display: block; height: 60px; margin-top:-60px"></a>
-{% include 'carousel/carousel.html' with title='What the Community is Loving' id='loves' %}
+{% include 'carousel/carousel.html' with title='What the Community is Loving' projects=loves id='loves' %}
 {% endblock %}
 
 {% block js %}

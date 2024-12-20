@@ -10,7 +10,16 @@
   <div class="box-content slider-carousel horizontal" id="{{ id }}">
     <div class="viewport">
       <ul class="scroll-content">
-			<!-- insert templates/carousel/project-thumb.html here -->
+	    {% if projects %}
+			{% for index in projects %}
+			{% include 'carousel/includes/project-thumb.html' with project=index %}
+			{% endfor %}
+	    {% endif %}
+		{% if galleries %}
+			{% for index in galleries %}
+			{% include 'carousel/includes/gallery-thumb.html' with gallery=index %}
+			{% endfor %}
+	    {% endif %}
       </ul>
     </div>
   </div>

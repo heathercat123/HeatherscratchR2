@@ -1,0 +1,15 @@
+{# URLTODO: gallery #}
+<li class="gallery thumb item">
+  <a href="{{ settings.ROOT_URL }}/studios/{{ gallery.pk }}/" class="image">
+    <span class="image">
+      <img class="lazy" data-original="{{ gallery.fields.thumbnail_url }}" width="170" height="100" />
+    </span>
+    <span class="stats">
+      <span class="icon-sm studio white"></span>
+    </span>
+  </a>
+  <span class="title">
+    <a href="{{ settings.ROOT_URL }}/studios/{{ gallery.pk }}/">{{ gallery.fields.title }}
+    </a>
+  </span>
+</li>
