@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block css %}
     {{ block.super }}
@@ -21,16 +22,16 @@ Scratch.INIT_DATA.PROFILE = {
   
 }  
 Scratch.INIT_DATA.ADMIN_PANEL = {
-  'adminURL': '/users/test/admin/'
+  'adminURL': Scratch.ROOT_URL + '/users/test/admin/'
 }
-{% endblock init_data%}
+{% endblock init_data %}
 
 {% block main-content %}
 <div class="box" id="profile-data">
   <div class="box-head">
     <form id="profile-avatar" class="portrait">
       <div class="avatar">
-      <a href="/users/test/">
+      <a href="{% url userprofile 'test' %}">
         <img src="//cdn2.scratch.mit.edu/get_image/user/default_60x60.png" width="55" height="55"/>
         <div class="loading-img s48"></div>
       </a>
@@ -123,76 +124,29 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
 
 
 
+{% trans 'Shared Projects' as sharedtext %}
+{% include 'carousel/carousel.html' with title=sharedtext count=shared|length projects=shared id='shared' emptytext='test hasn\'t shared any projects' viewall='projects/' %}
 
-<div class="box slider-carousel-container prevent-select" >
-  <div class="box-head">
-      <h4>Shared Projects (0)</h4>
-    
-  </div>
-  <div class="box-content slider-carousel horizontal" id="shared">
-    
-    <div class="viewport empty-field">
-      <div class="content">
-        
-          <h4>test hasn't shared any projects </h4>
-          <span></span>
-        
+{% trans 'Favorite Projects' as favoritestext %}
+{% include 'carousel/carousel.html' with title=favoritestext projects=favorites id='favorites' emptytext='test hasn\'t favorited any projects' viewall='favorites/' %}
 
-      </div>
-    </div>
-    
-  </div>
-</div>
+{% if galleriesfollowings > 0 %}
+{% trans "Studios I'm Following" as galleriesfollowingstext %}
+{% include 'carousel/carousel.html' with title=galleriesfollowingstext galleries=galleriesfollowings id='featured' viewall='studios_following/' %}
+{% endif %}
 
+{% if galleriescurating > 0 %}
+{% trans "Studios I Curate" as galleriestext %}
+{% include 'carousel/carousel.html' with title=galleriestext galleries=galleriescurating id='featured' viewall='studios/' %}
+{% endif %}
 
+{% trans 'Following' as followingstext %}
+{% include 'carousel/carousel.html' with title=followingstext users=followings id='featured' emptytext='test isn\'t following anyone yet' viewall='following/' %}
 
-<div class="box slider-carousel-container prevent-select" >
-  <div class="box-head">
-      <h4>Favorite Projects</h4>
-    
-  </div>
-  <div class="box-content slider-carousel horizontal" id="favorites">
-    
-    <div class="viewport empty-field">
-      <div class="content">
-        
-         <h4>test hasn't favorited any projects </h4>
-       
-      </div>
-    </div>
-    
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-<div class="box slider-carousel-container prevent-select" >
-  <div class="box-head">
-    <h4>Following</h4>
-    
-  </div>
-  <div class="box-content slider-carousel horizontal" id="featured">
-    
-    <div class="viewport empty-field">
-      <div class="content">
-        
-        <h4>test isn't following anyone yet</h4>
-        
-      </div>
-    </div>
-    
-  </div>
-</div>
-
-
-
-
+{% if followers > 0 %}
+{% trans 'Followers' as followerstext %}
+{% include 'carousel/carousel.html' with title=followerstext users=followers id='featured' viewall='followers' %}
+{% endif %}
 
 <div class="box">
   <div class="box-head">

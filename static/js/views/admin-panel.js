@@ -19,7 +19,8 @@ Scratch.AdminPanel = Backbone.View.extend({
 
   initialize: function() {
     $('body').addClass('admin');
-
+	$('body').addClass('closed');
+	
     // handle toggle more explicitly, in case an admin scrolled directly to a deleted comment
     // that is visible when other deleted comments are not.
     var self = this;

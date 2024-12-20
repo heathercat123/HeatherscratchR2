@@ -1,8 +1,10 @@
 {% load i18n %}
+
+{% if projects or galleries or users %}
 <!-- templates/carousel/carousel.html -->
 <div class="box slider-carousel-container prevent-select">
 	<div class="box-head">
-	  <h4>{{ title }}</h4>
+	  <h4>{{ title }} {% if count > 0 %}({{ count }}){% endif %}</h4>
 	  {% if viewall %}
 	  <a href="{{ viewall }}" data-control="view-all">{% if viewalltext %}{{ viewalltext }}{% else %}{% trans 'View all' %}{% endif %}</a>
 	  {% endif %}
@@ -15,13 +17,42 @@
 			{% include 'carousel/includes/project-thumb.html' with project=index %}
 			{% endfor %}
 	    {% endif %}
+		
 		{% if galleries %}
 			{% for index in galleries %}
 			{% include 'carousel/includes/gallery-thumb.html' with gallery=index %}
 			{% endfor %}
 	    {% endif %}
+		
+		{% if users %}
+			{% for index in users %}
+			{% include 'carousel/includes/user-thumb.html' with user=index %}
+			{% endfor %}
+		{% endif %}
       </ul>
     </div>
   </div>
 </div>
+{% else %}
+<!-- templates/carousel/carousel.html -->
+<div class="box slider-carousel-container prevent-select">
+	<div class="box-head">
+	  <h4>{{ title }}</h4>
+  </div>
+  <div class="box-content slider-carousel horizontal" id="{{ id }}">
+	{% if emptytext %}
+    <div class="viewport empty-field">
+      <div class="content">
+        
+          <h4>{{ emptytext }}</h4>
+          <span></span>
+        
+
+      </div>
+    </div>
+	{% endif %}
+  </div>
+</div>
+{% endif %}
+
 <!-- end templates/carousel/carousel.html  -->
