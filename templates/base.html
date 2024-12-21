@@ -181,7 +181,7 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
           <ul class="account-nav"></ul>
           <script type="text/template" id="template-account-nav-logged-out">
           <ul class="account-nav" >
-              <li class="join-scratch" data-control="registration"><span class=""><span>{% trans "Join Scratch" %}</span></span></li><li id="login-dropdown" class="sign-in dropdown"><span data-toggle="dropdown" class="dropdown-toggle"><span>{% trans "Sign in" %}</span></span><div class="popover bottom dropdown-menu"><div class="arrow"></div><div class="popover-content" ><form method="post" id="login" action="#"><label for="username">Username</label><input type="text" id="login_dropdown_username" name="username" maxlength="30" class="wide username" /><label for="password" class="password">Password</label><input type="password" name="password" class="wide password" /><div class="ajax-loader" style="display:none; float: left;"></div><button type="submit">Sign in</button><span class="forgot-password"><a href="/scratchr2/accounts/password_reset/">Forgot password?</a></span><div class="error"></div></form></div></div></li><li data-control="modal-login" class="sign-in mobile"><span>Sign in</span></li>
+              <li class="join-scratch" data-control="registration"><span class=""><span>{% trans "Join Scratch" %}</span></span></li><li id="login-dropdown" class="sign-in dropdown"><span data-toggle="dropdown" class="dropdown-toggle"><span>{% trans "Sign in" %}</span></span><div class="popover bottom dropdown-menu"><div class="arrow"></div><div class="popover-content" ><form method="post" id="login" action="#"><label for="username">{% trans 'Username' %}</label><input type="text" id="login_dropdown_username" name="username" maxlength="30" class="wide username" /><label for="password" class="password">{% trans 'Password' %}</label><input type="password" name="password" class="wide password" /><div class="ajax-loader" style="display:none; float: left;"></div><button type="submit">{% trans 'Sign in' %}</button><span class="forgot-password"><a href="/scratchr2/accounts/password_reset/">{% trans 'Forgot password?' %}</a></span><div class="error"></div></form></div></div></li><li data-control="modal-login" class="sign-in mobile"><span>{% trans 'Sign in' %}</span></li>
           </ul>
           </script>
           <script type="text/template" id="template-account-nav-logged-in">
@@ -221,7 +221,7 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
         </form>
         </li>
         </ul>
-	<p>Scratch is a project of the Lifelong Kindergarten Group at the MIT Media Lab</p>
+	<p>{% trans 'Scratch is a project of the Lifelong Kindergarten Group at the MIT Media Lab' %}</p>
       </div>
     </div>
 
@@ -284,18 +284,18 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
       <div class="modal-header">
         <a href="#" data-dismiss="modal" class="close">x
         </a>
-        <h3>Login</h3>
+        <h3>{% trans 'Login' %}</h3>
       </div>
       <div class="modal-body">
         <div class="control-group">
-        <label class="control-label" for="username">Username
+        <label class="control-label" for="username">{% trans 'Username' %}
           </label>
           <div class="controls">
             <input id="username" type="text" name="username" maxlength="30" />
           </div>
         </div>
         <div class="control-group">
-        <label class="control-label" for="password">Password
+        <label class="control-label" for="password">{% trans 'Password' %}
           </label>
           <div class="controls">
             <input type="password" name="password" id="password" />
@@ -306,7 +306,7 @@ Scratch.INIT_DATA.IS_SOCIAL = true;
         <span class="error">
         </span>
         <span class="button primary" id="sign-in" data-control="site-login">
-        <span>{% trans "Sign in" $}
+        <span>{% trans "Sign in" %}
           </span>
         </span>
       </div>

@@ -49,7 +49,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
          
         
       </span> 
-      Joined <span title="0-0-0">forever</span> ago
+      {% blocktrans with tDateLabel='0-0-0' tDate='forever' %}Joined <span title="{{ tDateLabel }}">{{ tDate }}</span> ago{% endblocktrans %}
       <span class="location">Far Far Away</span>
       </p>
     </div>
@@ -77,7 +77,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
       <div class="user-content">
         <div id="user-details" class="about">
           <div class="loading-img s48"></div>
-          <h3>About me</h3>
+          <h3>{% trans 'About me' %}</h3>
           
             
               
@@ -89,7 +89,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
             
           
 
-          <h3>What I'm working on</h3>
+          <h3>{% trans "What I'm working on" %}</h3>
           
           
           <div id="status-readonly" class="read-only">
@@ -104,7 +104,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
         
       </div>
         <div class="doing">
-            <h3>What I've been doing</h3>
+            <h3>{% trans "What I've been doing" %}</h3>
           <div id="activity-feed">
           </div>
         </div>
@@ -113,7 +113,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
   <div class="footer">
   {% if false %}
     <div class="action" id="report-this">
-      <span class="text black" data-control="open-report">Report this profile</span>
+      <span class="text black" data-control="open-report">{% trans 'Report this profile' %}</span>
     </div>
   {% endif %}
    
@@ -150,7 +150,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
 
 <div class="box">
   <div class="box-head">
-    <h4>Comments</h4>
+    <h4>{% trans 'Comments' %}</h4>
   </div>
   <div class="box-content">
     
@@ -170,14 +170,14 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
         <form id="main-post-form" class="comments-on" >
             <div class="control-group tooltip right">
                 
-                <textarea name="content" placeholder="Leave a comment" data-control="modal-login"></textarea>
+                <textarea name="content" placeholder="{% trans 'Leave a comment' %}" data-control="modal-login"></textarea>
                 
                 <span id="comment-alert" class="hovertext error" data-control="error" data-content="comment-error"><span class="arrow"></span><span class="text"></span></span>
-                <span class="small-text">You have <span id="chars-left">500</span> characters left.</span>
+                <span class="small-text">{% blocktrans %}You have <span id="chars-left">500</span> characters left.{% endblocktrans %}</span>
             </div>
             <div class="control-group">
-                <div class="button small" data-control="modal-login" data-parent-thread="" data-commentee-id=""><a href="#null">Post</a></div>
-            <div class="button small grey" data-control="cancel"><a href="#null">Cancel</a></div>
+                <div class="button small" data-control="modal-login" data-parent-thread="" data-commentee-id=""><a href="#null">{% trans 'Post' %}</a></div>
+            <div class="button small grey" data-control="cancel"><a href="#null">{% trans 'Cancel' %}</a></div>
                 <span class="notification"></span>
             </div>
         </form>
@@ -187,7 +187,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
   </div>
   <div>
     <ul class="comments" data-content="comments">
-      <li id="comments-loading" class="top-level-reply"><span>Comments loading...</span></li>
+      <li id="comments-loading" class="top-level-reply"><span>{% trans 'Comments loading...' %}</span></li>
     </ul>
   </div>
 </div>

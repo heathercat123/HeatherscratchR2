@@ -1,14 +1,15 @@
 {% extends 'info/layout/base.html' %}
+{% load i18n %}
 
 {% block main-content %}
 <div class="general">
-	<h1>Scratch Help</h1>
+	<h1>{% trans 'Scratch Help' %}</h1>
  <div class="leftcol">
 
    
   <div class="box box1">
       <div class="box-head">
-        <h2>Get Started with Scratch</h2>
+        <h2>{% trans 'Get Started with Scratch' %}</h2>
       </div>
       <div class="box-content clearfix">
         
@@ -17,7 +18,7 @@
     <img src="{{ STATIC_URL }}/images/help/get-started-thumb.png" />
   </a>
   <p>
-  <a href="/projects/editor/?tip_bar=getStarted">Try out the</br> step-by-step intro</a>
+  <a href="/projects/editor/?tip_bar=getStarted">{% trans 'Try out the</br> step-by-step intro' %}</a>
   </p>
   <p></p>	
 </div>
@@ -26,13 +27,13 @@
    <img src="{{ STATIC_URL }}/images/help/starter-project-thumb.png">
    </a>
   <p>
-  <a href="/starter_projects/">Explore these</br> starter projects</a>
+  <a href="/starter_projects/">{% trans 'Explore these</br> starter projects' %}</a>
   </p>
   <p></p>
 </div>
 <div class="thumb-with-subtext">
 <p><iframe src="//player.vimeo.com/video/80961102?title=0&amp;byline=0&amp;portrait=0;hd_off=1&" width="170" height="128" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></br>
-  <a href="http://vimeo.com/llk/start-scratch"><strong>Watch the Getting Started video</a></strong>
+  <a href="http://vimeo.com/llk/start-scratch"><strong>{% trans 'Watch the Getting Started video' %}</a></strong>
   </p></br>
 </div>
 
@@ -40,11 +41,11 @@
     </div>
     <div class="box box2">
       <div class="box-head">
-        <h2>Scratch Guides</h2>
+        <h2>{% trans 'Scratch Guides' %}</h2>
       </div>
       <div class="box-content clearfix">
         
-Here are some guides to help you learn Scratch:</br>
+{% trans 'Here are some guides to help you learn Scratch:' %}</br>
 <div class="sub-box">
 	
   
@@ -54,23 +55,23 @@ Here are some guides to help you learn Scratch:</br>
 	<a href="{{ STATIC_URL }}/pdfs/help/Getting-Started-Guide-Scratch2.pdf" class="sub-box-title">Getting Started Guide</a>
 
   <p class="sub-box-content">
-  This step-by-step guide (PDF) provides an easy introduction to Scratch. 
+  {% trans 'This step-by-step guide (PDF) provides an easy introduction to Scratch.' %}
   </p>
   
   
 </div>
 <div class="sub-box">
   <a href="/help/cards"><img src="{{ STATIC_URL }}/images/help/follow-mouse-thumb.png" /></a>
-  <a href="/help/cards" class="sub-box-title">Scratch Cards</a>
+  <a href="/help/cards" class="sub-box-title">{% trans 'Scratch Cards' %}</a>
   <p class="sub-box-content">
-  Each of these cards shows something you can do in Scratch.
+  {% trans 'Each of these cards shows something you can do in Scratch.' %}
   </p>
 </div>
 <div class="sub-box">
   <a href="/help/videos"><img src="{{ STATIC_URL }}/images/help/videopage-thumb2.png" /></a>
-  <a href="/help/videos" class="sub-box-title">Video Tutorials</a>
+  <a href="/help/videos" class="sub-box-title">{% trans 'Video Tutorials' %}</a>
   <p class="sub-box-content">
-  These videos include tips on using the paint editor, and introduce how to program games and animations in Scratch.
+  {% trans 'These videos include tips on using the paint editor, and introduce how to program games and animations in Scratch.' %}
   </p>
 </div>
 
@@ -78,19 +79,19 @@ Here are some guides to help you learn Scratch:</br>
     </div>
     <div class="box box3">
       <div class="box-head">
-        <h2>Explore the Scratch Community</h2>
+        <h2>{% trans 'Explore the Scratch Community' %}</h2>
       </div>
       <div class="box-content clearfix">
         
 <p></p>
-<p><a href="../explore">Explore</a> projects and studios Scratchers are making </p>
-<p class="inlinesearchform">Search for projects about:</p>
+<p>{% trans '<a href="../explore">Explore</a> projects and studios Scratchers are making' %}</p>
+<p class="inlinesearchform">{% trans 'Search for projects about:' %}</p>
 <form class="search faq-search inlinesearchform" action="/search/google_results/">
   <span class="glass"><i></i></span>
   <input type="text" name="q" />
 </form>
-<p><a href="/discuss/6/">Introduce</a> yourself in the Scratch forums</p> 
-<p>Click <img src="{{ STATIC_URL }}/images/help/follow-button-small.png"/> on any profile or studio to receive updates</p>
+<p>{% trans '<a href="/discuss/6/">Introduce</a> yourself in the Scratch forums' %}</p> 
+<p>{% blocktrans %}Click <img src="{{ STATIC_URL }}/images/help/follow-button-small.png"/> on any profile or studio to receive updates{% endblocktrans %}</p>
 </br>
 
       </div>
@@ -101,70 +102,73 @@ Here are some guides to help you learn Scratch:</br>
   <div class="rightcol">
     <div class="box box1">
       <div class="box-head">
-        <h2>What is Scratch?</h2>
+        <h2>{% trans 'What is Scratch?' %}</h2>
       </div>
       <div class="box-content clearfix">
         
   <img src="{{ STATIC_URL }}/images/help/cat1.png" align="left" style="margin-right:15px">
-  <h4><a href="{{ settings.ROOT_URL}}/about">About Scratch</a><br></h4>
-  For <a href="{{ settings.ROOT_URL}}/parents">Parents</a><br>
-  For <a href="{{ settings.ROOT_URL}}/educators">Educators</a>
+  <h4><a href="{{ settings.ROOT_URL}}/about">{% trans 'About Scratch' %}</a><br></h4>
+  {% trans 'For <a href="/parents">Parents</a>' %}<br> {# Farewell, dear settings.ROOT_URL #}
+  {% trans 'For <a href="/educators">Educators</a>' %} {# Thanks for your service #}
     
       </div>
     </div>
     <div class="box box2">
       <div class="box-head">
-        <h2>Questions?</h2>
+        <h2>{% trans 'Questions?' %}</h2>
       </div>
       <div class="box-content clearfix">
     
         
-<p>Browse for answers on: </br><a href="{% url help %}faq">Frequently Asked Questions</a></p>
+<p>{% trans 'Browse for answers on: </br><a href="/help/faq">Frequently Asked Questions</a>' %}</p>
+{# Adding trans tags is painful because I have to hardcode urls #}
+{# We will have to rely on the Apache configuration to redirect #}
 <p></p>
-<p>Or visit the <a href="{% url djangobb:index %}">discussion forums</a>:
-</br><a href="{% url djangobb:forum 4 %}">- Questions about Scratch</a>
-</br><a href="{% url djangobb:forum 7 %}">- Help with Scripts</a></p>
+<p>{% trans 'Or visit the <a href="/discuss">discussion forums</a>:' %}
+</br><a href="{% url djangobb:forum 4 %}">{% trans '- Questions about Scratch' %}</a>
+</br><a href="{% url djangobb:forum 7 %}">{% trans '- Help with Scripts' %}</a></p>
     
       </div>
     </div>
     <div class="box box3">
       <div class="box-head">
-        <h2>Resources</h2>
+        <h2>{% trans 'Resources' %}</h2>
       </div>
       <div class="box-content clearfix">
         
 <h6><a href="http://scratched.gse.harvard.edu/">ScratchEd</a></h6>
-An online community for educators using Scratch, with stories, discussions, and resources, such as the Scratch curriculum guide.
+{% trans 'An online community for educators using Scratch, with stories, discussions, and resources, such as the Scratch curriculum guide.' %}
 </p>
 
 
 <h5><a href="{{ settings.WIKI_URL }}">Scratch Wiki</a></h5>
 <p>
-The Scratch Wiki contains a wide variety of articles by Scratchers for Scratchers, including advanced topics and tutorials.
+{% trans 'The Scratch Wiki contains a wide variety of articles by Scratchers for Scratchers, including advanced topics and tutorials.' %}
 </p>
 
-<h5><a href="{{ settings.ROOT_URL}}/scratch2download/">Scratch 2 Offline Editor</a></h5>
+<h5><a href="{{ settings.ROOT_URL}}/scratch2download/">{% trans 'Scratch 2 Offline Editor ' %}</a></h5>
 <p>
-Download the Scratch 2 offline editor.
+{% trans 'Download the Scratch 2 offline editor.' %}
 </p>
-<h5><a href="{{ settings.ROOT_URL}}/scratch_1.4/">Scratch 1.4 Download</a></h5>
+<h5><a href="{{ settings.ROOT_URL}}/scratch_1.4/">{% trans 'Scratch 1.4 Download' %}</a></h5>
 <p>
-Links and information on the previous version of Scratch.
+{% trans 'Links and information on the previous version of Scratch.' %}
 </p>
 
-<h5><a href="{{ settings.ROOT_URL}}/statistics/">Scratch Statistics</a></h5>
+<h5><a href="{{ settings.ROOT_URL}}/statistics/">{% trans 'Scratch Statistics' %}</a></h5>
 <p>
-Explore up-to-date statistics about the Scratch online community.
+{% trans 'Explore up-to-date statistics about the Scratch online community.' %}
 </p> 
 
-<h5><a href="{{ settings.WIKI_URL }}/How_to_connect_to_the_physical_world">Scratch and the Physical World</a></h5>
+{# this wont translate for whatever reason #}
+<h5><a href="{{ settings.WIKI_URL }}/How_to_connect_to_the_physical_world">{% trans 'Scratch and the Physical World' %}</a></h5>
 <p>
 Connect your Scratch projects to the physical world with <a href = "http://www.makeymakey.com/">MaKey MaKey</a>, <a href="{{ settings.WIKI_URL }}/LEGO_Education_WeDo_Robotics_Kit">LEGO WeDo</a>, or <a href="https://www.sparkfun.com/products/10311">PicoBoard</a>.
 </p>
 
-<h5><a href="{{ settings.WIKI_URL }}/Scratch_Media">Scratch Logo</a></h5>
+<h5><a href="{{ settings.WIKI_URL }}/Scratch_Media">{% trans 'Scratch Logo' %}</a></h5>
 <p>
-Access the Scratch logo and other media files.
+{% trans 'Access the Scratch logo and other media files.' %}
 </p>
 
 

@@ -250,6 +250,8 @@ INSTALLED_APPS = (
 	'news',
 )
 
+CSRF_COOKIE_NAME = 'scratchcsrftoken'
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
@@ -310,6 +312,8 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_FORM_CLASS = 'bugaga.forms.SignupForm'
+
+
 
 
 # Local settings must come last to overwrite any other settings
