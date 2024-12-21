@@ -1,43 +1,46 @@
+{# TODO: Downgrade to the 2014 locales #}
+{% load i18n %}
+
 <!-- templates/modal-registration.html block -->
  <form method="post" class="progress1" id="registration-form" action="/scratchr2/login/">
 {% csrf_token %}
 
   <div class="modal-header">
 	  <a href="#" data-dismiss="modal" class="close" style="">x</a>
-    <h3>Join Scratch</h3>
+    <h3>{% trans 'Join Scratch' %}</h3>
   </div>
   
   
   <div class="modal-body" id="reg-body-1">
 	  <div class="page-header">
-            <h4>It's easy (and free!) to sign up for a Scratch account.</h4>
+            <h4>{% trans "It's easy (and free!) to sign up for a Scratch account." %}</h4>
         </div>
         
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="username">Choose a Scratch Username
+            <label class="control-label" for="username">{% trans 'Choose a Scratch Username' %}
             </label>
             <input class="username" type="text" name="username" maxlength="30"/>
-            <span data-control="info" class="hovertext"><span class="arrow"></span><span class="text">Don't use your real name</span></span>
+            <span data-control="info" class="hovertext"><span class="arrow"></span><span class="text">{% trans "Don't use your real name" %}</span></span>
             <span data-control="error" data-content="username-error" class="hovertext"><span class="arrow"></span><span class="text"></span></span>
             
         </div>
         </div>
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="password">Choose a Password
+            <label class="control-label" for="password">{% trans 'Choose a Password' %}
             </label>
             <input type="password" name="password" class="password"/>
-        <span data-control="info" class="hovertext"><span class="arrow"></span>Remember it - don't tell anyone else</span>
+        <span data-control="info" class="hovertext"><span class="arrow"></span>{% trans "Remember it - don't tell anyone else" %}</span>
             <span data-control="error" data-content="password-error" class="hovertext"><span class="arrow"></span><span class="text"></span></span>
             
         </div>
         </div>
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="password">Confirm Password</label>
+            <label class="control-label" for="password">{% trans 'Confirm Password' %}</label>
             <input type="password" name="password-confirm" class="password-confirm"/>
-        <span data-control="info" class="hovertext"><span class="arrow"></span>Retype your password</span>
+        <span data-control="info" class="hovertext"><span class="arrow"></span>{% trans 'Retype your password' %}</span>
             <span data-control="error" data-content="password-confirm-error" class="hovertext"><span class="arrow"></span><span class="text"></span></span>
             
         </div>
@@ -48,43 +51,44 @@
     </div>
     <div class="modal-body" id="reg-body-2">
         <div class="page-header">
-            <h4>Your responses to these questions will be kept private.</h4>
-            <a href="#" class="why-we-ask">Why do we ask for this info <span class="question-mark">?</span></a>
+            <h4>{% trans 'Your responses to these questions will be kept private.' %}</h4>
+			{# Funnily enough, this has two question marks in French #}
+            <a href="#" class="why-we-ask">{% trans 'Why do we ask for this info' %} <span class="question-mark">?</span></a>
         <div class="pop-out-info">
-            <h4>Birth Month and Year</h4>
+            <h4>{% trans 'Birth Month and Year' %}</h4>
         <p>
-        We use this information to calculate the age range of people who use Scratch, and to confirm that you are the owner of the account if you contact us.  Your birth month and year will not be made public.
+        {% trans 'We use this information to calculate the age range of people who use Scratch, and to confirm that you are the owner of the account if you contact us.  Your birth month and year will not be made public.' %}
         </p>
-        <h4>Gender</h4>
+        <h4>{% trans 'Gender' %}</h4>
         <p>
-        This helps the Scratch design team understand who is using Scratch, and provides information that helps us broaden participation.  This information is not visible on your account, and is only used to describe overall participation.
+        {% trans 'This helps the Scratch design team understand who is using Scratch, and provides information that helps us broaden participation.  This information is not visible on your account, and is only used to describe overall participation.' %}
         </p>
-        <h4>Email</h4>
+        <h4>{% trans 'Email' %}</h4>
         <p>
-        We use this only in case you need to reset your password.  We won't share it with anyone.
+        {% trans "We use this only in case you need to reset your password.  We won't share it with anyone." %}
         </p>
         </div>
     </div>
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="birthmonth">Birth Month and Year</label>
+            <label class="control-label" for="birthmonth">{% trans 'Birth Month and Year' %}</label>
             <select class="birthmonth" name="birthmonth" selectedindex required>
-            <option value="0">- Month -</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
+            <option value="0">- {% trans 'Month' %}	-</option>
+            <option value="1">{% trans 'January' %}</option>
+            <option value="2">{% trans 'February' %}</option>
+            <option value="3">{% trans 'March' %}</option>
+            <option value="4">{% trans 'April' %}</option>
+            <option value="5">{% trans 'May' %}</option>
+            <option value="6">{% trans 'June' %}</option>
+            <option value="7">{% trans 'July' %}</option>
+            <option value="8">{% trans 'August' %}</option>
+            <option value="9">{% trans 'September' %}</option>
+            <option value="10">{% trans 'October' %}</option>
+            <option value="11">{% trans 'November' %}</option>
+            <option value="12">{% trans 'December' %}</option>
             </select>
             <select class="birthyear" name="birthyear">
-            <option value="0">- Year -</option>
+            <option value="0">- {% trans 'Year' %} -</option>
             </select>
             
             <span data-control="error" data-content="birthday-error" class="hovertext"><span class="arrow"></span><span class="text"></span></span>
@@ -92,9 +96,9 @@
         </div>
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="gender">Gender</label>
-            <input type="radio" name="gender" value="male">Male
-            <input type="radio" name="gender" value="female">Female
+            <label class="control-label" for="gender">{% trans 'Gender' %}</label>
+            <input type="radio" name="gender" value="male">{% trans 'Male' %}
+            <input type="radio" name="gender" value="female">{% trans 'Female' %}
             <input id="gender_other_radio" type="radio" name="gender" value="">
             <input id="gender_other_text" name="gender" type="text" value="" maxlength="20">
             
@@ -104,9 +108,9 @@
         </div>
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="country">Country</label>
+            <label class="control-label" for="country">{% trans 'Country' %}</label>
         <select class="country" name="country">
-            <option value="0">- Country -</option>
+            <option value="0">- {% trans 'Country' %} -</option>
             
             <option value="United States">United States</option>
         
@@ -609,8 +613,8 @@
     </div>
         <div class="control-group">
         <div class="controls tooltip right">
-            <label class="control-label" for="email">Email address</label>
-            <label class="control-label parents" for="email" style="display: none">Parent or guardian email address</label>
+            <label class="control-label" for="email">{% trans 'Email address' %}</label>
+            <label class="control-label parents" for="email" style="display: none">{% trans "Parent's or guardian's email address" %}</label>
             <input class="email" type="text" name="email" maxlength="100"/>
             <input class="should-generate-admin-ticket" type="hidden" name="should_generate_admin_ticket" value="0"/>
             
@@ -622,38 +626,38 @@
         </div>
     </div>
     <div class="modal-body" id="reg-body-3">
-        <!--<h4 class="orange-text">Thanks for joining Scratch!</h4>-->
+        <!--<h4 class="orange-text">{% trans 'Thanks for joining Scratch!' %}</h4>-->
         <div class="page-header">
-            <h4>Thanks for joining Scratch!</h4> 
-            <span class="sub-header">You're now logged in.</span>
-            <p class="alert alert-info">Scratch is a community of all ages, from all over the world. Make sure your projects and comments are <a target="_blank" href="/community_guidelines">respectful and friendly</a>.
+            <h4>{% trans 'Thanks for joining Scratch!' %}</h4> 
+            <span class="sub-header">{% trans "You're now logged in." %}</span>
+            <p class="alert alert-info">{% trans 'Scratch is a community of all ages, from all over the world. Make sure your projects and comments are <a target="_blank" href="/community_guidelines">respectful and friendly' %}</a>.
         </div>
-        <h4>Would you like to:</h4>
-        <ul>
-            <li><a class="" href="http://scratch.mit.edu/projects/editor/?tip_bar=getStarted">Learn how to make a project</a></li>
-            <li><a href="http://scratch.mit.edu/info/starter_projects/">Choose a starter project</a></li>
-            <li><a href="http://scratch.mit.edu/studios/146521/">Connect with a Scratcher</a></li>
+        <h4>{% trans 'Would you like to:' %}</h4>
+        <ul> {# URLTODO #}
+            <li><a class="" href="{{ settings.ROOT_URL }}/projects/editor/?tip_bar=getStarted">{% trans 'Learn how to make a project' %}</a></li>
+            <li><a href="{{ settings.ROOT_URL }}/info/starter_projects/">{% trans 'Choose a starter project' %}</a></li>
+            <li><a href="{{ settings.ROOT_URL }}/studios/146521/">{% trans 'Connect with a Scratcher' %}</a></li>
         </ul>
         <div class="registration-done-images">
-        <img class="sprite-blue" src="http://cdn.scratch.mit.edu/scratchr2/static/__1389740153__//images/sprite-blue.png">
-        <img class="sprite-orange" src="http://cdn.scratch.mit.edu/scratchr2/static/__1389740153__//images/sprite-orange.png">
-        <img class="sprite-yellow" src="http://cdn.scratch.mit.edu/scratchr2/static/__1389740153__//images/sprite-yellow.png">
-        <img class="sprite-red" src="http://cdn.scratch.mit.edu/scratchr2/static/__1389740153__//images/sprite-red.png">
+        <img class="sprite-blue" src="{{ STATIC_URL }}/images/sprite-blue.png">
+        <img class="sprite-orange" src="{{ STATIC_URL }}/images/sprite-orange.png">
+        <img class="sprite-yellow" src="{{ STATIC_URL }}/images/sprite-yellow.png">
+        <img class="sprite-red" src="{{ STATIC_URL }}/images/sprite-red.png">
         </div>
     </div>
     <div class="modal-body" id="reg-body-oh-noes">
-        <div class="page-header alert alert-error">Oops something went wrong. Please <a data-control="registration" href="/">try registering again</a>.</div> 
+        <div class="page-header alert alert-error">{% trans 'Oops something went wrong. Please <a data-control="registration" href="/">try registering again</a>.' %}</div> 
     </div>
   
   <div class="modal-footer">
     
     <div class="buttons-right">
         <div class="ajax-loader" style="display:none"></div>
-        <input type="button" class="button primary" id="registration-next" value="Next">
+        <input type="button" class="button primary" id="registration-next" value="{% trans 'Next' %}">
     </div>
     
     <div class="buttons-right">
-        <input type="button" data-dismiss="modal" class="hide button primary" id="registration-done" value="OK Lets Go!"/>
+        <input type="button" data-dismiss="modal" class="hide button primary" id="registration-done" value="{% trans 'OK Lets Go!' %}"/>
     </div>
     
     
@@ -664,22 +668,22 @@
   var Scratch = Scratch || {};
   Scratch.Registration = Scratch.Registration || {};
   Scratch.Registration.FORM_ERRORS = {
-      usernameLength: 'Your username must be between 3 and 20 characters',
-      usernameExists: 'Sorry, that username already exists',
-      usernameInvalid: 'Invalid username',
-      usernameBad: 'Hmm, that looks inappropriate',
-      usernameEmpty: 'You must enter a username',
-      usernameCharacters: 'Your username may only contain letters, numbers, - and _',
-      passwordPassword: 'Your password cannot be \'password\'',
-      passwordLength: 'Your password must be at least 6 characters',
-      passwordEmpty: 'You must enter a password',
-      passwordConfirm: 'Your passwords do not match',
-      passwordUsername: 'Your password cannot match your username',
-      birthdayEmpty: 'You must select a birth month and year',
-      genderEmpty: 'You must specify a gender',
-      countryEmpty: 'You must select a country',
-      emailEmpty: 'You must provide an email address',
-      emailInvalid: 'You must provide valid email address',
+      usernameLength: '{% trans "Your username must be between 3 and 20 characters" %}',
+      usernameExists: '{% trans "Sorry, that username already exists" %}',
+      usernameInvalid: '{% trans "Invalid username" %}',
+      usernameBad: '{% trans "Hmm, that looks inappropriate" %}',
+      usernameEmpty: '{% trans "You must enter a username" %}',
+      usernameCharacters: '{% trans "Your username may only contain letters, numbers, - and _" %}',
+      passwordPassword: '{% trans "Your password cannot be \\\'password\\\'" %}',
+      passwordLength: '{% trans "Your password must be at least 6 characters" %}',
+      passwordEmpty: '{% trans "You must enter a password" %}',
+      passwordConfirm: '{% trans "Your passwords do not match" %}',
+      passwordUsername: '{% trans "Your password cannot match your username" %}',
+      birthdayEmpty: '{% trans "You must select a birth month and year" %}',
+      genderEmpty: '{% trans "You must specify a gender" %}',
+      countryEmpty: '{% trans "You must select a country" %}',
+      emailEmpty: '{% trans "You must provide an email address" %}',
+      emailInvalid: '{% trans "You must provide valid email address" %}',
   };
 </script>
 <!-- end templates/modal-registration.html -->
