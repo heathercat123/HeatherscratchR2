@@ -355,7 +355,7 @@ Scratch.Registration.RegistrationView=Backbone.View.extend({
     this.$('.modal-footer .buttons-right .ajax-loader').hide();
     if (response[0].success) {
       this.username = response[0].username;
-      this.user_id = response[0].user_id1;
+      this.user_id = response[0].user_id;
       this.accountCreated = true;
       this.nextStep();
     } else {
