@@ -1864,7 +1864,7 @@ $(document).ajaxSend(function (event, xhr, settings) {
         return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method)
     }
     if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
-		t.setRequestHeader("X-CSRFToken", r("scratchcsrftoken"))
+		xhr.setRequestHeader("X-CSRFToken", getCookie('scratchcsrftoken'));
 	}
 });
 
