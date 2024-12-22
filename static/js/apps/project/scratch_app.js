@@ -379,6 +379,3 @@ function JSsetProjectStats(scripts, sprites, usesCloudData, oldScratchProjectUrl
   }
 
 }
-
-
-}

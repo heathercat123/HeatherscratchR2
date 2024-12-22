@@ -1,66 +1,69 @@
-function setCue(e, t, n) {
-    $.withCSRF(function (r) {
+function setCue(cue, value, done) {
+    $.withCSRF(function (csrftoken) {
         $.ajax({
             url: Scratch.ROOT_URL + "/site-api/users/set-template-cue/",
             type: "POST",
-            data: JSON.stringify({
-                cue: e,
-                value: t,
-                csrftoken: r
-            })
-        }).done(n).error(function (r, i, s) {
-            document.cookie = "cue_" + e + "=" + t,
-            n(r, i, s)
-        })
-    })
+            data: JSON.stringify({'cue': cue, 'value': value, 'csrftoken': csrftoken}),
+		})
+		.done(done)
+		.error(function (data, textStatus, jqXHR){
+            document.cookie = "cue_" + cue + "=" + value;
+            done(data, textStatus, jqXHR);
+        });
+    });
 }
-function openDialogue(e, t) {
-    $(e).dialog(t)
+
+function openDialogue(element, dialog_options) {
+    $(element).dialog(dialog_options);
 }
+
 function openResendDialogue() {
-    var e = {
+    var dialog_options = {
         title: gettext("Want to share on Scratch?"),
-        open: function (e, t) {
-            var n = this;
-            $("#close-resend-dialog").off(),
-            $("#close-resend-dialog").click(function () {
-                $(n).dialog("close")
-            }),
-            $("#email-resend-box form").submit(function (e) {
-                e.preventDefault(),
+        open: function( event, ui ) {
+            var self = this;
+            $('#close-resend-dialog').off();
+            $('#close-resend-dialog').click(function() {
+                $(self).dialog("close");
+            });
+            $('#email-resend-box form').submit(function(e) {
+                e.preventDefault();
                 $.ajax({
-                    url: Scratch.ROOT_URL + "/accounts/email_resend/",
+                    url: Scratch.ROOT_URL + '/accounts/email_resend/',
                     type: "POST",
-                    data: {
-                        email_address: $("#hidden-email-address").val()
-                    },
-                    success: function (e) {
-                        $("#submit-resend", n).attr("disabled", "disabled"),
-                        $("#submit-resend", n).val("Resent")
+                    data: {email_address: $('#hidden-email-address').val()},
+                    success: function(data) {
+                        $('#submit-resend', self).attr('disabled', 'disabled');
+                        $('#submit-resend', self).val('Resent');
                     }
                 })
-            }),
-            $("#email-resend-box :link").blur()
+            });
+            $('#email-resend-box :link').blur();
         },
-        close: function (e, t) {
-            $(this).dialog("destroy"),
-            $(".ui-widget-overlay.ui-front").remove()
+        close: function( event, ui ) {
+            $(this).dialog('destroy');
+            $('.ui-widget-overlay.ui-front').remove();
         },
         show: {
-            effect: "clip",
-            duration: 250
+            effect: 'clip',
+            duration: 250,
         },
         hide: {
-            effect: "clip",
-            duration: 250
-        }
+            effect: 'clip',
+            duration: 250,
+        } 
     };
-    $("#email-resend-box").length > 0 ? openDialogue("#email-resend-box", e) : $.ajax({
-        url: Scratch.ROOT_URL + "/accounts/email_resend/"
-    }).done(function (t) {
-        var n = $(_.template(t)());
-        openDialogue(n, e)
-    })
+
+    if ($("#email-resend-box").length > 0) {
+		openDialogue("#email-resend-box", e);
+	} else {
+		$.ajax({
+			url: Scratch.ROOT_URL + "/accounts/email_resend/"
+		}).done(function (data) {
+			var template = $(_.template(data)());
+			openDialogue(template, dialog_options);
+		});
+    }
 }
 !function (e) {
     var t = function (e, t) {
@@ -1810,67 +1813,97 @@ Scratch.ALERT_MSGS = {
             success: t
         })
     }
-}), function (e) {
-    e.fn.scratchIncrementCount = function (e) {
-        var t = parseInt(this.html(), 10);
-        t += e,
-        this.html(t)
+}), 
+(function( $ ) {
+    $.fn.scratchIncrementCount = function (val) {
+        var count = parseInt(this.html(), 10);
+        count+=val,
+        this.html(count)
     },
-    e.withCSRF = function (t) {
-        e.get("/csrf_token/", function (e, n, r) {
+    $.withCSRF = function (f) {
+        $.get("/csrf_token/", function (data, status, xhr) {
             csrf = ("; " + document.cookie).split("; scratchcsrftoken=")[1].split(";")[0],
-            t(csrf)
+            f(csrf)
         })
     }
-}
-(jQuery), $.ajaxSetup({
-    jsonp: !1
-}), $(document).ajaxSend(function (e, t, n) {
-    function r(e) {
-        var t = null;
+})(jQuery);
+
+$.ajaxSetup({
+    jsonp: false
+});
+
+$(document).ajaxSend(function (event, xhr, settings) {
+    function getCookie(name) {
+        var cookieValue = null;
         if (document.cookie && document.cookie != "") {
-            var n = document.cookie.split(";");
-            for (var r = 0; r < n.length; r++) {
-                var i = jQuery.trim(n[r]);
-                if (i.substring(0, e.length + 1) == e + "=") {
-                    t = decodeURIComponent(i.substring(e.length + 1));
-                    break
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+				// Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
                 }
             }
         }
-        return t
+        return cookieValue;
     }
-    function i(e) {
-        var t = document.location.host,
-        n = document.location.protocol,
-        r = "//" + t,
-        i = n + r;
-        return e == i || e.slice(0, i.length + 1) == i + "/" || e == r || e.slice(0, r.length + 1) == r + "/" || !/^(\/\/|http:|https:).*/.test(e)
+    function sameOrigin(url) {
+		// url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        protocol = document.location.protocol;
+        sr_origin = "//" + host,
+        origin = protocol + sr_origin;
+		// Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+		(url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+		// or any other URL that isn't scheme relative or absolute i.e relative.
+		!/^(\/\/|http:|https:).*/.test(url);
     }
-    function s(e) {
-        return /^(GET|HEAD|OPTIONS|TRACE)$/.test(e)
+    function safeMethod(method) {
+        return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method)
     }
-    !s(n.type) && i(n.url) && t.setRequestHeader("X-CSRFToken", r("scratchcsrftoken"))
-}), $(document).ajaxError(function (e, t, n, r) {
-    if (n.error === undefined) {
-        if (location.port === "")
-            throw "Uncaught ajax error. Attempted URL: " + n.url + "   Status: " + t.status;
-        t.status === 0 && (n.success(n.fakeResponseForDevPortAjaxFail, t.status, t), console.error("Status 0 ajax bug. Calling success(options.fakeResponseForDevPortAjaxFail, xhr.status, xhr)"))
+    if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+		t.setRequestHeader("X-CSRFToken", r("scratchcsrftoken"))
+	}
+});
+
+/* add a callback for ajax errors where no handler is defined */
+$(document).ajaxError(function(event, xhr, ajaxSettings, thrownError) {
+  if ( ajaxSettings.error===undefined ){ // if no error handler is defined
+    
+    if ( location.port==='' ){ // log non-dev-port errors to Google Analytics
+      throw 'Uncaught ajax error. Attempted URL: '+ajaxSettings.url+'   Status: '+ xhr.status;
+    } else if ( xhr.status===0 ){ // else we're on a dev port and with a response status 0
+      // Workaround for successful requests incorrectly appearing to fail on dev ports. Not applicable on production.
+      // see https://code.google.com/p/chromium/issues/detail?id=195550
+      ajaxSettings.success(ajaxSettings.fakeResponseForDevPortAjaxFail,xhr.status,xhr);
+      console.error('Status 0 ajax bug. Calling success(options.fakeResponseForDevPortAjaxFail, xhr.status, xhr)');
     }
-}), $(document).on("click", ".dropdown.select ul li", function () {
-    var e = $(this).text(),
-    t = $(this).closest(".dropdown"),
-    n = t.find(".selected");
-    t.find("li.hide").removeClass("hide"),
-    $(this).addClass("hide"),
-    n.text(e)
-}), $(document).on("click", ".dropdown.radio-style ul li", function () {
-    var e = $(this).closest(".dropdown");
-    e.find(".selected").removeClass("selected"),
-    $(this).addClass("selected")
-}), $.urlParam = function (e) {
-    if (window.location.search.indexOf(e) == -1)
-        return null;
-    var t = (new RegExp("[\\?&]" + e + "=([^&#]*)")).exec(window.location.href);
-    return t[1] || 0
+  }
+});
+
+/* extend twitter-bootstrap-dropdown.js to handle more select style dropdown for filters */
+$(document).on('click', '.dropdown.select ul li', function() {
+  var text = $(this).text();
+  var $dropdown = $(this).closest('.dropdown');
+  var $selected = $dropdown.find('.selected');
+  $dropdown.find('li.hide').removeClass('hide');
+  $(this).addClass('hide');
+  $selected.text(text);
+}),
+
+$(document).on('click', '.dropdown.radio-style ul li', function() {
+  var $dropdown = $(this).closest('.dropdown');
+  $dropdown.find('.selected').removeClass('selected');
+  $(this).addClass('selected');
+}),
+
+$.urlParam = function (name) {
+  if (window.location.search.indexOf(name) == -1) {
+    return null;
+  } else {
+	  var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	  return results[1] || 0;
+  }
 };

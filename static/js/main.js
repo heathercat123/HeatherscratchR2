@@ -2424,185 +2424,262 @@ function (e) {
     e.fn.notificationsAlert.Constructor = t
 }
 (window.jQuery);
-var scratch = scratch || {};
-scratch.users = scratch.users || {}, scratch.projects = scratch.projects || {}, scratch.comments = scratch.comments || {}, scratch.notifications = scratch.notifications || {}, scratch.users.URLS = {
-    edit: Scratch.ROOT_URL + "/users/ajax/edit/user/",
-    add_favorite: Scratch.ROOT_URL + "/users/ajax/<id>/add_to/favorites/",
-    add_following: Scratch.ROOT_URL + "/users/ajax/<id>/add_to/following/",
-    list_followers: Scratch.ROOT_URL + "/users/ajax/<username>/followers/",
-    list_following: Scratch.ROOT_URL + "/users/ajax/<username>/following/",
-    list_curators: Scratch.ROOT_URL + "/users/ajax/<galleryId>/curators/"
-}, scratch.projects.URLS = {
-    edit: Scratch.ROOT_URL + "/projects/ajax/edit/<id>/",
-    create: Scratch.ROOT_URL + "/projects/ajax/create/",
-    add_love: Scratch.ROOT_URL + "/projects/ajax/add_to/<id>/loves/",
-    action: Scratch.ROOT_URL + "/projects/ajax/action/",
-    list_projects: Scratch.ROOT_URL + "/projects/ajax/<id>/all/",
-    list_shared: Scratch.ROOT_URL + "/projects/ajax/<id>/public/",
-    list_favorites: Scratch.ROOT_URL + "/projects/ajax/<id>/favorites/",
-    list_loves: Scratch.ROOT_URL + "/projects/ajax/<id>/loves/",
-    list_notshared: Scratch.ROOT_URL + "/projects/ajax/<id>/private/",
-    list_trashed: Scratch.ROOT_URL + "/projects/ajax/<id>/trashed/",
-    list_remixes: Scratch.ROOT_URL + "/projects/ajax/<id>/remixes/",
-    list_in_gallery: Scratch.ROOT_URL + "/projects/ajax/in-gallery/<id>/",
-    list_recent: Scratch.ROOT_URL + "/projects/ajax/recent/"
-}, scratch.comments.URLS = {
-    create_project_comment: Scratch.ROOT_URL + "/comments/ajax/project/<parentId>/create/",
-    create_user_comment: Scratch.ROOT_URL + "/comments/ajax/user/<parentId>/create/",
-    delete_project_comment: Scratch.ROOT_URL + "/comments/ajax/project/delete/",
-    flag_project_comment: Scratch.ROOT_URL + "/comments/ajax/project/flag/",
-    list_project: Scratch.ROOT_URL + "/comments/ajax/project/<id>/",
-    list_user: Scratch.ROOT_URL + "/comments/ajax/user/<id>/"
-}, scratch.notifications.URLS = {
-    list: Scratch.ROOT_URL + "/messages/ajax/messages-list/",
-    unread: Scratch.ROOT_URL + "/messages/ajax/get-message-count/",
-    clear: Scratch.ROOT_URL + "/messages/ajax/messages-clear/",
-    "delete": Scratch.ROOT_URL + "/messages/ajax/messages-delete/",
-    activity: Scratch.ROOT_URL + "/messages/ajax/user-activity/",
-    "friends-activity": Scratch.ROOT_URL + "/messages/ajax/friends-activity/"
-}, scratch.users.loadUsers = function (e, t, n, r) {}, scratch.users.loadCurators = function (e, t, n, r, i) {
-    var s = scratch.users.URLS.list_curators.replace(/<galleryId>/, t);
-    e.load(s, i)
-}, scratch.users.favorite = function (e, t, n, r) {
-    var i = scratch.users.URLS.add_favorite.replace(/<id>/, t),
-    e = {
-        remove: !n,
-        favorites: e
+var scratch = scratch || {}
+scratch.users = scratch.users || {}
+scratch.projects = scratch.projects || {}
+scratch.comments = scratch.comments || {}
+scratch.notifications = scratch.notifications || {}
+
+
+scratch.users.URLS = {
+    'edit': Scratch.ROOT_URL + '/users/ajax/edit/user/',
+
+    'add_favorite': Scratch.ROOT_URL + '/users/ajax/<id>/add_to/favorites/',
+    'add_following': Scratch.ROOT_URL + '/users/ajax/<id>/add_to/following/',
+
+    'list_followers': Scratch.ROOT_URL + '/users/ajax/<username>/followers/',
+    'list_following': Scratch.ROOT_URL + '/users/ajax/<username>/following/',
+    'list_curators': Scratch.ROOT_URL + '/users/ajax/<galleryId>/curators/',
+}
+
+scratch.projects.URLS = {
+    'edit': Scratch.ROOT_URL + '/projects/ajax/edit/<id>/',
+    'create': Scratch.ROOT_URL + '/projects/ajax/create/',
+
+    'add_love': Scratch.ROOT_URL + '/projects/ajax/add_to/<id>/loves/',
+    'action': Scratch.ROOT_URL + '/projects/ajax/action/',
+
+    'list_projects': Scratch.ROOT_URL + '/projects/ajax/<id>/all/',
+    'list_shared': Scratch.ROOT_URL + '/projects/ajax/<id>/public/',
+    'list_favorites': Scratch.ROOT_URL + '/projects/ajax/<id>/favorites/',
+    'list_loves': Scratch.ROOT_URL + '/projects/ajax/<id>/loves/',
+
+    'list_notshared': Scratch.ROOT_URL + '/projects/ajax/<id>/private/',
+    'list_trashed': Scratch.ROOT_URL + '/projects/ajax/<id>/trashed/',
+
+    'list_remixes': Scratch.ROOT_URL + '/projects/ajax/<id>/remixes/',
+    'list_in_gallery': Scratch.ROOT_URL + '/projects/ajax/in-gallery/<id>/',
+
+    'list_recent': Scratch.ROOT_URL + '/projects/ajax/recent/',
+}
+
+scratch.comments.URLS = {
+    'create_project_comment': Scratch.ROOT_URL + '/comments/ajax/project/<parentId>/create/',
+    'create_user_comment': Scratch.ROOT_URL + '/comments/ajax/user/<parentId>/create/',
+
+    'delete_project_comment': Scratch.ROOT_URL + '/comments/ajax/project/delete/',
+    'flag_project_comment': Scratch.ROOT_URL + '/comments/ajax/project/flag/',
+
+    'list_project': Scratch.ROOT_URL + '/comments/ajax/project/<id>/',
+    'list_user': Scratch.ROOT_URL + '/comments/ajax/user/<id>/',
+}
+scratch.notifications.URLS = {
+    'list': Scratch.ROOT_URL + '/messages/ajax/messages-list/',
+    'unread': Scratch.ROOT_URL + '/messages/ajax/get-message-count/',
+    'clear': Scratch.ROOT_URL + '/messages/ajax/messages-clear/',
+    'delete': Scratch.ROOT_URL + '/messages/ajax/messages-delete/',
+
+    'activity': Scratch.ROOT_URL + '/messages/ajax/user-activity/',
+    'friends-activity': Scratch.ROOT_URL + '/messages/ajax/friends-activity/',
+}
+
+// USER SERVER CALLS
+
+scratch.users.loadUsers = function (username, filter, template, order) {
+};
+
+scratch.users.loadCurators = function ($el, galleryId, template, order, callback) {
+    var loadurl = scratch.users.URLS.list_curators.replace(/<galleryId>/, galleryId);
+    $el.load(url, callback);
+};
+
+scratch.users.favorite = function (data, id, favorite, callback) {
+    var loadUrl = scratch.users.URLS['add_favorite'].replace(/<id>/, id),
+    data = {
+        remove: !favorite,
+        favorites: data,
     };
-    $.ajax({
-        type: "POST",
-        data: JSON.stringify(e),
-        url: i,
-        success: r
-    })
-}, scratch.users.follow = function (e, t, n, r) {
-    var i = scratch.users.URLS.add_following.replace(/<id>/, t),
-    e = {
-        remove: !n,
-        friends: e
-    };
-    $.ajax({
-        type: "POST",
-        data: JSON.stringify(e),
-        url: i,
-        success: r
-    })
-}, scratch.users.editProfile = function (e, t) {
-    var n = scratch.users.URLS.edit;
-    $.ajax({
-        type: "POST",
-        url: n,
-        data: JSON.stringify(e),
-        success: t
-    })
-}, scratch.projects.loadProjects = function (e, t, n) {
-    var r = scratch.projects.URLS["list_" + t.filter].replace(/<id>/, t.id) + "?ordering=" + t.order + "&feature=" + t.feature + "&page=" + t.page;
-    e.load(r, n)
-}, scratch.projects.loadRemixes = function (e, t, n) {}, scratch.projects.loadGalleryProjects = function (e, t, n, r, i) {
-    var s = scratch.projects.URLS.list_in_gallery.replace(/<galleryId>/, t) + "?ordering=" + r + "&feature=" + n;
-    e.load(s, i)
-}, scratch.projects.loadRecentProjects = function (e, t, n, r, i) {
-    var s = scratch.projects.URLS.list_recent + "?ordering=" + t + "&items=" + n + "&feature=" + r;
-    e.load(s, i)
-}, scratch.projects.love = function (e, t, n) {
-    var r = scratch.projects.URLS.add_love.replace(/<id>/, e.id),
-    e = {
-        remove: !t
-    };
-    $.ajax({
-        type: "POST",
-        data: JSON.stringify(e),
-        url: r
-    })
-}, scratch.projects.editProject = function (e, t, n) {
-    var r = scratch.projects.URLS.edit.replace(/<id>/, e);
-    $.ajax({
-        type: "POST",
-        data: JSON.stringify(t),
-        url: r,
-        success: n
-    })
-}, scratch.projects.createProject = function (e, t) {
-    var n = scratch.projects.URLS.create;
-    $.ajax
-    ({
-        type: "POST",
-        data: JSON.stringify(e),
-        url: n,
-        success: t
-    })
-}, scratch.projects.updateProjectStatus = function (e, t, n) {
-    var r = scratch.projects.URLS.action,
-    i = {
-        project_list: e,
-        action: t
-    };
-    $.ajax({
-        type: "POST",
-        data: JSON.stringify(i),
-        url: r,
-        success: n
-    })
-}, scratch.comments.createComment = function (e, t, n, r, i, s) {
-    var o = scratch.comments.URLS["create_" + e + "_comment"].replace(/<parentId>/, t),
-    u = {
-        content: n,
-        commentee: r,
-        parent: i
-    };
-    return $.ajax({
-        type: "POST",
-        data: JSON.stringify(u),
-        url: o
-    })
-}, scratch.comments.deleteComment = function (e, t) {
-    var n = scratch.comments.URLS.delete_project_comment.replace(/<commentId>/, e);
     $.ajax({
         type: "POST",
         data: JSON.stringify(data),
-        url: n,
-        success: t
-    })
-}, scratch.comments.loadComments = function (e, t, n, r, i) {
-    var s = scratch.comments.URLS["list_" + t].replace(/<id>/, n) + "?page=" + r;
-    e.load(s, i)
-}, scratch.notifications.load = function (e, t) {
-    var n = scratch.notifications.URLS.list;
+        url: loadUrl,
+        success: callback
+    });
+};
+
+scratch.users.follow = function (data, id, follow, callback) {
+    var loadUrl = scratch.users.URLS['add_following'].replace(/<id>/, id),
+    data = {
+        remove: !follow,
+        friends: data,
+    };
     $.ajax({
-        url: n,
-        cache: !1,
-        dataType: "json",
-        success: t
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl,
+        success: callback
     })
-}, scratch.notifications.loadUnRead = function (e) {
+};
+
+scratch.users.editProfile = function (data, callback) {
+    var loadUrl = scratch.users.URLS['edit'];
     $.ajax({
-        dataType: "json",
-        url: scratch.notifications.URLS.unread,
-        success: e,
-        error: function () {
-            console.log("unread messages not loaded")
+        type: 'POST',
+        url: loadUrl,
+        data: JSON.stringify(data),
+        success: callback
+    })
+};
+
+// PROJECT SERVER CALLS
+scratch.projects.loadProjects = function ($el, data, callback) {
+    var url = scratch.projects.URLS["list_" + data.filter].replace(/<id>/, data.id) + "?ordering=" + data.order + "&feature=" + data.feature + "&page=" + data.page;
+    $el.load(url, callback)
+};
+
+scratch.projects.loadRemixes = function (e, t, n) {
+};
+
+scratch.projects.loadGalleryProjects = function ($el, galleryId, feature, order, callback) {
+    var url = scratch.projects.URLS['list_in_gallery'].replace(/<galleryId>/, galleryId) + "?ordering=" + order + "&feature=" + feature;
+    $el.load(url, callback)
+};
+
+scratch.projects.loadRecentProjects = function ($el, order, items, feature, callback) {
+    var url = scratch.projects.URLS['list_recent'] + "?ordering=" + order + "&items=" + items + "&feature=" + feature;
+    $el.load(url, callback)
+};
+
+scratch.projects.love = function (data, love, callback) {
+    var loadUrl = scratch.projects.URLS['add_love'].replace(/<id>/, data.id);
+    var data = {
+        'remove': !love
+    };
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl,
+    })
+};
+
+scratch.projects.editProject = function (id, data, callback) {
+    var loadUrl = scratch.projects.URLS['edit'].replace(/<id>/, id);
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl,
+        success: callback,
+    })
+};
+
+scratch.projects.createProject = function (data, callback) {
+    var loadUrl = scratch.projects.URLS['create'];
+    $.ajax
+    ({
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl,
+        success: callback,
+    })
+};
+
+scratch.projects.updateProjectStatus = function (projectIds, action, callback) {
+    var loadUrl = scratch.projects.URLS['action'];
+    var data = {
+        'project_list': projectIds,
+        'action': action,
+    }
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl,
+        success: callback,
+    })
+};
+
+// COMMENT SERVER CALLS
+scratch.comments.createComment = function (type, parentId, content, replyTo, threadId, callback) {
+    var loadUrl = scratch.comments.URLS["create_" + type + "_comment"].replace(/<parentId>/, parentId);
+    var data = {
+        'content': content,
+        'commentee': replyTo,
+        'parent': threadId,
+    };
+    return $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl
+    })
+};
+
+scratch.comments.deleteComment = function (commentId, callback) {
+    var loadUrl = scratch.comments.URLS['delete_project_comment'].replace(/<commentId>/, commentId);
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        url: loadUrl,
+        success: callback,
+    })
+};
+
+scratch.comments.loadComments = function ($el, type, typeId, page, callback) {
+    var loadUrl = scratch.comments.URLS["list_" + type].replace(/<id>/, typeId) + "?page=" + page;
+    $el.load(loadUrl, callback);
+};
+
+// NOTIFICATIONS
+
+scratch.notifications.load = function (page, callback) {
+    var loadUrl = scratch.notifications.URLS['list'];
+    $.ajax({
+        url: loadUrl,
+        cache: false, // ensure that comments stay deleted after refreshing page in IE
+        dataType: 'json',
+        success: callback
+    });
+};
+
+scratch.notifications.loadUnRead = function (callback) {
+    $.ajax({
+        dataType: 'json',
+        url: scratch.notifications.URLS['unread'],
+        success: callback,
+        error:function(){
+            console.log("unread messages not loaded");
         }
-    })
-}, scratch.notifications.clearUnRead = function (e) {
-    var t = scratch.notifications.URLS.clear;
+    });
+};
+
+scratch.notifications.clearUnRead = function (callback) {
+    var url = scratch.notifications.URLS['clear'];
     $.ajax({
-        type: "POST",
-        url: t,
-        success: e
-    })
-}, scratch.notifications.remove = function (e, t) {
-    var n = scratch.notifications.URLS["delete"];
+        type: 'POST',
+        url: url,
+        success: callback,
+    });
+};
+
+scratch.notifications.remove = function (data, callback) {
+    var url = scratch.notifications.URLS["delete"];
     $.ajax({
-        data: JSON.stringify(e),
-        type: "POST",
-        url: n,
-        success: t
-    })
-}, scratch.notifications.loadActivity = function (e, t, n) {
-    var r = "";
-    t.friends ? r = scratch.notifications.URLS["friends-activity"] + "?max=" + t.max : r = scratch.notifications.URLS.activity + "?user=" + t.actor + "&max=" + t.max,
-    e.load(r, n)
-}, !function (e) {
+        data: JSON.stringify(data),
+        type: 'POST',
+        url: url,
+        success: callback,
+    });
+};
+
+scratch.notifications.loadActivity = function ($el, data, callback) {
+    var loadUrl = "";
+    if (data.friends) {
+		loadUrl = scratch.notifications.URLS["friends-activity"] + "?max=" + data.max;
+	} else {
+		loadUrl = scratch.notifications.URLS['activity'] + "?user=" + data.actor + "&max=" + data.max;
+	}
+    $el.load(loadUrl, callback)
+};
+
+!function (e) {
     "use strict";
     var t = function (t) {
         this.element = e(t)
