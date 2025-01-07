@@ -1,0 +1,44 @@
+{# This will probably never get used #}
+
+{% load i18n %}
+
+<div id="email-resend-box">
+  <form method="post" action="{{ settings.ROOT_URL }}/accounts/email_resend/"> {# URLTODO: eMail #}
+  {% csrf_token %}
+    <div class="modal-body">
+      
+
+      <p class="email-resend-email">
+      
+        {% trans 'Check for the confirmation message we sent to:' %}
+        <br/>
+        <strong>{{ request.user.email }}</strong>
+      
+      </p>
+
+      <div class="email-resend-subsection">
+        <p><strong>{% trans "Can't find confirmation message?" %}</strong></p>
+        
+        <ul>
+          <li>{% trans 'Wait for ten minutes. The message may take a while to arrive.' %}</li>
+          <li>{% trans 'Check your spam folder.' %}</li>
+          <li>{% blocktrans with settings_url="/scratchr2/accounts/email_change/" %}Make sure your email address is correct (see <a href="{{ settings_url }}">Account Settings</a>){% endblocktrans %}.</li>
+		  {# HARDCODETODO + URLTODO: /scratchr2/accounts/email_change/ #}
+        </ul>
+
+        <input id="hidden-email-address" type="hidden" name="hidden-email" value="" />
+        <p>
+          {% trans "Still can't find the message?" %} <a href="{{ settings.ROOT_URL }}/accounts/email_change/">{% trans 'Resend Confirmation' %}</a>
+		  {# URLTODO: eMail #}
+        </p>
+      </div>
+      
+    </div>
+    <div class="modal-footer">
+      <div class="buttons-right">
+        <input id="close-resend-dialog" class="button" type="button" value="OK, back to Scratch" />
+      </div>
+    </div>
+  </form>
+  <iframe class="iframeshim" frameborder="0" scrolling="no"><html><head></head><body></body></html></iframe>
+</div>

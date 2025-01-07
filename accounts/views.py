@@ -5,6 +5,9 @@ from django.shortcuts import render
 def modal_registration(request):
     return render(request, "modal-registration.html")
 
+def verify_email_popup(request):
+	return render(request, "email_verification/includes/verify_email_popup.html")
+
 def check_username(request, username):
 	if username == "taken":
 		msg = "username exists"
