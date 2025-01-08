@@ -1,3 +1,5 @@
+{# TODO: Get rid of placeholders #}
+
 {% extends 'base.html' %}
 {% load i18n %}
 
@@ -54,7 +56,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
       </p>
     </div>
    
-{% if false %}
+{% if user.is_authenticated %}
     <div id="follow-button" class="buttons">
       
 
@@ -111,7 +113,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
     </div>
   </div>
   <div class="footer">
-  {% if false %}
+  {% if user.is_authenticated %}
     <div class="action" id="report-this">
       <span class="text black" data-control="open-report">{% trans 'Report this profile' %}</span>
     </div>

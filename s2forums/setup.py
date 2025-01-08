@@ -11,14 +11,6 @@ setup(name='djangobb_forum',
     author_email='Maranchuk Sergey <slav0nic0@gmail.com>',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[
-            'django>=1.3.1',
-            'pillow',
-            'django-haystack',
-            'django-pagination',
-            'south',
-            'postmarkup',
-            'setuptools'
-            ],
+    install_requires=[], # Those are handled by HeatherscratchR2's requirements.txt
     keywords="django forum bb",
 )
