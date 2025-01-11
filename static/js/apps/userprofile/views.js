@@ -345,9 +345,11 @@ Scratch.UserProfile.ScratcherPromotionModal = Backbone.View.extend({
     getStep: function() {
         // starting at 0, find the step number of the currently shown step
         var $steps = this.$el.find('.step');
+		console.log($steps);
         for (var i = 0; i < $steps.length; ++i) {
             $el = $steps.eq(i);
             if ($el.is(':visible')) {
+				console.log(i);
                 return i;
             }
         }

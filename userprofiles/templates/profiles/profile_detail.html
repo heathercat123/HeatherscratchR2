@@ -48,7 +48,7 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
       
       <span class="group">
         Test Profile
-         
+        <a id="scratcher-promotion">(★ Become a Scratcher!)</a>
         
       </span> 
       {% blocktrans with tDateLabel='0-0-0' tDate='forever' %}Joined <span title="{{ tDateLabel }}">{{ tDate }}</span> ago{% endblocktrans %}
@@ -197,6 +197,8 @@ Scratch.INIT_DATA.ADMIN_PANEL = {
     
   </div>
 </div>
+
+<div class="modal hide fade" data-backdrop="static" id="scratcher-promotion-modal"></div>
 {% endblock %}
 
 {% block js %}

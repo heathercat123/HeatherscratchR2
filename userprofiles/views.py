@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-def detail(request, username):
+def userprofile(request, username):
 	context = {}
 	# Test data uses the javascript-style true/false whereas we need the python-style True/False
 	# When projects will be stored in the database, Django will automatically fix this for us
@@ -78,3 +78,6 @@ def detail(request, username):
 									]
 	context["galleriescurating"] = context["galleriesfollowings"]
 	return render(request, "profiles/profile_detail.html", context)
+
+def scratcher_promotion_modal(request):
+	return render(request, "profiles/scratcher_promotion_modal.html")
