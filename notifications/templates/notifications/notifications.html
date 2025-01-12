@@ -2,19 +2,28 @@
 {% load i18n %}
 
 {% block content %}
+<div class="notification-feed">
 <div class="admin-notifications-list">
 <ul class="scratch-team">
-<li>class_scratch-team</li>
+<li>
+<h3>Alerts</h3>
+<span class="time">Month Date Year @3:00 a.m.</span> <span class="delete">x</span><br/>
+This is an alert.<br/>
+But shouldn't alerts be blue?
+</li>
 </ul>
 </div>
-<div class="notification-feed">
-<ul class="scratch-team">
-<li>class_scratch-team</li>
-</ul>
+
+<h3>Today</h3>
 <ul class="social-notification-list">
 <li class="unread"> <span class="icon-xs black comment"></span> "icon-xs black comment" class_unread <span class="comment-snippet">class_comment-snippet</span> <a class="class_title" href="https://en.scratch-wiki.info/w/images/archive/20170909093445%21Messages_Page.PNG">title</a> <span class="time">span_time</span> <span class="delete">span_delete</span></li>
-<li class="read"> <span class="icon-xs black follower"></span> "icon-xs black follower" class_read <span class="comment-snippet">class_comment-snippet</span> <a class="class_title" href="https://en.scratch-wiki.info/w/images/archive/20170909093445%21Messages_Page.PNG">title</a> <span class="time">span_time</span> <span class="delete">span_delete</span></li>
+<li class="unread"><span class="icon-xs black comment"></span> <a class="class_title" href="{% url userprofile 'test' %}">test</a> replied to your comment on <a class="class_title" href="{% url userprofile 'test' %}">test's profile</a> "<span class="comment-snippet">UwU</span>" <span class="time">3:00 a.m.</span></li>
 </ul>
+
+<h3>On Month Date, Year</h3>
+<li class="read"> <span class="icon-xs black follower"></span> "icon-xs black follower" class_read <span class="comment-snippet">class_comment-snippet</span> <a class="class_title" href="https://en.scratch-wiki.info/w/images/archive/20170909093445%21Messages_Page.PNG">title</a> <span class="time">span_time</span></li>
+<li class="read"> <span class="icon-xs black follower"></span> <a class="class_title" href="{% url userprofile 'test' %}">test</a> is now following you <span class="time">15:00 p.m.</span></li>
+
 </div>
 
 <div style="margin: auto; text-align: center;">
