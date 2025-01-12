@@ -1,0 +1,110 @@
+/**
+ * Scratch v2.0
+ * layout-grid.css
+ *
+ * Grid layout styles - based on 12 columns and 960px page width.
+ *
+ */
+
+.cols {
+  width: auto;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 0;
+  position: relative;
+  zoom: 1; /* [hack] forces 'hasLayout' for IE and fixes the usual IE6 Peekaboo bugs */
+}
+
+.cols::after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12, 
+.col-13, .col-14, .col-15, .col-16, .col-17, .col-18, .col-19, 
+.col-20, .col-21, .col-22, .col-23, .col-24, .col-20pc, .col-one-third {
+  float: left;
+  margin: 0 10px;
+  display: inline; /* [hack] fixes IE6 double margin bug */
+}
+
+.col-1 {
+  width: 40px;
+}
+.col-2 {
+  width: 100px;
+}
+.col-3 {
+  width: 160px;
+}
+.col-4 {
+  width: 220px;
+}
+.col-5 {
+  width: 280px;
+}
+.col-6 {
+  width: 340px;
+}
+.col-7 {
+  width: 400px;
+}
+.col-8 {
+  width: 460px;
+}
+.col-9 {
+  width: 520px;
+}
+.col-10 {
+  width: 580px;
+}
+.col-11 {
+  width: 640px;
+}
+.col-12 {
+  width: 700px;
+}
+.col-13 {
+  width: 760px;
+}
+.col-14 {
+  width: 820px;
+}
+.col-15 {
+  width: 880px;
+}
+.col-16 {
+  width: 940px;
+}
+.col-17 {
+  width: 1000px;
+}
+.col-18 {
+  width: 1060px;
+}
+.col-19 {
+  width: 1120px;
+}
+.col-20 {
+  width: 1180px;
+}
+.col-21 {
+  width: 1240px;
+}
+.col-22 {
+  width: 1300px;
+}
+.col-23 {
+  width: 1360px;
+}
+.col-24 {
+  width: 1420px;
+}
+.col-one-third {
+  width: 300px
+}
+
