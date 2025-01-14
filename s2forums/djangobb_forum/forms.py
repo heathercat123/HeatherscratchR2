@@ -97,7 +97,8 @@ class AddPostForm(forms.ModelForm):
                 self._errors['name'] = self.error_class([errmsg])
                 del cleaned_data['name']
             cleaned_data['name'] = filter_language(subject)
-        if False: # STUB, should be BaseComment.user_is_muted(self.user)
+        baseComment = BaseComment()
+        if baseComment.user_is_muted(self.user): # STUB, should be BaseComment.user_is_muted(self.user)
             self._errors['body'] = self.error_class([_("Hmm, the filterbot is pretty sure your recent comments weren't ok for Scratch, so your account has been muted for the rest of the day. :/")])
         if self.is_ip_banned:
             error = """Sorry, the Scratch Team had to prevent your network from
