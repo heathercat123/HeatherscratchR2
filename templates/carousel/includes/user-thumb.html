@@ -1,10 +1,10 @@
 <!-- templates/carousel/user-thumb.html -->
 <li class="user thumb item">
-  <a href="{% url userprofile user.fields.username %}">
+  <a href="{% url profile_detail user.fields.username %}">
     <img class="lazy" data-original="{{ user.fields.thumbnail_url }}" width="144" height="108" />
   </a>
   <span class="title">
-    <a href="{% url userprofile user.fields.username %}">{{ user.fields.username }}
+    <a href="{% url profile_detail user.fields.username %}">{{ user.fields.username }}
 	</a>
   </span>
 </li>

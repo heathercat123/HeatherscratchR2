@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-def userprofile(request, username):
+def profile_detail(request, username):
     """
     Render a user's profile page based on test data
     """

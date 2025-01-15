@@ -12,7 +12,7 @@
   <span class="owner" >
       
         
-            {% trans 'by' %} <a href="{% url userprofile project.fields.creator.username %}">{{ project.fields.creator.username }}</a>
+            {% trans 'by' %} <a href="{% url profile_detail project.fields.creator.username %}">{{ project.fields.creator.username }}</a>
         
       
   </span>
