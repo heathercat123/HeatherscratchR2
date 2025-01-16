@@ -1,20 +1,13 @@
-# coding: utf-8
-
-from hashlib import sha1
+from datetime import datetime
 import os
+import os.path
+from hashlib import sha1
 
-from django.conf import settings
-from django.contrib.auth.models import User, Group
-from django.core.urlresolvers import reverse
-from django.core.validators import MaxLengthValidator
 from django.db import models
-from django.db.models import aggregates
-from django.db.models.signals import post_save
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User, Group
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
-from django.utils import timezone
-
-from django_fsm.db.fields import FSMField, transition, can_proceed
+from django.db.models.signals import post_save
 
 from djangobb_forum.fields import AutoOneToOneField, ExtendedImageField, JSONField
 from djangobb_forum.util import smiles, convert_text_to_html
@@ -58,28 +51,14 @@ except ImportError:
 path = os.path.join(settings.STATIC_ROOT, 'djangobb_forum', 'themes')
 if os.path.exists(path):
     # fix for collectstatic
-    THEME_CHOICES = [(theme, theme) for theme in os.listdir(path)
+    THEME_CHOICES = [(theme, theme) for theme in os.listdir(path) 
                      if os.path.isdir(os.path.join(path, theme))]
 else:
     THEME_CHOICES = []
 
-
-import logging
-logger = logging.getLogger(__name__)
-
-akismet_api = None
-from akismet import Akismet, AkismetError
-
-try:
-    if getattr(settings, 'AKISMET_ENABLED', True):
-        akismet_api = Akismet(key=forum_settings.AKISMET_API_KEY, blog_url=forum_settings.AKISMET_BLOG_URL, agent=forum_settings.AKISMET_AGENT)
-except Exception as e:
-    logger.error("Error while initializing Akismet", extra={'exception': e})
-
-
 class Category(models.Model):
     name = models.CharField(_('Name'), max_length=80)
-    groups = models.ManyToManyField(Group, blank=True, null=True, verbose_name=_('Groups'), help_text=_('Only users from these groups can see this category'))
+    groups = models.ManyToManyField(Group,blank=True, null=True, verbose_name=_('Groups'), help_text=_('Only users from these groups can see this category'))
     position = models.IntegerField(_('Position'), blank=True, default=0)
 
     class Meta:
@@ -102,12 +81,10 @@ class Category(models.Model):
         return Post.objects.filter(topic__forum__category__id=self.id).select_related()
 
     def has_access(self, user):
-        if user.is_superuser:
-            return True
         if self.groups.exists():
-            if user.is_authenticated():
-                if not self.groups.filter(user__pk=user.id).exists():
-                    return False
+            if user.is_authenticated(): 
+                    if not self.groups.filter(user__pk=user.id).exists():
+                        return False
             else:
                 return False
         return True
@@ -115,7 +92,6 @@ class Category(models.Model):
 
 class Forum(models.Model):
     category = models.ForeignKey(Category, related_name='forums', verbose_name=_('Category'))
-    moderator_only = models.BooleanField(_('New topics by moderators only'), default=False)
     name = models.CharField(_('Name'), max_length=80)
     position = models.IntegerField(_('Position'), blank=True, default=0)
     description = models.TextField(_('Description'), blank=True, default='')
@@ -137,22 +113,9 @@ class Forum(models.Model):
     def get_absolute_url(self):
         return ('djangobb:forum', [self.id])
 
-    def get_mobile_url(self):
-        return reverse('djangobb:mobile_forum', args=[self.id])
-
     @property
     def posts(self):
         return Post.objects.filter(topic__forum__id=self.id).select_related()
-
-    def set_last_post(self):
-        try:
-            self.last_post = Topic.objects.filter(forum=self).latest().last_post
-        except Topic.DoesNotExist:
-            self.last_post = None
-
-    def set_counts(self):
-        self.topic_count = Topic.objects.filter(forum=self).count()
-        self.post_count = Post.objects.filter(topic__forum=self).count()
 
 
 class Topic(models.Model):
@@ -173,36 +136,26 @@ class Topic(models.Model):
         get_latest_by = 'updated'
         verbose_name = _('Topic')
         verbose_name_plural = _('Topics')
-        permissions = (
-            ('delayed_close', 'Can close topics after a delay'),
-            )
 
     def __unicode__(self):
         return self.name
 
-    def move_to(self, new_forum):
-        """
-        Move a topic to a new forum.
-        """
-        self.clear_last_forum_post()
-        old_forum = self.forum
-        self.forum = new_forum
-        self.save()
-        old_forum.set_last_post()
-        old_forum.set_counts()
-        old_forum.save()
-
     def delete(self, *args, **kwargs):
-        self.clear_last_forum_post()
-        forum = self.forum
-        if forum_settings.SOFT_DELETE_TOPICS and (self.forum != get_object_or_404(Forum, pk=forum_settings.SOFT_DELETE_TOPICS) or not kwargs.get('staff', False)):
-            self.forum = get_object_or_404(Forum, pk=forum_settings.SOFT_DELETE_TOPICS)
-            self.save()
+        try:
+            last_post = self.posts.latest()
+            last_post.last_forum_post.clear()
+        except Post.DoesNotExist:
+            pass
         else:
-            super(Topic, self).delete()
-
-        forum.set_last_post()
-        forum.set_counts()
+            last_post.last_forum_post.clear()
+        forum = self.forum
+        super(Topic, self).delete(*args, **kwargs)
+        try:
+            forum.last_post = Topic.objects.filter(forum__id=forum.id).latest().last_post
+        except Topic.DoesNotExist:
+            forum.last_post = None
+        forum.topic_count = Topic.objects.filter(forum__id=forum.id).count()
+        forum.post_count = Post.objects.filter(topic__forum__id=forum.id).count()
         forum.save()
 
     @property
@@ -220,9 +173,6 @@ class Topic(models.Model):
     def get_absolute_url(self):
         return ('djangobb:topic', [self.id])
 
-    def get_mobile_url(self):
-        return reverse('djangobb:mobile_topic', args=[self.id])
-
     def update_read(self, user):
         tracking = user.posttracking
         #if last_read > last_read - don't check topics
@@ -232,28 +182,16 @@ class Topic(models.Model):
             #clear topics if len > 5Kb and set last_read to current time
             if len(tracking.topics) > 5120:
                 tracking.topics = None
-                tracking.last_read = timezone.now()
+                tracking.last_read = datetime.now()
                 tracking.save()
             #update topics if exist new post or does't exist in dict
-            elif self.last_post_id > tracking.topics.get(str(self.id), 0):
+            if self.last_post_id > tracking.topics.get(str(self.id), 0):
                 tracking.topics[str(self.id)] = self.last_post_id
                 tracking.save()
         else:
             #initialize topic tracking dict
             tracking.topics = {self.id: self.last_post_id}
             tracking.save()
-
-    def clear_last_forum_post(self):
-        """
-        Prep for moving/deleting. Update the forum the topic belongs to.
-        """
-        try:
-            last_post = self.posts.latest()
-            last_post.last_forum_post.clear()
-        except Post.DoesNotExist:
-            pass
-        else:
-            last_post.last_forum_post.clear()
 
 
 class Post(models.Model):
@@ -263,7 +201,7 @@ class Post(models.Model):
     updated = models.DateTimeField(_('Updated'), blank=True, null=True)
     updated_by = models.ForeignKey(User, verbose_name=_('Updated by'), blank=True, null=True)
     markup = models.CharField(_('Markup'), max_length=15, default=forum_settings.DEFAULT_MARKUP, choices=MARKUP_CHOICES)
-    body = models.TextField(_('Message'), validators=[MaxLengthValidator(forum_settings.POST_MAX_LENGTH)])
+    body = models.TextField(_('Message'))
     body_html = models.TextField(_('HTML version'))
     user_ip = models.IPAddressField(_('User IP'), blank=True, null=True)
 
@@ -273,31 +211,13 @@ class Post(models.Model):
         get_latest_by = 'created'
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
-        permissions = (
-            ('fast_post', 'Can add posts without a time limit'),
-            ('med_post', 'Can add posts at medium speed'),
-            ('post_external_links', 'Can post external links'),
-            ('delayed_delete', 'Can delete posts after a delay'),
-        )
 
     def save(self, *args, **kwargs):
-        self.body_html = convert_text_to_html(self.body, self.user.forum_profile)
+        self.body_html = convert_text_to_html(self.body, self.markup) 
         if forum_settings.SMILES_SUPPORT and self.user.forum_profile.show_smilies:
             self.body_html = smiles(self.body_html)
         super(Post, self).save(*args, **kwargs)
 
-    def move_to(self, to_topic, delete_topic=True):
-        delete_topic = (self.topic.posts.count() == 1) and delete_topic
-        prev_topic = self.topic
-        self.topic = to_topic
-        self.save()
-        self.set_counts()
-
-        if delete_topic:
-            prev_topic.delete()
-        prev_topic.forum.set_last_post()
-        prev_topic.forum.set_counts()
-        prev_topic.forum.save()
 
     def delete(self, *args, **kwargs):
         self_id = self.id
@@ -307,45 +227,31 @@ class Post(models.Model):
         profile = self.user.forum_profile
         self.last_topic_post.clear()
         self.last_forum_post.clear()
-
-        # If we actually delete the post, we lose any reports that my have come from it. Also, there is no recovery (but I don't care about that as much right now)
+        super(Post, self).delete(*args, **kwargs)
+        #if post was last in topic - remove topic
         if self_id == head_post_id:
-            topic.delete(*args, **kwargs)
+            topic.delete()
         else:
-            if forum_settings.SOFT_DELETE_POSTS and (self.topic != get_object_or_404(Topic, pk=forum_settings.SOFT_DELETE_POSTS) or not kwargs.get('staff', False)):
-                    self.topic = get_object_or_404(Topic, pk=forum_settings.SOFT_DELETE_POSTS)
-                    self.save()
-            else:
-                super(Post, self).delete()
-                #if post was last in topic - remove topic
             try:
                 topic.last_post = Post.objects.filter(topic__id=topic.id).latest()
             except Post.DoesNotExist:
                 topic.last_post = None
             topic.post_count = Post.objects.filter(topic__id=topic.id).count()
             topic.save()
-        forum.set_last_post()
-        forum.save()
-        self.set_counts()
-
-    def set_counts(self):
-        """
-        Recounts this post's forum and and topic post counts.
-        """
-        forum = self.topic.forum
-        profile = self.user.forum_profile
+        try:
+            forum.last_post = Post.objects.filter(topic__forum__id=forum.id).latest()
+        except Post.DoesNotExist:
+            forum.last_post = None
         #TODO: for speedup - save/update only changed fields
-        forum.set_counts()
+        forum.post_count = Post.objects.filter(topic__forum__id=forum.id).count()
+        forum.topic_count = Topic.objects.filter(forum__id=forum.id).count()
         forum.save()
-        profile.set_counts()
+        profile.post_count = Post.objects.filter(user__id=self.user_id).count()
         profile.save()
 
     @models.permalink
     def get_absolute_url(self):
         return ('djangobb:post', [self.id])
-
-    def get_mobile_url(self):
-        return reverse('djangobb:mobile_post', args=[self.id])
 
     def summary(self):
         LIMIT = 50
@@ -404,7 +310,6 @@ class Profile(models.Model):
     show_signatures = models.BooleanField(_('Show signatures'), blank=True, default=True)
     show_smilies = models.BooleanField(_('Show smilies'), blank=True, default=True)
     privacy_permission = models.IntegerField(_('Privacy permission'), choices=PRIVACY_CHOICES, default=1)
-    auto_subscribe = models.BooleanField(_('Auto subscribe'), help_text=_("Auto subscribe all topics you have created or reply."), blank=True, default=False)
     markup = models.CharField(_('Default markup'), max_length=15, default=forum_settings.DEFAULT_MARKUP, choices=MARKUP_CHOICES)
     post_count = models.IntegerField(_('Post count'), blank=True, default=0)
 
@@ -421,10 +326,6 @@ class Profile(models.Model):
         else:
             return  None
 
-    def set_counts(self):
-        self.post_count = Post.objects.filter(user=self.user).count()
-
-
 class PostTracking(models.Model):
     """
     Model for tracking read/unread posts.
@@ -432,8 +333,8 @@ class PostTracking(models.Model):
     """
 
     user = AutoOneToOneField(User)
-    topics = JSONField(null=True, blank=True)
-    last_read = models.DateTimeField(null=True, blank=True)
+    topics = JSONField(null=True)
+    last_read = models.DateTimeField(null=True)
 
     class Meta:
         verbose_name = _('Post tracking')
@@ -442,11 +343,12 @@ class PostTracking(models.Model):
     def __unicode__(self):
         return self.user.username
 
+
 class Report(models.Model):
     reported_by = models.ForeignKey(User, related_name='reported_by', verbose_name=_('Reported by'))
     post = models.ForeignKey(Post, verbose_name=_('Post'))
     zapped = models.BooleanField(_('Zapped'), blank=True, default=False)
-    zapped_by = models.ForeignKey(User, related_name='zapped_by', blank=True, null=True, verbose_name=_('Zapped by'))
+    zapped_by = models.ForeignKey(User, related_name='zapped_by', blank=True, null=True,  verbose_name=_('Zapped by'))
     created = models.DateTimeField(_('Created'), blank=True)
     reason = models.TextField(_('Reason'), blank=True, default='', max_length='1000')
 
@@ -455,11 +357,11 @@ class Report(models.Model):
         verbose_name_plural = _('Reports')
 
     def __unicode__(self):
-        return u'%s %s' % (self.reported_by , self.zapped)
+        return u'%s %s' % (self.reported_by ,self.zapped)
 
 class Ban(models.Model):
     user = models.OneToOneField(User, verbose_name=_('Banned user'), related_name='ban_users')
-    ban_start = models.DateTimeField(_('Ban start'), default=timezone.now)
+    ban_start = models.DateTimeField(_('Ban start'), default=datetime.now)
     ban_end = models.DateTimeField(_('Ban end'), blank=True, null=True)
     reason = models.TextField(_('Reason'))
 
@@ -505,370 +407,6 @@ class Attachment(models.Model):
     def get_absolute_path(self):
         return os.path.join(settings.MEDIA_ROOT, forum_settings.ATTACHMENT_UPLOAD_TO,
                             self.path)
-
-
-#------------------------------------------------------------------------------
-
-
-class Poll(models.Model):
-    topic = models.ForeignKey(Topic)
-    question = models.CharField(max_length=200)
-    choice_count = models.PositiveSmallIntegerField(default=1,
-        help_text=_("How many choices are allowed simultaneously."),
-    )
-    active = models.BooleanField(default=True,
-        help_text=_("Can users vote to this poll or just see the result?"),
-    )
-    deactivate_date = models.DateTimeField(null=True, blank=True,
-        help_text=_("Point of time after this poll would be automatic deactivated"),
-    )
-    users = models.ManyToManyField(User, blank=True, null=True,
-        help_text=_("Users who has voted this poll."),
-    )
-    def auto_deactivate(self):
-        if self.active and self.deactivate_date:
-            now = timezone.now()
-            if now > self.deactivate_date:
-                self.active = False
-                self.save()
-
-    def __unicode__(self):
-        return self.question
-
-
-class PollChoice(models.Model):
-    poll = models.ForeignKey(Poll, related_name="choices")
-    choice = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0, editable=False)
-
-    def percent(self):
-        if not self.votes:
-            return 0.0
-        result = PollChoice.objects.filter(poll=self.poll).aggregate(aggregates.Sum("votes"))
-        votes_sum = result["votes__sum"]
-        return float(self.votes) / votes_sum * 100
-
-    def __unicode__(self):
-        return self.choice
-
-
-#------------------------------------------------------------------------------
-
-
-class PostStatusManager(models.Manager):
-    def create_for_post(self, post, **kwargs):
-        user_agent = kwargs.get("HTTP_USER_AGENT", None)
-        referrer = kwargs.get("HTTP_REFERER", None)
-        permalink = kwargs.get("permalink", None)
-        return self.create(
-            post=post, topic=post.topic, forum=post.topic.forum,
-            user_agent=user_agent, referrer=referrer, permalink=permalink)
-
-    def review_posts(self, posts, certainly_spam=False):
-        for post in posts:
-            try:
-                post_status = post.poststatus
-            except PostStatus.DoesNotExist:
-                post_status = self.create_for_post(post)
-            post_status.review(certainly_spam=certainly_spam)
-
-    def delete_user_posts(self, posts):
-        for post in posts:
-            try:
-                post_status = post.poststatus
-            except PostStatus.DoesNotExist:
-                post_status = self.create_for_post(post)
-            post_status.filter_user_deleted()
-
-    def undelete_user_posts(self, posts):
-        for post in posts:
-            try:
-                post_status = post.poststatus
-            except PostStatus.DoesNotExist:
-                post_status = self.create_for_post(post)
-            post_status.filter_user_undeleted()        
-
-    def review_new_posts(self):
-        unreviewed = self.filter(state=PostStatus.UNREVIEWED)
-        for post_status in unreviewed:
-            post_status.review()
-        return unreviewed
-
-
-class PostStatus(models.Model):
-    """
-    Keeps track of the status of posts for moderation purposes.
-    """
-    UNREVIEWED = 'unreviewed'
-    USER_DELETED = 'user_deleted'
-    FILTERED_SPAM = 'filtered_spam'
-    FILTERED_HAM = 'filtered_ham'
-    MARKED_SPAM = 'marked_spam'
-    MARKED_HAM = 'marked_ham'
-
-    AKISMET_MAX_SIZE = 1024*250
-
-    post = models.OneToOneField(Post, db_index=True)
-    state = FSMField(default=UNREVIEWED, db_index=True)
-    topic = models.ForeignKey(Topic) # Original topic
-    forum = models.ForeignKey(Forum) # Original forum
-    user_agent = models.CharField(max_length=200, blank=True, null=True)
-    referrer = models.CharField(max_length=200, blank=True, null=True)
-    permalink = models.CharField(max_length=200, blank=True, null=True)
-
-    objects = PostStatusManager()
-
-    spam_category = None
-    spam_forum = None
-    spam_topic = None
-
-    def _get_spam_dustbin(self):
-        if self.spam_category is None:
-            self.spam_category, _ = Category.objects.get_or_create(
-                name=forum_settings.SPAM_CATEGORY_NAME)
-
-        if self.spam_forum is None:
-            self.spam_forum, _ = Forum.objects.get_or_create(
-                category=self.spam_category,
-                name=forum_settings.SPAM_FORUM_NAME)
-
-        if self.spam_topic is None:
-            filterbot = User.objects.get_by_natural_key("filterbot")
-            self.spam_topic, _ = Topic.objects.get_or_create(
-                forum=self.spam_forum, name=forum_settings.SPAM_TOPIC_NAME,
-                user=filterbot)
-
-        return (self.spam_topic, self.spam_forum)
-
-    def _undelete_post(self):
-        """
-        If the post is in the spam dustbin, move it back to its original location.
-        """
-        spam_topic, spam_forum = self._get_spam_dustbin()
-        post = self.post
-        topic = self.topic
-        head = post.topic.head
-
-        if post == head:
-            # Move the original topic back to the original forum (either from
-            # the dustbin, or from the spam dustbin)
-            topic.move_to(self.forum)
-        
-        if topic != post.topic:
-            # If the post was moved from its original topic, put it back now that
-            # the topic is in place.
-            post.move_to(topic, delete_topic=False)
-
-    def _delete_post(self):
-        """
-        Move the post to the spam dustbin.
-        """
-        spam_topic, spam_forum = self._get_spam_dustbin()
-        post = self.post
-        topic = self.topic
-        head = topic.head
-
-        if post == head:
-            topic.move_to(spam_forum)
-        else:
-            post.move_to(spam_topic)
-
-    def to_akismet_data(self):
-        post = self.post
-        topic = self.topic
-        user = post.user
-        user_ip = post.user_ip
-        comment_author = user.username
-        user_agent = self.user_agent
-        referrer = self.referrer
-        permalink = self.permalink
-        comment_date_gmt = post.created.isoformat(' ')
-        comment_post_modified_gmt = topic.created.isoformat(' ')
-
-        return {
-            'user_ip': user_ip,
-            'user_agent': user_agent,
-            'comment_author': comment_author,
-            'referrer': referrer,
-            'permalink': permalink,
-            'comment_type': 'comment',
-            'comment_date_gmt': comment_date_gmt,
-            'comment_post_modified_gmt': comment_post_modified_gmt
-        }
-
-    def to_akismet_content(self):
-        """
-        Truncate the post body to the largest allowed string size. Use size, not
-        length, since the Akismet server checks size, not length.
-        """
-        return self.post.body.encode('utf-8')[:self.AKISMET_MAX_SIZE].decode('utf-8', 'ignore')
-
-    def _comment_check(self):
-        """
-        Pass the associated post through Akismet if it's available. If it's not
-        available return None. Otherwise return True or False.
-        """
-        if akismet_api is None:
-            logger.warning("Skipping akismet check. No api.")
-            return None
-
-        data = self.to_akismet_data()
-        content = self.to_akismet_content()
-        is_spam = None
-
-        try:
-            is_spam = akismet_api.comment_check(content, data)
-        except AkismetError as e:
-            try:
-                # try again, in case of timeout
-                is_spam = akismet_api.comment_check(content, data)
-            except Exception as e:
-                logger.error(
-                    "Error while checking Akismet", exc_info=True, extra={
-                        "post": self.post, "post_id": self.post.id,
-                        "content_length": len(content)})
-                is_spam = None
-        except Exception as e:
-            logger.error(
-                "Error while checking Akismet", exc_info=True, extra={
-                    "post": self.post, "post_id": self.post.id,
-                    "content_length": len(content)})
-            is_spam = None
-
-        return is_spam
-
-    def _submit_comment(self, report_type):
-        """
-        Report this post to Akismet as spam or ham. Raises an exception if it
-        fails. report_type is 'spam' or 'ham'. Used by report_spam/report_ham.
-        """
-        if akismet_api is None:
-            logger.error("Can't submit to Akismet. No API.")
-            return None
-
-        data = self.to_akismet_data()
-        content = self.to_akismet_content()
-
-        if report_type == "spam":
-            akismet_api.submit_spam(content, data)
-
-        elif report_type == "ham":
-            akismet_api.submit_ham(content, data)
-        else:
-            raise NotImplementedError(
-                "You're trying to report an unsupported comment type.")
-
-    def _submit_spam(self):
-        """
-        Report this post to Akismet as spam.
-        """
-        self._submit_comment("spam")
-
-    def _submit_ham(self):
-        """
-        Report this post to Akismet as ham.
-        """
-        self._submit_comment("ham")
-
-    def is_spam(self):
-        """
-        Condition used by the FSM. Return True if the Akismet API is available
-        and returns a positive. Otherwise return False or None.
-        """
-        is_spam = self._comment_check()
-        if is_spam is None:
-            return False
-        else:
-            return is_spam
-
-    def is_ham(self):
-        """
-        Inverse of is_spam.
-        """
-        is_spam = self._comment_check()
-        if is_spam is None:
-            return False
-        else:
-            return not is_spam
-
-    @transition(
-        field=state, source=UNREVIEWED, target=FILTERED_SPAM,
-        save=True, conditions=[is_spam])
-    def filter_spam(self):
-        """
-        Akismet detected this post is spam, move it to the dustbin and report it.
-        """
-        self._delete_post()
-
-    @transition(
-        field=state, source=UNREVIEWED, target=FILTERED_HAM,
-        save=True, conditions=[is_ham])
-    def filter_ham(self):
-        """
-        Akismet detected this post as ham. Don't do anything (except change state).
-        """
-        pass
-
-    @transition(
-        field=state, source=[UNREVIEWED, FILTERED_HAM, MARKED_HAM], target=USER_DELETED,
-        save=True)
-    def filter_user_deleted(self):
-        """
-        Post is not marked spam by akismet, but user has been globally deleted,
-        putting this into the spam dusbin.
-        """
-        self._delete_post()
-
-    @transition(
-        field=state, source=[FILTERED_SPAM, MARKED_SPAM], target=MARKED_HAM,
-        save=True)
-    def mark_ham(self):
-        """
-        Either Akismet returned a false positive, or a moderator accidentally
-        marked this as spam. Tell Akismet that this is ham, undelete it.
-        """
-        self._submit_ham()
-        self._undelete_post()
-
-    @transition(
-        field=state, source=[FILTERED_HAM, MARKED_HAM], target=MARKED_SPAM,
-        save=True)
-    def mark_spam(self):
-        """
-        Akismet missed this, or a moderator accidentally marked it as ham. Tell
-        Akismet that this is spam.
-        """
-        self._submit_spam()
-        self._delete_post()
-
-    @transition(
-        field=state, source=USER_DELETED, target=UNREVIEWED,
-        save=True)
-    def filter_user_undeleted(self):
-        """
-        Post is not marked spam by akismet, but user has been globally deleted,
-        putting this into the spam dusbin.
-        """
-        self._undelete_post()
-
-    def review(self, certainly_spam=False):
-        """
-        Process this post, used by the manager and the spam-hammer. The
-        ``certainly_spam`` argument is used to force mark as spam/delete the
-        post, no matter what status Akismet returns.
-        """
-        if can_proceed(self.filter_spam):
-            self.filter_spam()
-        elif can_proceed(self.filter_ham):
-            self.filter_ham()
-            if certainly_spam:
-                self.mark_spam()
-        else:
-            if certainly_spam:
-                self._delete_post()
-            logger.warn(
-                "Couldn't filter post.", exc_info=True, extra={
-                    'post_id': self.post.id, 'content_length': len(self.post.body)})
 
 
 from .signals import post_saved, topic_saved
