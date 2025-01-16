@@ -10,3 +10,4 @@ pygments
 postmarkup
 django-pagination
 pillow
+pymysql

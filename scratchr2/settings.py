@@ -19,6 +19,11 @@ from djangobb_forum.scratchr2_settings import *
 # Django replicated settings
 from django_replicated.settings import *
 
+# PyMySQL is easier to install than the MySQLdb
+# but Django doesn't officially support it
+import pymysql
+pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
 
 # Required for languages
 DEFAULT_CHARSET = 'utf-8'
