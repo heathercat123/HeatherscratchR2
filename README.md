@@ -1,3 +1,6 @@
+### Migrated
+This repository has been migrated to [Codeberg](https://codeberg.org/heathercat123/HeatherscratchR2) and as such will be archived on Github.
+
 # HeatherscratchR2
 WIP open-source remake of ScratchR2
 
