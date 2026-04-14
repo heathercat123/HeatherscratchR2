@@ -1,5 +1,5 @@
 # Migrated
-This repository has been migrated to [Codeberg](https://codeberg.org/heathercat123/HeatherscratchR2) and as such will be archived on Github.
+Because of, well, [THIS GUY](https://github.com/heathercat123/), this is [APIClone](https://codeberg.org/heathercat123/APIClone) now. Cheers!
 
 # HeatherscratchR2
 WIP open-source remake of ScratchR2
